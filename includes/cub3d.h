@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/05 18:02:02 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/05 19:19:52 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,18 @@
 # include <unistd.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+
+typedef struct s_player
+{
+	int	x;
+	int	y;
+	int	dir_x;
+	int	dir_y;
+}	t_player
+
+typedef struct s_data
+{
+	t_player	player;
+}	t_data;
 
 #endif
