@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/06 18:45:28 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/06 20:49:53 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,20 +49,21 @@ int	is_num(char *line)
 	int i;
 
 	i = 0;
-	while (line[i] && line[i] != ',')
+	while (line[i] && (line[i] != ',' || line[i] != ' '))
 	{
 		if (line[i] < '0' || line[i] > '9')
-			return (-1);
+			return (FAILURE);
 		i++;
 	}
-	return (1);	
+	return (SUCCESS);	
 }
 
 int	len_number(char *line)
 {
 	int	i;
 
-	while (line[i] && line[i] != ',')
+	i = 0;
+	while (line[i] && (line[i] != ',' || line[i] != ' '))
 		i++;
 	return (i);
 }

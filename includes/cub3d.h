@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 19:09:36 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/06 20:59:40 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ typedef struct s_texture
 	char	*south;
 	char	*west;
 	char	*east;
-	t_trgb	floor;
-	t_trgb	ceiling;
-}			t_texture;
+	t_color	floor;
+	t_color	ceiling;
+}	t_texture;
 
 typedef struct s_player
 {
 	int	x;
 	int	y;
-}			t_player;
+}	t_player;
 
 typedef	struct	s_map
 {
@@ -60,6 +60,7 @@ typedef	struct	s_map
 	int			max_y;
 	char		**map;
 	int			fd;
+	char		*line;
 }	t_map;
 
 typedef struct s_data
@@ -68,7 +69,7 @@ typedef struct s_data
 	t_texture	texture;
 	t_map		map;
 	
-}			t_data;
+}	t_data;
 
 
 //SINGLETON
@@ -81,9 +82,25 @@ void	skip_space(char *line);
 int		is_num(char *line);
 int		len_number(char *line);
 void	hasta_la_vista_baby(char *str);
+void	print_struct(void);
 
+//PARSING
+void	parsing(int ac, char **argv);
+void	open_map(char **argv);
+int		parse_data_map(char *line);
+int		parse_select(char *line);
+// int		parse_texture_insert(char *line, char c);
+int		parse_insert_color(char *line, t_trgb *color);
 
+//PARSING TEXTURE
+int	parse_texture_north(char *line);
+int	parse_texture_west(char *line);
+int	parse_texture_east(char *line);
+int	parse_texture_south(char *line);
 
+//PARSING COLOR
+int	parse_color_floor(char *line);
+int	parse_color_ceiling(char *line);
 
 
 #endif
