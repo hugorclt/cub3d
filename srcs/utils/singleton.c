@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   singleton.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 17:58:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 18:46:21 by ajung            ###   ########.fr       */
+/*   Created: 2022/06/06 18:43:44 by ajung             #+#    #+#             */
+/*   Updated: 2022/06/06 18:44:01 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-
-int	main(int ac, char **av)
+t_data	*_data(void)
 {
-	(void)ac;
-	(void)av;
-	t_data	*data;
+	static 	t_data	data;
+	static int 		check = 0;
 
-	data = _data();
-	return (SUCCESS);
+	if (check == 0)
+	{
+		ft_bzero(&data, sizeof(t_data));
+		check = 1;
+	}
+	return (&data);
 }

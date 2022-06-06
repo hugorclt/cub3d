@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
+#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/05 18:05:05 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/06 18:18:56 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,4 +54,7 @@ fclean:	clean
 
 re: fclean all
 
-.PHONY: bonus all clean fclean re
+test_leaks:
+	valgrind $(NAME)
+
+.PHONY: bonus all clean fclean re test_leaks
