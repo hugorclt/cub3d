@@ -6,15 +6,17 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/06 17:54:53 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/06 21:14:13 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	srcs/main.c\
 			srcs/parsing/parse_texture.c\
 			srcs/parsing/parse_color.c\
-			srcs/parsing/parse.c\
-			srcs/utils.c
+			srcs/parsing/parsing.c\
+			srcs/utils/utils2.c\
+			srcs/utils/utils1.c\
+			srcs/utils/singleton.c\
 
 INC		=	includes/cub3d.h
 
@@ -58,4 +60,7 @@ fclean:	clean
 
 re: fclean all
 
-.PHONY: bonus all clean fclean re
+test_leaks:
+	valgrind $(NAME)
+
+.PHONY: bonus all clean fclean re test_leaks

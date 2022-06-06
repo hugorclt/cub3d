@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 17:32:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 17:56:41 by hrecolet         ###   ########.fr       */
+/*   Created: 2022/06/06 20:02:49 by ajung             #+#    #+#             */
+/*   Updated: 2022/06/06 21:31:03 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	parse_insert_color(char *line, t_rgb *color)
+int	parse_insert_color(char *line, t_color *color)
 {
 	int		i;
 	int		len_color;
@@ -20,40 +20,28 @@ static int	parse_insert_color(char *line, t_rgb *color)
 	i = 0;
 	while (i < 3)
 	{
+		printf("before in insert color : %c\n", *line);
 		skip_space(line);
-		if (is_num(line) == -1)
-			return (-1);
+		printf("after in insert color : %c\n", *line);
+		if (is_num(line) == FAILURE)
+			hasta_la_vista_baby("non digit character");
 		len_color = len_number(line);
 		if (i == 0)
-			color->r = ft_atoi(ft_substr(line, 0, len_color));
+			color->trgb.r = ft_atoi(ft_substr(line, 0, len_color));
 		else if (i == 1)
-			color->g = ft_atoi(ft_substr(line, 0, len_color));
+			color->trgb.g = ft_atoi(ft_substr(line, 0, len_color));
 		else if (i == 2)
-			color->b = ft_atoi(ft_substr(line, 0, len_color));
+			color->trgb.b = ft_atoi(ft_substr(line, 0, len_color));
 		line += len_color;
 		skip_space(line);
-		if (line[0] != ',')
-			return (-1);
-		line++;
+		if (i < 2 && line[0] != ',')
+			hasta_la_vista_baby("Bad format");
+		if (i < 2)
+			line++;
 		i++;
 	}
-	return (0);
+	if (line[0] != '\n')
+		hasta_la_vista_baby("bad format");
+	return (SUCCESS);
 }
 
-int	parse_select_color(char *line, int i)
-{
-	t_data *data;
-
-	data = _data();
-	if (line[i] && ft_strnstr(line + i, "F", 1))
-	{
-		if (parse_insert_color(line + i + 1, &data->texture.f) == -1)
-			return (-1);
-	}
-	else if (line[i] && ft_strnstr(line + i, "C", 1))
-	{
-		if (parse_insert_color(line + i + 1, &data->texture.c) == -1)
-			return (-1);
-	}
-	return (0);
-}

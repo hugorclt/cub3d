@@ -5,14 +5,70 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 12:13:53 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 18:12:08 by hrecolet         ###   ########.fr       */
+/*   Created: 2022/06/06 19:57:59 by ajung             #+#    #+#             */
+/*   Updated: 2022/06/06 21:06:09 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	parse_texture_insert(char *line, char c)
+int	parse_texture_north(char *line)
+{
+	t_data	*data;
+
+	data = _data();
+	skip_space(line);
+	if (data->texture.north)
+		hasta_la_vista_baby("Doublon detected");
+	data->texture.north = ft_strdup(line);
+	if (!data->texture.north)
+		hasta_la_vista_baby("Memory alloc fail");
+	return (SUCCESS);
+}
+
+int	parse_texture_west(char *line)
+{
+	t_data	*data;
+
+	data = _data();
+	skip_space(line);
+	if (data->texture.west)
+		hasta_la_vista_baby("Doublon detected");
+	data->texture.west = ft_strdup(line);
+	if (!data->texture.west)
+		hasta_la_vista_baby("Memory alloc fail");		
+	return (SUCCESS);
+}
+
+int	parse_texture_east(char *line)
+{
+	t_data	*data;
+
+	data = _data();
+	skip_space(line);
+	if (data->texture.east)
+		hasta_la_vista_baby("Doublon detected");
+	data->texture.east = ft_strdup(line);
+	if (!data->texture.east)
+		hasta_la_vista_baby("Memory alloc fail");		
+	return (SUCCESS);
+}
+
+int	parse_texture_south(char *line)
+{
+	t_data	*data;
+
+	data = _data();
+	skip_space(line);
+	if (data->texture.south)
+		hasta_la_vista_baby("Doublon detected");
+	data->texture.south = ft_strdup(line);
+	if (!data->texture.south)
+		hasta_la_vista_baby("Memory alloc fail");		
+	return (SUCCESS);
+}
+
+/* int	parse_select_texture(char *line, char c)
 {
 	t_data	*data;
 
@@ -20,75 +76,40 @@ static int	parse_texture_insert(char *line, char c)
 	skip_space(line);
 	if (c == 'N')
 	{
-		if (data->texture.no)
-			return (printf-1);
-		
-		
-		data->texture.no = ft_strdup(line);
-		if (!data->texture.no)
-			return (-1);
+		if (data->texture.north)
+		{
+			free(line);
+			hasta_la_vista_baby("Doublon detected");
+		}
+			
+		data->texture.north = ft_strdup(line);
+		if (!data->texture.north)
+			hasta_la_vista_baby("Memory alloc fail");
 	}
 	else if (c == 'S')
 	{
-		data->texture.so = ft_strdup(line);
-		if (!data->texture.so)
-			return (-1);
+		if (data->texture.south)
+			hasta_la_vista_baby("Doublon detected");
+		data->texture.south = ft_strdup(line);
+		if (!data->texture.south)
+			hasta_la_vista_baby("Memory alloc fail");
 	}
 	else if (c == 'W')
 	{
-		data->texture.we = ft_strdup(line);
-		if (!data->texture.we)
-			return (-1);
+		if (data->texture.west)
+			hasta_la_vista_baby("Doublon detected");
+		data->texture.west = ft_strdup(line);
+		if (!data->texture.west)
+			hasta_la_vista_baby("Memory alloc fail");
 	}
 	else if (c == 'E')
 	{
-		data->texture.ea = ft_strdup(line);
-		if (!data->texture.ea)
-			return (-1);
+		if (data->texture.east)
+			hasta_la_vista_baby("Doublon detected");
+		data->texture.east = ft_strdup(line);
+		if (!data->texture.east)
+			hasta_la_vista_baby("Memory alloc fail");
 	}
-	return (0);
+	return (SUCCESS);
 }
-
-static int	parse_select_texture(char *line, int i)
-{
-	if (line[i] && ft_strnstr(line + i, "NO", 2))
-	{
-		if (parse_texture_insert(line + i + 2, 'N') == -1)
-			return (-1);
-	}
-	else if (line[i] && ft_strnstr(line + i, "SO", 2))
-	{
-		if (parse_texture_insert(line + i + 2, 'S') == -1)
-			return (-1);
-	}
-	else if (line[i] && ft_strnstr(line + i, "WE", 2))
-	{
-		if (parse_texture_insert(line + i + 2, 'W') == -1)
-			return (-1);
-	}
-	else if (line[i] && ft_strnstr(line + i, "EA", 2))
-	{
-		if (parse_texture_insert(line + i + 2, 'E') == -1)
-			return (-1);
-	}
-	else
-		return (-1);
-	return (0);
-}
-
-int	parse_data_map(char *line)
-{
-	int	i;
-
-	i = 0;
-	while (line[i])
-	{
-		skip_space(line + i);
-		if (parse_select_texture(line, i) == -1)
-			return (printf("Error\n"), -1);
-		if (parse_select_color(line, i) == -1)
-			return (printf("Error\n"), -1);
-		i++;
-	}
-	return (0);
-}
+ */

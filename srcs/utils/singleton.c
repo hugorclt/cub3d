@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   singleton.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 15:24:07 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 18:07:12 by hrecolet         ###   ########.fr       */
+/*   Created: 2022/06/06 18:43:44 by ajung             #+#    #+#             */
+/*   Updated: 2022/06/06 21:13:56 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	parse_launch(int fd)
+t_data	*_data(void)
 {
-	char	*line;
+	static 	t_data	data;
+	static int 		check = 0;
 
-	line = get_next_line(fd);
-	while (line)
+	if (check == 0)
 	{
-		if (ft_strcmp(line, "\n") != 0)
-		{
-			if (parse_data_map(line) == -1)
-				return (close(fd), -1);
-		}
-		free(line);
-		line = get_next_line(fd);
+		ft_bzero(&data, sizeof(t_data));
+		check = 1;
 	}
-	free(line);
-	return (close(fd), 0);
+	return (&data);
 }
-
