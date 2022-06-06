@@ -5,64 +5,55 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 14:39:20 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 15:30:07 by hrecolet         ###   ########.fr       */
+/*   Created: 2022/06/06 17:32:55 by hrecolet          #+#    #+#             */
+/*   Updated: 2022/06/06 17:56:41 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static int	parse_insert_color(char *line, t_rgb *fill)
+static int	parse_insert_color(char *line, t_rgb *color)
 {
-	char	**color;
+	int		i;
+	int		len_color;
 
-	color = ft_split(line + 2, ',');
-	if (color == NULL)
-		return (-1);
-	fill->r = ft_atoi(color[0]);
-	fill->g = ft_atoi(color[1]);
-	fill->b = ft_atoi(color[2]);
-	free_tab(color);
+	i = 0;
+	while (i < 3)
+	{
+		skip_space(line);
+		if (is_num(line) == -1)
+			return (-1);
+		len_color = len_number(line);
+		if (i == 0)
+			color->r = ft_atoi(ft_substr(line, 0, len_color));
+		else if (i == 1)
+			color->g = ft_atoi(ft_substr(line, 0, len_color));
+		else if (i == 2)
+			color->b = ft_atoi(ft_substr(line, 0, len_color));
+		line += len_color;
+		skip_space(line);
+		if (line[0] != ',')
+			return (-1);
+		line++;
+		i++;
+	}
 	return (0);
 }
 
-static int	parse_color(char *line, int *i)
+int	parse_select_color(char *line, int i)
 {
 	t_data *data;
 
 	data = _data();
-	if (ft_strnstr(line, "F", 1) != NULL)
+	if (line[i] && ft_strnstr(line + i, "F", 1))
 	{
-		if (parse_insert_color(line, &data->texture.f) == -1)
+		if (parse_insert_color(line + i + 1, &data->texture.f) == -1)
 			return (-1);
-		(*i)++;
 	}
-	else if (ft_strnstr(line, "C", 1) != NULL)
+	else if (line[i] && ft_strnstr(line + i, "C", 1))
 	{
-		if (parse_insert_color(line, &data->texture.c) == -1)
+		if (parse_insert_color(line + i + 1, &data->texture.c) == -1)
 			return (-1);
-		(*i)++;
-	}
-	return (0);
-}
-
-int	parse_ceiling_floor(int fd, char *line)
-{
-	int		i;
-	
-	i = 0;
-	line = get_next_line(fd);
-	while (line)
-	{
-		if (i == 2)
-			break ;
-		if (ft_strcmp(line, "\n") != 0)
-		{
-			if (parse_color(line , &i) == -1)
-				return (-1);
-		}
-		free(line);
-		line = get_next_line(fd);
 	}
 	return (0);
 }

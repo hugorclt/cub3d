@@ -6,13 +6,13 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/06 15:58:43 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/06 17:54:53 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS	=	srcs/main.c\
-			srcs/parsing/parse_color.c\
 			srcs/parsing/parse_texture.c\
+			srcs/parsing/parse_color.c\
 			srcs/parsing/parse.c\
 			srcs/utils.c
 

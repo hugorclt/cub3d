@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 15:58:29 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:07:09 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <unistd.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
+
+# define SUCCESS 0
+# define FAILURE -1
 
 typedef struct s_rgb
 {
@@ -53,13 +56,18 @@ typedef struct s_data
 t_data	*_data(void);
 
 /* parsing function */
-int		parse_ceiling_floor(int fd, char *line);
-int		parse_texture(int fd, char *line);
 int		parse_launch(int fd);
-
+int		parse_select_color(char *line, int i);
+int		parse_data_map(char *line);
+int		parse_select_color(char *line, int i);
 
 /* utils function */
 void	free_tab(char **tab);
 int		ft_strcmp(char *s1, char *s2);
+void	skip_space(char *line);
+int		len_number(char *line);
+int		is_num(char *line);
+
+
 
 #endif
