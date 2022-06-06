@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:58:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/05 19:15:59 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/06 15:28:14 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,31 @@ t_data	*_data(void)
 	return (&data);
 }
 
+void	print_struct(void)
+{
+	t_data	*data;
+
+	data = _data();
+	printf("no : %s\n", data->texture.no);
+	printf("so : %s\n", data->texture.so);
+	printf("we : %s\n", data->texture.we);
+	printf("ea : %s\n", data->texture.ea);
+	printf("rgb floor : %d,", data->texture.f.r);
+	printf("%d,", data->texture.f.g);
+	printf("%d\n", data->texture.f.b);
+	printf("rgb ceilling : %d,", data->texture.c.r);
+	printf("%d,", data->texture.c.g);
+	printf("%d\n", data->texture.c.b);
+}
+
 int	main(int ac, char **av)
 {
 	(void)ac;
 	(void)av;
-	t_data	*data;
 
-	data = _data();
+
+	int	fd = open("maps/test.cub", O_RDONLY);
+	parse_launch(fd);
+	print_struct();
 	return (0);
 }

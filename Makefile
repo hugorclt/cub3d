@@ -6,11 +6,15 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/05 18:05:05 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/06 15:58:43 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	srcs/main.c
+SRCS	=	srcs/main.c\
+			srcs/parsing/parse_color.c\
+			srcs/parsing/parse_texture.c\
+			srcs/parsing/parse.c\
+			srcs/utils.c
 
 INC		=	includes/cub3d.h
 
@@ -34,23 +38,23 @@ all: $(NAME)
 
 $(NAME): $(MLX) $(OBJS) $(INC) 
 		 @$(MAKE) -C libft
-		 @echo "fdf : libft compiled"
+		 @echo "cub3d : libft compiled"
 		 @$(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) $(INC) libft/libft.a -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
-		 @echo "fdf : compiled"
+		 @echo "cub3d : compiled"
 
 $(MLX):
 		cd mlx && ./configure
-		@echo "fdf : minilibx compiled" 
+		@echo "cub3d : minilibx compiled" 
 clean:
 		@$(MAKE) -C libft clean
 		@$(RM) $(OBJS)
 		cd mlx && ./configure clean
-		@echo "fdf : objects has been erased"
+		@echo "cub3d : objects has been erased"
 
 fclean:	clean
 		@$(MAKE) -C libft fclean
 		@$(RM) $(NAME)
-		@echo "fdf : objects and name has been erased"
+		@echo "cub3d : objects and name has been erased"
 
 re: fclean all
 
