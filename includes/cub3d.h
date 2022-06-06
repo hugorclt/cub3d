@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 18:40:34 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/06 19:09:36 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ typedef	struct	s_map
 	int			max_x;
 	int			max_y;
 	char		**map;
+	int			fd;
 }	t_map;
 
 typedef struct s_data
@@ -79,7 +80,7 @@ void	free_tab(char **tab);
 void	skip_space(char *line);
 int		is_num(char *line);
 int		len_number(char *line);
-void	hasta_la_vista_baby(void);
+void	hasta_la_vista_baby(char *str);
 
 
 

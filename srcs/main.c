@@ -3,23 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:58:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 18:46:21 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/06 19:16:03 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../includes/cub3d.h"
 
-
-
-int	main(int ac, char **av)
+void	open_map(char **argv)
 {
-	(void)ac;
-	(void)av;
 	t_data	*data;
 
 	data = _data();
+	data->map.fd = open(argv[1], O_RDONLY);
+	if (data->map.fd < 0)
+		hasta_la_vista_baby("open fail");
+	
+}
+
+
+
+int	main(int argc, char **argv)
+{
+	t_data	*data;
+
+	data = _data();
+	parsing(argc, argv);
+	hasta_la_vista_baby(NULL);
 	return (SUCCESS);
 }
