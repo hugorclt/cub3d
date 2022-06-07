@@ -6,13 +6,13 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 13:04:35 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:57:48 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	parse_get_max_y(void)
+static void	parse_get_max_y(void)
 {
 	char	*line;
 	t_data	*data;
@@ -33,16 +33,16 @@ void	parse_get_max_y(void)
 	close(data->map.fd);
 }
 
-void	parse_get_max_x(char *line)
+static void	parse_get_max_x(char *line)
 {
 	t_data	*data;
 
 	data = _data();
 	data->map.max_x = ft_strlen(line);
-	data->map.max_x--;
+	data->map.max_x--; //deleted '\n' so we have to decrement the max_x by one
 }
 
-int	parse_is_header(char *line)
+static int	parse_is_header(char *line)
 {
 	int		i;
 
@@ -64,14 +64,14 @@ int	parse_is_header(char *line)
 		return (FAILURE);
 }
 
-void	parse_line(char **tmp, int *i)
+static void	parse_line(char **tmp, int *i)
 {
 	t_data	*data;
 
 	data = _data();
 	if (ft_strcmp(*tmp, "\n") != 0 && parse_is_header(*tmp) == FAILURE)
 	{
-		if (i == 0)
+		if (*i == 0)
 			parse_get_max_x(*tmp);
 		data->map.map[*i] = ft_strdup(*tmp);
 		data->map.map[*i] = ft_strtrim(data->map.map[*i], "\n");

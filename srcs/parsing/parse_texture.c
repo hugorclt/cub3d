@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:57:59 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 13:00:39 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:06:09 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int	parse_texture_north(char *line)
 
 	i = 0;
 	data = _data();
+	if (line[i] != ' ')
+		hasta_la_vista_baby("Wrong format");
 	skip_space_new(line, &i);
 	if (data->texture.north)
 		hasta_la_vista_baby("Doublon detected");
@@ -36,6 +38,8 @@ int	parse_texture_west(char *line)
 
 	i = 0;
 	data = _data();
+	if (line[i] != ' ')
+		hasta_la_vista_baby("Wrong format");
 	skip_space_new(line, &i);	
 	if (data->texture.west)
 		hasta_la_vista_baby("Doublon detected");
@@ -53,6 +57,8 @@ int	parse_texture_east(char *line)
 
 	i = 0;
 	data = _data();
+	if (line[i] != ' ')
+		hasta_la_vista_baby("Wrong format");
 	skip_space_new(line, &i);
 	if (data->texture.east)
 		hasta_la_vista_baby("Doublon detected");
@@ -70,6 +76,8 @@ int	parse_texture_south(char *line)
 
 	i = 0;
 	data = _data();
+	if (line[i] != ' ')
+		hasta_la_vista_baby("Wrong format");
 	skip_space_new(line, &i);
 	if (data->texture.south)
 		hasta_la_vista_baby("Doublon detected");

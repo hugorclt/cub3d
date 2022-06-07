@@ -6,7 +6,7 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/07 12:13:40 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/07 14:00:41 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS	=	srcs/main.c\
 			srcs/utils/utils1.c\
 			srcs/utils/singleton.c\
 			srcs/parsing/parse_map.c\
+			srcs/check_map/check_map.c
 
 INC		=	includes/cub3d.h
 

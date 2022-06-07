@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/05 17:58:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 14:55:53 by hrecolet         ###   ########.fr       */
+/*   Created: 2022/06/07 14:56:19 by hrecolet          #+#    #+#             */
+/*   Updated: 2022/06/07 14:56:31 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "../../includes/cub3d.h"
 
-int	main(int argc, char **argv)
+void	check_line()
 {
-	parsing(argc, argv);
-	check_map();
-	print_struct();
-	hasta_la_vista_baby(NULL);
-	return (SUCCESS);
+	int	i;
+	t_data	*data;
+
+	data = _data();
+	i = 0;
+	while (data->map.map[i])
+	{
+		if ((int)ft_strlen(data->map.map[i]) != data->map.max_x)
+			hasta_la_vista_baby("Wrong map size");
+		i++;
+	}
 }

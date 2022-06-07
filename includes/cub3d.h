@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 12:37:25 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:56:47 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		is_num(char *line);
 int		len_number(char *line);
 void	hasta_la_vista_baby(char *str);
 void	print_struct(void);
+void	ft_print_map(void);
 
 //PARSING
 void	parsing(int argc, char **argv);
@@ -92,6 +93,10 @@ int		parse_data_map(char *line);
 int		parse_select(char *line);
 void	parse_map(char **argv);
 int		parse_insert_color(char *line, t_color *color);
+
+//CHECK MAP
+void	check_map();
+void	check_line();
 
 //PARSING TEXTURE
 int	parse_texture_north(char *line);

@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 11:23:33 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 14:55:57 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ void	hasta_la_vista_baby(char *str)
 	exit(1);
 }
 
+void	ft_print_map(void)
+{
+	t_data	*data;
+	int		i;
+
+	data = _data();
+	i = 0;
+	while (data->map.map[i])
+	{
+		printf("%s\n", data->map.map[i]);
+		i++;
+	}
+}
+
 void	print_struct(void)
 {
 	t_data	*data;
@@ -45,4 +59,5 @@ void	print_struct(void)
 	printf("rgb ceilling : %d,", data->texture.ceiling.trgb.r);
 	printf("%d,", data->texture.ceiling.trgb.g);
 	printf("%d\n", data->texture.ceiling.trgb.b);
+	ft_print_map();
 }
