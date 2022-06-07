@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 21:10:25 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 03:34:38 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,12 @@ int	parse_select(char *line)
 
 int	parse_data_map(char *line)
 {
-	skip_space(line);
-	parse_select(line);
+	int	i;
+
+	i = 0;
+	// skip_space(line);
+	skip_space_new(line, &i);
+	parse_select(&line[i]);
 	return (0);
 }
 
@@ -52,14 +56,22 @@ void	open_map(char **argv)
 }
 
 
-void	parsing(int ac, char **argv)
+void	parsing(int argc, char **argv)
 {
 	t_data	*data;
-	(void)ac;
+	(void) argc;
+	char	*ret_gnl;
 	
 	open_map(argv);
 	data = _data();
+	
+		//test
+	ret_gnl = get_next_line(data->map.fd);
+	free(ret_gnl);
+	hasta_la_vista_baby("test");
 	data->map.line = get_next_line(data->map.fd);
+	if (!data->map.line)
+		hasta_la_vista_baby("Memory alloc fail");
 	while (data->map.line)
 	{
 		if (ft_strcmp(data->map.line, "\n") != 0)
@@ -68,5 +80,7 @@ void	parsing(int ac, char **argv)
 		}
 		free(data->map.line);
 		data->map.line = get_next_line(data->map.fd);
+		if (!data->map.line)
+			hasta_la_vista_baby("Memory alloc fail");
 	}
 }

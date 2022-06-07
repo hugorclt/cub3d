@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/06 21:13:46 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 03:31:30 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	hasta_la_vista_baby(char *str)
 	free(data->texture.east);
 	free(data->texture.west);
 	free(data->map.line);
-	free_tab(data->map.map);
+	if (data->map.map)
+		free_tab(data->map.map);
 	if (data->map.fd > 0)
 		close(data->map.fd);
 	if (str)

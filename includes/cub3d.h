@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/06 21:27:25 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 02:50:44 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,14 +78,15 @@ t_data	*_data(void);
 //UTILS
 int		ft_strcmp(char *s1, char *s2);
 void	free_tab(char **tab);
-char *skip_space(char *line);
+char 	*skip_space(char *line);
+void	skip_space_new(char *str, int *i);
 int		is_num(char *line);
 int		len_number(char *line);
 void	hasta_la_vista_baby(char *str);
 void	print_struct(void);
 
 //PARSING
-void	parsing(int ac, char **argv);
+void	parsing(int argc, char **argv);
 void	open_map(char **argv);
 int		parse_data_map(char *line);
 int		parse_select(char *line);

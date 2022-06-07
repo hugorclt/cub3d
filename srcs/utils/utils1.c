@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/06 21:27:15 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 03:16:46 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,17 @@ char *skip_space(char *line)
 {
 	while (*line && *line == ' ')
 		line++;
+	printf("check\n");
 	printf("in skip space : %c\n", *line);
 	return (line);
 }
+
+void	skip_space_new(char *str, int *i)
+{
+	while (str[*i] && str[*i] == ' ')
+		(*i)++;
+}
+
 
 int	is_num(char *line)
 {
@@ -53,7 +61,7 @@ int	is_num(char *line)
 	i = 0;
 	while (line[i] && (line[i] != ',' || line[i] != ' '))
 	{
-		printf("%c\n", line[i]);
+		// printf("%c\n", line[i]);
 		if (line[i] < '0' || line[i] > '9')
 			return (FAILURE);
 		i++;
