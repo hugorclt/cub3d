@@ -6,7 +6,7 @@
 #    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/07 18:16:59 by ajung            ###   ########.fr        #
+#    Updated: 2022/06/07 19:12:01 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,9 @@ SRCS	=	srcs/main.c\
 			srcs/utils/singleton.c\
 			srcs/utils/utils_parsing/utils_parsing1.c\
 			srcs/utils/utils_parsing/utils_parsing2.c\
-			srcs/utils/utils_parsing/utils_max_x_y.c
-			
+			srcs/utils/utils_parsing/utils_max_x_y.c \
+			srcs/video/video_loop.c \
+			srcs/video/video_utils.c 
 
 INC		=	includes/cub3d.h
 

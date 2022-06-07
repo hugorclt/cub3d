@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 18:17:41 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/07 19:12:31 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # define FAILURE -1
 # define TRUE 0
 # define FALSE 1
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 typedef struct s_trgb
 {
@@ -62,15 +64,43 @@ typedef struct s_map
 	char		*line;
 }	t_map;
 
+typedef struct s_image
+{
+	void	*img_ptr;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_len;
+	int		endian;
+}	t_image;
+
+typedef struct s_var
+{
+	void	*mlx;
+	void	*win;
+}	t_var;
+	
+typedef struct s_mlx
+{
+	t_var	var;
+	t_image	image;
+}	t_mlx;
+
 typedef struct s_data
 {
 	t_player	player;
 	t_texture	texture;
 	t_map		map;
+	t_mlx		mlx;
 }	t_data;
 
 //SINGLETON
 t_data	*_data(void);
+t_mlx	*_mlx(void);
+
+
+//VIDEO
+void	video_loop(void);
+
 
 //UTILS PARSING
 int		ft_strcmp(char *s1, char *s2);
