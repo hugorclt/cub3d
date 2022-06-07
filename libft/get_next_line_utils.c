@@ -3,78 +3,73 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yobougre <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 16:54:42 by yobougre          #+#    #+#             */
-/*   Updated: 2022/03/11 18:28:37 by yobougre         ###   ########.fr       */
+/*   Created: 2021/11/24 14:19:06 by hrecolet          #+#    #+#             */
+/*   Updated: 2022/06/07 10:20:59 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strchr_pimp(char *s, char c)
+char	*ft_strchr(const char *s, int c)
 {
-	size_t	i;
+	unsigned int	i;
+	unsigned char	p;
 
-	if (!s)
-		return (0);
+	p = (unsigned char) c;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
-			return (1);
-		++i;
+		if (s[i] == p)
+			return ((char *)&(s[i]));
+		i++;
 	}
-	return (0);
+	if (p == 0)
+		return ((char *)&(s[i]));
+	return (NULL);
 }
 
-char	*ft_strdup_pimp(char *s)
+char	*ft_strjoin_free_s1(char *s1, char *s2)
 {
+	int		i;
+	int		j;
 	char	*output;
-	size_t	i;
 
-	if (!s)
-		return (NULL);
-	i = 0;
-	output = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!output)
-		return (NULL);
-	while (s[i])
-	{
-		output[i] = s[i];
-		++i;
-		if (output[i - 1] == '\n')
-			break ;
-	}
-	output[i] = 0;
-	return (output);
-}
-
-char	*ft_strjoin_pimp(char *s1, char *s2)
-{
-	char	*output;
-	size_t	i;
-	size_t	j;
-
-	if (!s1)
-		s1 = ft_strdup_pimp("\0");
-	if (!s2)
-		return (NULL);
-	output = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!output)
+	if (!s1 || !s2)
 		return (NULL);
 	i = 0;
 	j = 0;
+	output = (char *)malloc(sizeof(char)
+			* (ft_strlen(s1) + ft_strlen(s2)+ 1));
+	if (output == NULL)
+		return (NULL);
 	while (s1[i])
+		output[j++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		output[j++] = s2[i++];
+	output[j] = '\0';
+	free(s1);
+	return (output);
+}
+
+char	*ft_strndup_gnl(const char *s, int n)
+{
+	int		i;
+	int		len;
+	char	*copy;
+
+	i = 0;
+	len = ft_strlen(s);
+	copy = (char *)malloc(sizeof(char) * (len + 1));
+	if (copy == NULL)
+		return (NULL);
+	while (s[i] && i < n)
 	{
-		output[i] = s1[i];
-		++i;
+		copy[i] = s[i];
+		i++;
 	}
-	while (s2[j])
-	{
-		output[i + j] = s2[j];
-		++j;
-	}
-	output[i + j] = 0;
-	return (free(s1), output);
+	copy[i] = '\0';
+	return (copy);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 03:16:46 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:22:01 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,22 @@ char *skip_space(char *line)
 {
 	while (*line && *line == ' ')
 		line++;
-	printf("check\n");
-	printf("in skip space : %c\n", *line);
 	return (line);
 }
 
 void	skip_space_new(char *str, int *i)
 {
-	while (str[*i] && str[*i] == ' ')
+	while (str[*i] && (str[*i] == ' ' && str[*i] != '\n'))
 		(*i)++;
 }
-
 
 int	is_num(char *line)
 {
 	int i;
 
 	i = 0;
-	while (line[i] && (line[i] != ',' || line[i] != ' '))
+	while (line[i] && (line[i] != ',' && line[i] != ' ' && line[i] != '\n'))
 	{
-		// printf("%c\n", line[i]);
 		if (line[i] < '0' || line[i] > '9')
 			return (FAILURE);
 		i++;
@@ -74,7 +70,7 @@ int	len_number(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] && (line[i] != ',' || line[i] != ' '))
+	while (line[i] && (line[i] != ',' && line[i] != ' ' && line[i] != '\n'))
 		i++;
 	return (i);
 }

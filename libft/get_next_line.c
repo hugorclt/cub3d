@@ -3,66 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yobougre <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/02 16:54:35 by yobougre          #+#    #+#             */
-/*   Updated: 2022/03/11 18:27:26 by yobougre         ###   ########.fr       */
+/*   Created: 2021/11/24 12:57:38 by hrecolet          #+#    #+#             */
+/*   Updated: 2022/06/07 10:24:28 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_next_line(char *line)
+char	*fill_stock(char *stock, char *buffer, int fd)
 {
-	char	*output;
-	size_t	i;
-	size_t	j;
+	int	read_output;
 
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (line[i] && line[i] != '\n')
-		++i;
-	if (!line[i] || !line[i + 1])
-		return (free(line), NULL);
-	if (line[i])
-		++i;
-	output = malloc(sizeof(char) * (ft_strlen(line + i) + 1));
-	if (!output)
-		return (free(line), NULL);
-	j = 0;
-	while (line[i])
+	read_output = 1;
+	while (read_output && !(ft_strchr(stock, '\n')))
 	{
-		output[j] = line[i];
-		++i;
-		++j;
+		read_output = read(fd, buffer, BUFFER_SIZE);
+		buffer[read_output] = '\0';
+		if (read_output == 0)
+			break ;
+		if (read_output < 0)
+		{
+			free(stock);
+			return (NULL);
+		}
+		stock = ft_strjoin_free_s1(stock, buffer);
 	}
-	output[j] = 0;
-	return (free(line), output);
+	if (stock[0] == 0 && read_output == 0)
+		return (free(stock), NULL);
+	return (stock);
 }
+
 
 char	*get_next_line(int fd)
 {
-	static char	*line = NULL;
+	static char	buffer[BUFFER_SIZE + 1] = "";
+	int			i;
+	int			j;
 	char		*output;
-	char		*buf;
-	int			read_file;
+	char		*stock;
 
-	if (BUFFER_SIZE <= 0 && fd <= 0)
+	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	read_file = 1;
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buf)
+	if (buffer[0] != '\0')
+		stock = ft_strndup_gnl(buffer, ft_strlen(buffer));
+	else
+		stock = ft_strndup_gnl("", 1);
+	stock = fill_stock(stock, buffer, fd);
+	if (!stock)
 		return (NULL);
-	while (read_file && (!(ft_strchr_pimp(line, '\n'))))
-	{
-		read_file = read(fd, buf, BUFFER_SIZE);
-		buf[read_file] = 0;
-		if (read_file <= 0)
-			break ;
-		line = ft_strjoin_pimp(line, buf);
-	}
-	output = ft_strdup_pimp(line);
-	line = ft_next_line(line);
-	return (free(buf), output);
+	i = 0;
+	while (stock[i] && stock[i] != '\n')
+		i++;
+	output = ft_strndup_gnl(stock, i + (stock[i] != '\0'));
+	j = 0;
+	i += (stock[i] != '\0');
+	while (stock[i])
+		buffer[j++] = stock[i++];
+	buffer[j] = '\0';
+	return (free(stock), output);
 }

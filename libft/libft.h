@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:40:53 by yobougre          #+#    #+#             */
-/*   Updated: 2022/04/06 12:45:32 by yobougre         ###   ########.fr       */
+/*   Updated: 2022/06/07 10:42:15 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ typedef struct s_list
 }	t_list;
 
 char		*ft_strdup_pimp(char *s);
+char	*ft_strndup_gnl(const char *s, int n);
+char	*ft_strjoin_free_s1(char *s1, char *s2);
 char		*get_next_line(int fd);
 char		*ft_strjoin_pimp(char *s1, char *s2);
 char		*ft_next_line(char *line);
-int			ft_strchr_pimp(char *s, char c);
+char		*ft_strchr_pimp(char *s, int c);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void		ft_lstdelone(t_list *lst, void (*del)(void *));
 void		*ft_memmove(void *dst, const void *src, size_t len);
@@ -39,7 +41,7 @@ void		ft_lstadd_back(t_list **first, t_list *new);
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **alst, t_list *new);
 int			ft_lstsize(t_list *lst);
-int			ft_atoi(const char *nbr);
+int			ft_atoi(char *nbr);
 int			ft_isalnum(int c);
 int			ft_isalpha(int c);
 int			ft_isascii(int c);
@@ -53,7 +55,7 @@ char		*ft_strjoin(char const *s1, char const *s2);
 size_t		ft_strlen(const char *s);
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char		*ft_strtrim(char const *s1, char const *set);
-char		*ft_substr(char const *s, unsigned int start, size_t len);
+char		*ft_substr(char *s, unsigned int start, size_t len);
 void		ft_bzero(void *s, size_t n);
 void		*ft_memcpy(void *dest, const void *src, size_t n);
 size_t		ft_strlcpy(char *dst, const char *src, size_t dstsize);

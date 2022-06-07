@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 20:02:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 03:04:27 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:21:49 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,33 +22,24 @@ int	parse_insert_color(char *line, t_color *color)
 	tour = 0;
 	while (tour < 3)
 	{
-		// printf("before in insert color : %c\n", *line);
-		// skip_space(line);
-		// printf("after in insert color : %c\n", *line);
-		skip_space_new(&line[i], &i);
+		skip_space_new(line, &i);
 		if (is_num(&line[i]) == FAILURE)
 			hasta_la_vista_baby("non digit character");
 		len_color = len_number(&line[i]);
-		if (i == 0)
+		if (tour == 0)
 			color->trgb.r = ft_atoi(ft_substr(&line[i], 0, len_color));
-		else if (i == 1)
+		else if (tour == 1)
 			color->trgb.g = ft_atoi(ft_substr(&line[i], 0, len_color));
-		else if (i == 2)
+		else if (tour == 2)
 			color->trgb.b = ft_atoi(ft_substr(&line[i], 0, len_color));
-		// line += len_color;
 		i += len_color;
-		// skip_space(line);
 		skip_space_new(line, &i);
-		// if (i < 2 && line[0] != ',')
 		if (tour < 2 && line[i] != ',')
 			hasta_la_vista_baby("Bad format");
-		// if (i < 2)
-		// 	line++;
 		if (tour < 2)
 			i++;
 		tour++;
 	}
-	// if (line[0] != '\n')
 	if (line[i] != '\n')
 		hasta_la_vista_baby("bad format");
 	return (SUCCESS);

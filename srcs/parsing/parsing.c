@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 03:34:38 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/07 11:23:17 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,37 @@ void	open_map(char **argv)
 		hasta_la_vista_baby("open fail");
 }
 
+int	check_struct_filled(void)
+{
+	t_data	*data;
+
+	data = _data();
+	//printf("north : %s, south : %s, west %s, east %s, floor %d, ceilling %d", data->texture.north, data->texture.south, data->texture.west, data->texture.east, data->texture.floor.trgb.r, data->texture.ceiling.trgb.r);
+	if (!data->texture.north || !data->texture.south
+		|| !data->texture.west || !data->texture.east)
+		return (FAILURE);
+	if (!data->texture.floor.trgb.r || !data->texture.ceiling.trgb.r)
+		return (FAILURE);
+	return (SUCCESS);
+}
 
 void	parsing(int argc, char **argv)
 {
 	t_data	*data;
 	(void) argc;
-	char	*ret_gnl;
 	
 	open_map(argv);
 	data = _data();
-	
-		//test
-	ret_gnl = get_next_line(data->map.fd);
-	free(ret_gnl);
-	hasta_la_vista_baby("test");
 	data->map.line = get_next_line(data->map.fd);
 	if (!data->map.line)
 		hasta_la_vista_baby("Memory alloc fail");
 	while (data->map.line)
 	{
 		if (ft_strcmp(data->map.line, "\n") != 0)
-		{
 			parse_data_map(data->map.line);
-		}
 		free(data->map.line);
+		if (check_struct_filled() == SUCCESS)
+				break ;
 		data->map.line = get_next_line(data->map.fd);
 		if (!data->map.line)
 			hasta_la_vista_baby("Memory alloc fail");
