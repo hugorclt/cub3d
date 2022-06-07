@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   utils_parsing2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 16:04:40 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:14:35 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 void	hasta_la_vista_baby(char *str)
 {
@@ -21,7 +21,7 @@ void	hasta_la_vista_baby(char *str)
 	free(data->texture.south);
 	free(data->texture.east);
 	free(data->texture.west);
-	free(data->map.line); //peut etre probleme
+	free(data->map.line);
 	if (data->map.map)
 		free_tab(data->map.map);
 	if (data->map.fd > 0)
@@ -61,4 +61,31 @@ void	print_struct(void)
 	printf("%d,", data->texture.ceiling.trgb.g);
 	printf("%d\n", data->texture.ceiling.trgb.b);
 	ft_print_map();
+}
+
+int	len_number(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && (line[i] != ',' && line[i] != ' ' && line[i] != '\n'))
+		i++;
+	return (i);
+}
+
+void	skip_newline(void)
+{
+	t_data	*data;
+
+	data = _data();
+	data->map.line = get_next_line(data->map.fd);
+	if (!data->map.line)
+		hasta_la_vista_baby("malloc error");
+	while (data->map.line[0] == '\n')
+	{
+		free(data->map.line);
+		data->map.line = get_next_line(data->map.fd);
+		if (!data->map.line)
+			hasta_la_vista_baby("malloc error");
+	}
 }

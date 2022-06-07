@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
+#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/07 14:59:40 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/07 18:16:59 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,18 +14,20 @@ SRCS	=	srcs/main.c\
 			srcs/parsing/parse_texture.c\
 			srcs/parsing/parse_color.c\
 			srcs/parsing/parsing.c\
-			srcs/utils/utils2.c\
-			srcs/utils/utils1.c\
-			srcs/utils/singleton.c\
 			srcs/parsing/parse_map.c\
-			srcs/check_map/check_map.c\
-			srcs/check_map/check_map2.c
+			srcs/parsing/check_map/check_map.c \
+			srcs/parsing/check_map/check_map2.c \
+			srcs/utils/singleton.c\
+			srcs/utils/utils_parsing/utils_parsing1.c\
+			srcs/utils/utils_parsing/utils_parsing2.c\
+			srcs/utils/utils_parsing/utils_max_x_y.c
+			
 
 INC		=	includes/cub3d.h
 
 CC		=	gcc
 
-CFLAGS	=	-Wall -Wextra -Werror -g3
+CFLAGS	=	-Wall -Wextra -Werror -g3 -I includes/ 
 
 MLX		=	mlx_Linux
 

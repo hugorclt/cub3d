@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:57:59 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 14:06:09 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:15:19 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 int	parse_texture_north(char *line)
 {
@@ -40,13 +40,13 @@ int	parse_texture_west(char *line)
 	data = _data();
 	if (line[i] != ' ')
 		hasta_la_vista_baby("Wrong format");
-	skip_space_new(line, &i);	
+	skip_space_new(line, &i);
 	if (data->texture.west)
 		hasta_la_vista_baby("Doublon detected");
 	data->texture.west = ft_strdup(&line[i]);
-	data->texture.west = ft_strtrim(data->texture.west, "\n");	
+	data->texture.west = ft_strtrim(data->texture.west, "\n");
 	if (!data->texture.west)
-		hasta_la_vista_baby("Memory alloc fail");		
+		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);
 }
 
@@ -65,7 +65,7 @@ int	parse_texture_east(char *line)
 	data->texture.east = ft_strdup(&line[i]);
 	data->texture.east = ft_strtrim(data->texture.east, "\n");
 	if (!data->texture.east)
-		hasta_la_vista_baby("Memory alloc fail");		
+		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);
 }
 
@@ -84,7 +84,6 @@ int	parse_texture_south(char *line)
 	data->texture.south = ft_strdup(&line[i]);
 	data->texture.south = ft_strtrim(data->texture.south, "\n");
 	if (!data->texture.south)
-		hasta_la_vista_baby("Memory alloc fail");		
+		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);
 }
-

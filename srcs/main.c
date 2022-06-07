@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:58:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 14:55:53 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:14:53 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cub3d.h"
+#include "cub3d.h"
 
 int	main(int argc, char **argv)
 {
-	parsing(argc, argv);
+	(void) argc;
+	parsing(argv);
 	check_map();
 	print_struct();
 	hasta_la_vista_baby(NULL);

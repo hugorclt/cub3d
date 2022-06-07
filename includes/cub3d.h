@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 17:07:04 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:17:41 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef CUB3D_H
 # define CUB3D_H
@@ -26,16 +25,16 @@
 
 typedef struct s_trgb
 {
-    unsigned char b; // IMPORTANT que les valeurs soient ecrites a l'envers
-    unsigned char g; // pour l'emplacement dans la memoire
-    unsigned char r;
-    unsigned char t;
+	unsigned char	b;
+	unsigned char	g;
+	unsigned char	r;
+	unsigned char	t;
 }	t_trgb;
 
 typedef union u_color
 {
 	int		hexa;
-    t_trgb	trgb;
+	t_trgb	trgb;
 }	t_color;
 
 typedef struct s_texture
@@ -54,7 +53,7 @@ typedef struct s_player
 	int	y;
 }	t_player;
 
-typedef	struct	s_map
+typedef struct s_map
 {
 	int			max_x;
 	int			max_y;
@@ -68,26 +67,27 @@ typedef struct s_data
 	t_player	player;
 	t_texture	texture;
 	t_map		map;
-	
 }	t_data;
-
 
 //SINGLETON
 t_data	*_data(void);
 
-//UTILS
+//UTILS PARSING
 int		ft_strcmp(char *s1, char *s2);
 void	free_tab(char **tab);
-char 	*skip_space(char *line);
+char	*skip_space(char *line);
 void	skip_space_new(char *str, int *i);
 int		is_num(char *line);
 int		len_number(char *line);
 void	hasta_la_vista_baby(char *str);
 void	print_struct(void);
 void	ft_print_map(void);
+void	parse_get_max_y(void);
+void	parse_get_max_x(char *line);
+void	skip_newline(void);
 
 //PARSING
-void	parsing(int argc, char **argv);
+void	parsing(char **argv);
 void	open_map(char **argv);
 int		parse_data_map(char *line);
 int		parse_select(char *line);
@@ -95,18 +95,19 @@ void	parse_map(char **argv);
 int		parse_insert_color(char *line, t_color *color);
 
 //CHECK MAP
-void	check_map();
-void	check_line_size();
+void	check_map(void);
+void	check_line_size(void);
+void	check_player_in_map(void);
+void	check_char_in_map(void);
 
 //PARSING TEXTURE
-int	parse_texture_north(char *line);
-int	parse_texture_west(char *line);
-int	parse_texture_east(char *line);
-int	parse_texture_south(char *line);
+int		parse_texture_north(char *line);
+int		parse_texture_west(char *line);
+int		parse_texture_east(char *line);
+int		parse_texture_south(char *line);
 
 //PARSING COLOR
-int	parse_color_floor(char *line);
-int	parse_color_ceiling(char *line);
-
+int		parse_color_floor(char *line);
+int		parse_color_ceiling(char *line);
 
 #endif

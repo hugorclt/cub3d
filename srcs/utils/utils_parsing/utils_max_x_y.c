@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   singleton.c                                        :+:      :+:    :+:   */
+/*   utils_max_x_y.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/06 18:43:44 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 18:15:23 by ajung            ###   ########.fr       */
+/*   Created: 2022/06/07 18:05:50 by ajung             #+#    #+#             */
+/*   Updated: 2022/06/07 18:09:49 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_data	*_data(void)
+void	parse_get_max_x(char *line)
 {
-	static t_data	data;
-	static int		check = 0;
+	t_data	*data;
 
-	if (check == 0)
+	data = _data();
+	data->map.max_x = ft_strlen(line);
+	data->map.max_x--;
+}
+
+void	parse_get_max_y(void)
+{
+	t_data	*data;
+
+	data = _data();
+	data->map.max_y = 0;
+	skip_newline();
+	while (data->map.line)
 	{
-		ft_bzero(&data, sizeof(t_data));
-		check = 1;
+		data->map.max_y++;
+		free(data->map.line);
+		data->map.line = get_next_line(data->map.fd);
 	}
-	return (&data);
+	free(data->map.line);
+	data->map.line = NULL;
+	close(data->map.fd);
 }

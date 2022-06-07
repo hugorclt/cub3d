@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 20:02:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 17:40:10 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:15:15 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 static void	nike_la_naurme(char	*str, t_color *color, int len_color, int tour)
 {

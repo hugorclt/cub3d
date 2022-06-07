@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 16:24:42 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:15:00 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
 int	parse_select(char *line)
 {
@@ -27,7 +27,7 @@ int	parse_select(char *line)
 		parse_texture_east(line + 2);
 	else if (*line && ft_strnstr(line, "F", 2))
 		parse_insert_color(line + 1, &data->texture.floor);
-	else if (*line && ft_strnstr( line, "C", 2))
+	else if (*line && ft_strnstr(line, "C", 2))
 		parse_insert_color(line + 1, &data->texture.ceiling);
 	else
 		hasta_la_vista_baby("bad format");
@@ -67,11 +67,10 @@ int	check_struct_filled(void)
 	return (SUCCESS);
 }
 
-void	parsing(int argc, char **argv)
+void	parsing(char **argv)
 {
 	t_data	*data;
-	(void) argc;
-	
+
 	open_map(argv);
 	data = _data();
 	data->map.line = get_next_line(data->map.fd);
@@ -82,8 +81,8 @@ void	parsing(int argc, char **argv)
 		if (ft_strcmp(data->map.line, "\n") != 0)
 			parse_data_map(data->map.line);
 		free(data->map.line);
-		if (check_struct_filled() == SUCCESS) //peut etre probleme
-				break ;
+		if (check_struct_filled() == SUCCESS)
+			break ;
 		data->map.line = get_next_line(data->map.fd);
 		if (!data->map.line)
 			hasta_la_vista_baby("Memory alloc fail");

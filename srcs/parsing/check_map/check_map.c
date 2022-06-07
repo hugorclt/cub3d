@@ -3,66 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 13:57:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 17:42:41 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:15:21 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#include "cub3d.h"
 
-static void	check_char_in_map(void)
-{
-	t_data	*data;
-	int		i;
-	int		j;
-
-	data = _data();
-	i = 0;
-	while (data->map.map[i])
-	{
-		j = 0;
-		while (data->map.map[i][j])
-		{
-			if (data->map.map[i][j] != '1' && data->map.map[i][j] != '0'
-				&& data->map.map[i][j] != ' ' && data->map.map[i][j] != 'N'
-				&& data->map.map[i][j] != 'S' && data->map.map[i][j] != 'E'
-				&& data->map.map[i][j] != 'W')
-				hasta_la_vista_baby("Wrong character in map");
-			j++;
-		}
-		i++;
-	}
-}
-
-static void	check_player_in_map(void)
-{
-	t_data	*data;
-	int		i;
-	int		j;
-	int		total;
-
-	data = _data();
-	i = 0;
-	total = 0;
-	while (data->map.map[i])
-	{
-		j = 0;
-		while (data->map.map[i][j])
-		{
-			if (data->map.map[i][j] == 'N' || data->map.map[i][j] == 'S'
-				|| data->map.map[i][j] == 'E' || data->map.map[i][j] == 'W')
-				total++;
-			j++;
-		}
-		i++;
-	}
-	if (total != 1)
-		hasta_la_vista_baby("Wrong number of player in map");
-}
-
-static void check_diagonale(int i, int j)
+static void	check_diagonale(int i, int j)
 {
 	t_data	*data;
 
@@ -94,7 +44,6 @@ static void	check_cell_around(int i, int j)
 		hasta_la_vista_baby("Map not closed");
 	if (data->map.map[i][j - 1] == ' ' || !data->map.map[i][j - 1])
 		hasta_la_vista_baby("Map not closed");
-
 	check_diagonale(i, j);
 }
 

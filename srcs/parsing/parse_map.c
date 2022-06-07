@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 17:30:01 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 18:14:57 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
-
-static void	parse_get_max_x(char *line)
-{
-	t_data	*data;
-
-	data = _data();
-	data->map.max_x = ft_strlen(line);
-	data->map.max_x--; //deleted '\n' so we have to decrement the max_x by one
-}
+#include "cub3d.h"
 
 static int	parse_is_header(char *line)
 {
@@ -43,48 +34,14 @@ static int	parse_is_header(char *line)
 		return (FAILURE);
 }
 
-void	skip_newline(void)
-{
-	t_data	*data;
-
-	data = _data();
-	data->map.line = get_next_line(data->map.fd);
-	if (!data->map.line)
-		hasta_la_vista_baby("malloc error");
-	while (data->map.line[0] == '\n')
-	{
-		free(data->map.line);
-		data->map.line = get_next_line(data->map.fd);
-		if (!data->map.line)
-			hasta_la_vista_baby("malloc error");
-	}
-}
-
-void	parse_get_max_y(void)
-{
-	t_data	*data;
-
-	data = _data();
-	data->map.max_y = 0;
-	skip_newline();
-	while (data->map.line)
-	{
-		data->map.max_y++;
-		free(data->map.line);
-		data->map.line = get_next_line(data->map.fd);
-	}
-	free(data->map.line);
-	data->map.line = NULL;
-	close(data->map.fd);
-}
-
 void	skip_to_map(void)
 {
 	t_data	*data;
 
 	data = _data();
 	data->map.line = get_next_line(data->map.fd);
-	while (ft_strcmp(data->map.line, "\n") == TRUE || parse_is_header(data->map.line) == SUCCESS)
+	while (ft_strcmp(data->map.line, "\n") == TRUE
+		|| parse_is_header(data->map.line) == SUCCESS)
 	{
 		free(data->map.line);
 		data->map.line = get_next_line(data->map.fd);
