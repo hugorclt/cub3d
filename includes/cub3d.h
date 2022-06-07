@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 02:50:44 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/07 12:37:25 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ void	parsing(int argc, char **argv);
 void	open_map(char **argv);
 int		parse_data_map(char *line);
 int		parse_select(char *line);
+void	parse_map(char **argv);
 int		parse_insert_color(char *line, t_color *color);
 
 //PARSING TEXTURE

@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 11:23:17 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 12:37:16 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	parse_data_map(char *line)
 	int	i;
 
 	i = 0;
-	// skip_space(line);
 	skip_space_new(line, &i);
 	parse_select(&line[i]);
 	return (0);
@@ -60,7 +59,6 @@ int	check_struct_filled(void)
 	t_data	*data;
 
 	data = _data();
-	//printf("north : %s, south : %s, west %s, east %s, floor %d, ceilling %d", data->texture.north, data->texture.south, data->texture.west, data->texture.east, data->texture.floor.trgb.r, data->texture.ceiling.trgb.r);
 	if (!data->texture.north || !data->texture.south
 		|| !data->texture.west || !data->texture.east)
 		return (FAILURE);
@@ -90,4 +88,5 @@ void	parsing(int argc, char **argv)
 		if (!data->map.line)
 			hasta_la_vista_baby("Memory alloc fail");
 	}
+	parse_map(argv);
 }
