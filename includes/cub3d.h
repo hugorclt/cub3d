@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 14:56:47 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:07:04 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int		parse_insert_color(char *line, t_color *color);
 
 //CHECK MAP
 void	check_map();
-void	check_line();
+void	check_line_size();
 
 //PARSING TEXTURE
 int	parse_texture_north(char *line);

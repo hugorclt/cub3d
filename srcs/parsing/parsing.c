@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 12:37:16 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:24:42 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	parsing(int argc, char **argv)
 		if (ft_strcmp(data->map.line, "\n") != 0)
 			parse_data_map(data->map.line);
 		free(data->map.line);
-		if (check_struct_filled() == SUCCESS)
+		if (check_struct_filled() == SUCCESS) //peut etre probleme
 				break ;
 		data->map.line = get_next_line(data->map.fd);
 		if (!data->map.line)

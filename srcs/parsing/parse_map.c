@@ -6,32 +6,11 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 14:57:48 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:30:01 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-static void	parse_get_max_y(void)
-{
-	char	*line;
-	t_data	*data;
-
-	data = _data();
-	line = get_next_line(data->map.fd);
-	data->map.max_y = 0;
-	if (!line)
-		hasta_la_vista_baby("malloc error");
-	data->map.max_y = 1;
-	while (line)
-	{
-		free(line);
-		line = get_next_line(data->map.fd);
-		data->map.max_y++;
-	}
-	free(line);
-	close(data->map.fd);
-}
 
 static void	parse_get_max_x(char *line)
 {
@@ -64,41 +43,88 @@ static int	parse_is_header(char *line)
 		return (FAILURE);
 }
 
-static void	parse_line(char **tmp, int *i)
+void	skip_newline(void)
 {
 	t_data	*data;
 
 	data = _data();
-	if (ft_strcmp(*tmp, "\n") != 0 && parse_is_header(*tmp) == FAILURE)
+	data->map.line = get_next_line(data->map.fd);
+	if (!data->map.line)
+		hasta_la_vista_baby("malloc error");
+	while (data->map.line[0] == '\n')
 	{
-		if (*i == 0)
-			parse_get_max_x(*tmp);
-		data->map.map[*i] = ft_strdup(*tmp);
-		data->map.map[*i] = ft_strtrim(data->map.map[*i], "\n");
-		if (!data->map.map[*i])
+		free(data->map.line);
+		data->map.line = get_next_line(data->map.fd);
+		if (!data->map.line)
 			hasta_la_vista_baby("malloc error");
-		(*i)++;
 	}
-	free(*tmp);
-	*tmp = get_next_line(data->map.fd);
 }
 
-void	parse_map(char **argv)
+void	parse_get_max_y(void)
+{
+	t_data	*data;
+
+	data = _data();
+	data->map.max_y = 0;
+	skip_newline();
+	while (data->map.line)
+	{
+		data->map.max_y++;
+		free(data->map.line);
+		data->map.line = get_next_line(data->map.fd);
+	}
+	free(data->map.line);
+	data->map.line = NULL;
+	close(data->map.fd);
+}
+
+void	skip_to_map(void)
+{
+	t_data	*data;
+
+	data = _data();
+	data->map.line = get_next_line(data->map.fd);
+	while (ft_strcmp(data->map.line, "\n") == TRUE || parse_is_header(data->map.line) == SUCCESS)
+	{
+		free(data->map.line);
+		data->map.line = get_next_line(data->map.fd);
+	}
+}
+
+void	parse_get_map(void)
 {
 	t_data	*data;
 	int		i;
-	char	*tmp;
 
 	data = _data();
 	i = 0;
-	parse_get_max_y();
-	open_map(argv);
-	data->map.map = malloc(sizeof(char *) * (data->map.max_y + 1));
-	tmp = get_next_line(data->map.fd);
-	if (!tmp)
-		hasta_la_vista_baby("malloc error");
-	while (tmp)
-		parse_line(&tmp, &i);
+	skip_to_map();
+	while (data->map.line)
+	{
+		if (i == 0)
+			parse_get_max_x(data->map.line);
+		data->map.map[i] = ft_strdup(data->map.line);
+		data->map.map[i] = ft_strtrim(data->map.map[i], "\n");
+		if (!data->map.map[i])
+			hasta_la_vista_baby("malloc error");
+		free(data->map.line);
+		data->map.line = get_next_line(data->map.fd);
+		if (!data->map.line && i != data->map.max_y - 1)
+			hasta_la_vista_baby("malloc error");
+		i++;
+	}
 	data->map.map[i] = NULL;
-	free(tmp);
+}
+
+void	parse_map(char **av)
+{
+	t_data	*data;
+
+	data = _data();
+	parse_get_max_y();
+	open_map(av);
+	data->map.map = malloc(sizeof(char *) * (data->map.max_y + 1));
+	if (!data->map.map)
+		hasta_la_vista_baby("malloc error");
+	parse_get_map();
 }

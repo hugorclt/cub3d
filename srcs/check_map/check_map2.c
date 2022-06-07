@@ -6,13 +6,13 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:56:19 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 14:56:31 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:06:50 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void	check_line()
+void	check_line_size(void)
 {
 	int	i;
 	t_data	*data;

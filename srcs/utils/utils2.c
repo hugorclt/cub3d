@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 14:55:57 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:04:40 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	hasta_la_vista_baby(char *str)
 	free(data->texture.south);
 	free(data->texture.east);
 	free(data->texture.west);
+	free(data->map.line); //peut etre probleme
 	if (data->map.map)
 		free_tab(data->map.map);
 	if (data->map.fd > 0)
