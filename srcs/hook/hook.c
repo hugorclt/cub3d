@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/07 23:43:12 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/08 18:12:43 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	mouse_hook(int keycode, int x, int y)
 	(void) mlx;
 	(void) x;
 	(void) y;
-	(void) keycode;
 	return (SUCCESS);
 }
 

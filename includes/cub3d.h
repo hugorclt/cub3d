@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/08 02:01:54 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/08 17:57:49 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,20 @@
 # define WIN_HEIGHT 1080
 
 # define KEY_ESC 65307
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_D 100
+# define KEY_S 115
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
+
+# define MOUSE_LEFT 1
+# define MOUSE_RIGHT 3
+# define MOUSE_MID 2
+# define MOUSE_SCROLL_DOWN 5
+# define MOUSE_SCROLL_UP 4
 
 # define ON_KEYDOWN 2
 # define ON_KEYUP 3
