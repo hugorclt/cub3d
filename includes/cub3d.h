@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/08 17:57:49 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/08 18:32:48 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@
 # define ON_MOUSEMOVE 6
 # define ON_EXPOSE 12
 # define ON_DESTROY 17
+
+# define WALL '1'
+# define VOID ' '
 
 typedef struct s_trgb
 {
