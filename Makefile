@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
+#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/07 19:12:01 by ajung            ###   ########.fr        #
+#    Updated: 2022/06/08 02:01:23 by oryzon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,11 @@ SRCS	=	srcs/main.c\
 			srcs/parsing/check_map/check_map.c \
 			srcs/parsing/check_map/check_map2.c \
 			srcs/utils/singleton.c\
+			srcs/utils/hasta_la_vista.c \
 			srcs/utils/utils_parsing/utils_parsing1.c\
 			srcs/utils/utils_parsing/utils_parsing2.c\
 			srcs/utils/utils_parsing/utils_max_x_y.c \
+			srcs/hook/hook.c \
 			srcs/video/video_loop.c \
 			srcs/video/video_utils.c 
 

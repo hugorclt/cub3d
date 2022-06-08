@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 19:12:31 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/08 02:01:54 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,19 @@
 # define FAILURE -1
 # define TRUE 0
 # define FALSE 1
+
 # define WIN_WIDTH 1920
 # define WIN_HEIGHT 1080
+
+# define KEY_ESC 65307
+
+# define ON_KEYDOWN 2
+# define ON_KEYUP 3
+# define ON_MOUSEDOWN 4
+# define ON_MOUSEUP 5
+# define ON_MOUSEMOVE 6
+# define ON_EXPOSE 12
+# define ON_DESTROY 17
 
 typedef struct s_trgb
 {
@@ -97,10 +108,19 @@ typedef struct s_data
 t_data	*_data(void);
 t_mlx	*_mlx(void);
 
+//HAST_LA_VISTA
+void	hasta_la_vista_baby(char *str);
 
 //VIDEO
 void	video_loop(void);
 
+//VIDEO UTILS
+void	my_mlx_pixel_put(int x, int y, int color);
+void	reload_image(void);
+void	create_window(void);
+
+//HOOK
+int		hook(void);
 
 //UTILS PARSING
 int		ft_strcmp(char *s1, char *s2);
@@ -109,7 +129,6 @@ char	*skip_space(char *line);
 void	skip_space_new(char *str, int *i);
 int		is_num(char *line);
 int		len_number(char *line);
-void	hasta_la_vista_baby(char *str);
 void	print_struct(void);
 void	ft_print_map(void);
 void	parse_get_max_y(void);
