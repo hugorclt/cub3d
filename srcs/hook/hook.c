@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/08 17:43:35 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/08 18:35:54 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	mouse_hook(int keycode, int x, int y)
 	t_mlx	*mlx;
 
 	mlx = _mlx();
+	(void)keycode;
 	(void) mlx;
 	(void) x;
 	(void) y;
-	(void) keycode;
 	return (SUCCESS);
 }
 
