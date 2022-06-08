@@ -6,7 +6,7 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/08 13:03:02 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/08 23:05:10 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,8 @@ SRCS	=	srcs/main.c\
 			srcs/hook/hook.c \
 			srcs/video/video_loop.c \
 			srcs/video/video_utils.c \
-			srcs/video/draw_line.c \
-			srcs/init_player.c
+			srcs/init_player.c \
+			srcs/video/draw_line.c 
 
 INC		=	includes/cub3d.h
 
@@ -42,8 +42,10 @@ RM		=	rm -f
 
 NAME	=	cub3d
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+MLX_MACOS =  -Lmlx -framework OpenGL -framework AppKit
+
+#.c.o:
+#	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 
 all: $(NAME)
@@ -51,12 +53,22 @@ all: $(NAME)
 $(NAME): $(MLX) $(OBJS) $(INC) 
 		 @$(MAKE) -C libft
 		 @echo "cub3d : libft compiled"
-		 @$(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) $(INC) libft/libft.a -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+		 $(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) $(INC) libft/libft.a -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
 		 @echo "cub3d : compiled"
 
 $(MLX):
 		cd mlx && ./configure
 		@echo "cub3d : minilibx compiled" 
+
+macos:  $(OBJS)
+		$(MAKE) -C libft
+		@echo "cub3d : libft compiled"
+		@$(CC) $(MLX_MACOS) $(CFLAGS) $^ minilibx_macos/libmlx.a libft/libft.a -o $(NAME)
+		@echo "cub3d : compiled"
+	
+libft: 
+		
+
 clean:
 		@$(MAKE) -C libft clean
 		@$(RM) $(OBJS)

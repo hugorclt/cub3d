@@ -6,29 +6,11 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 14:19:06 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 10:20:59 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/08 23:11:46 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-char	*ft_strchr(const char *s, int c)
-{
-	unsigned int	i;
-	unsigned char	p;
-
-	p = (unsigned char) c;
-	i = 0;
-	while (s[i])
-	{
-		if (s[i] == p)
-			return ((char *)&(s[i]));
-		i++;
-	}
-	if (p == 0)
-		return ((char *)&(s[i]));
-	return (NULL);
-}
 
 char	*ft_strjoin_free_s1(char *s1, char *s2)
 {

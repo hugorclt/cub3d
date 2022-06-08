@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:40:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/08 18:34:09 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/09 00:10:00 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	init_ray_direction(int i)
 
 	data = _data();
 	data->ray.camera_x = 2 * i / (float)data->map.max_x - 1;
-	data->ray.dir_x = data->player.dir_x + data->player.plane_x * data->ray.camera_x;
-	data->ray.dir_y = data->player.dir_y + data->player.plane_y * data->ray.camera_x;
+	data->ray.dir_x = data->player.dir_y + data->player.plane_x * data->ray.camera_x;
+	data->ray.dir_y = data->player.dir_x + data->player.plane_y * data->ray.camera_x;
 	data->ray.map_x = (int)data->player.x;
 	data->ray.map_y = (int)data->player.y;
 }
@@ -91,6 +91,15 @@ void	dda_casting(void) //Digital differential analysis algorithm
 	}
 }
 
+void	print_pts(t_float *nb)
+{
+	printf("x1: %f\n", nb->x1);
+	printf("y1: %f\n", nb->y1);
+	printf("x2: %f\n", nb->x2);
+	printf("y2: %f\n", nb->y2);
+	
+}
+
 void	calculate_ray_points(int i)
 {
 	t_data	*data;
@@ -107,10 +116,11 @@ void	calculate_ray_points(int i)
 	data->ray.draw_end = data->ray.line_height / 2 + data->map.max_y / 2;
 	if (data->ray.draw_end >= data->map.max_y)
 		data->ray.draw_end = data->map.max_y - 1;
-	data->ray.pts.x1 = i;
-	data->ray.pts.x2 = i;
-	data->ray.pts.y1 = data->ray.draw_start;
-	data->ray.pts.y2 = data->ray.draw_end;
+	data->ray.pts.x1 = data->ray.draw_start;
+	data->ray.pts.x2 = data->ray.draw_end;
+	data->ray.pts.y1 = i;
+	data->ray.pts.y2 = i;
+	print_pts(&data->ray.pts);
 }
 
 void	init_ray(void)
