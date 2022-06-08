@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/08 02:01:54 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/08 15:47:37 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
@@ -60,12 +61,6 @@ typedef struct s_texture
 	t_color	ceiling;
 }	t_texture;
 
-typedef struct s_player
-{
-	int	x;
-	int	y;
-}	t_player;
-
 typedef struct s_map
 {
 	int			max_x;
@@ -96,12 +91,67 @@ typedef struct s_mlx
 	t_image	image;
 }	t_mlx;
 
+typedef struct s_float
+{
+	float	x1;
+	float	y1;
+	float	x2;
+	float	y2;
+}	t_float;
+
+typedef struct s_draw
+{
+	float	dx;
+	float	dy;
+	float	dx1;
+	float	dy1;
+	float	px;
+	float	py;
+	float	xe;
+	float	ye;
+	float	x;
+	float	y;
+}	t_draw;
+
+typedef struct s_ray
+{
+	float	camera_x;
+	float	dir_x;
+	float	dir_y;
+	int		map_x;
+	int		map_y;
+	float	side_dist_x;
+	float	side_dist_y;
+	float	delta_dist_x;
+	float	delta_dist_y;
+	float	wall_dist;
+	int		step_x;
+	int		step_y;
+	int		hit;
+	int		side;
+	int		line_height;
+	int		draw_start;
+	int		draw_end;
+	t_float	pts;
+}	t_ray;
+
+typedef struct s_player
+{
+	float	x;
+	float	y;
+	float	dir_x;
+	float	dir_y;
+	float	plane_x;
+	float	plane_y;
+}	t_player;
+
 typedef struct s_data
 {
 	t_player	player;
 	t_texture	texture;
 	t_map		map;
 	t_mlx		mlx;
+	t_ray		ray;
 }	t_data;
 
 //SINGLETON
@@ -159,4 +209,12 @@ int		parse_texture_south(char *line);
 int		parse_color_floor(char *line);
 int		parse_color_ceiling(char *line);
 
+//DRAWLINE
+void	draw_2_point(t_float pts);
+
+//PLAYER
+void	init_player(void);
+
+//RAYCASTING
+void	init_ray(void);
 #endif

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
+#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/08 02:01:23 by oryzon           ###   ########.fr        #
+#    Updated: 2022/06/08 13:03:02 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,9 @@ SRCS	=	srcs/main.c\
 			srcs/utils/utils_parsing/utils_max_x_y.c \
 			srcs/hook/hook.c \
 			srcs/video/video_loop.c \
-			srcs/video/video_utils.c 
+			srcs/video/video_utils.c \
+			srcs/video/draw_line.c \
+			srcs/init_player.c
 
 INC		=	includes/cub3d.h
 
