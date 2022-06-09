@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:40:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/09 00:10:00 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/09 09:59:42 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	init_ray_direction(int i)
 	t_data	*data;
 
 	data = _data();
-	data->ray.camera_x = 2 * i / (float)data->map.max_x - 1;
+	data->ray.camera_x = 2 * i / (float)WIN_WIDTH - 1;
 	data->ray.dir_x = data->player.dir_y + data->player.plane_x * data->ray.camera_x;
 	data->ray.dir_y = data->player.dir_x + data->player.plane_y * data->ray.camera_x;
 	data->ray.map_x = (int)data->player.x;
@@ -109,13 +109,13 @@ void	calculate_ray_points(int i)
 		data->ray.wall_dist = data->ray.side_dist_x - data->ray.delta_dist_x;
 	else
 		data->ray.wall_dist = data->ray.side_dist_y - data->ray.delta_dist_y;
-	data->ray.line_height = (int)(data->map.max_y / data->ray.wall_dist);
-	data->ray.draw_start = -data->ray.line_height / 2 + data->map.max_y / 2;
+	data->ray.line_height = (int)(WIN_HEIGHT / data->ray.wall_dist);
+	data->ray.draw_start = -data->ray.line_height / 2 + WIN_HEIGHT / 2;
 	if (data->ray.draw_start < 0)
 		data->ray.draw_start = 0;
-	data->ray.draw_end = data->ray.line_height / 2 + data->map.max_y / 2;
-	if (data->ray.draw_end >= data->map.max_y)
-		data->ray.draw_end = data->map.max_y - 1;
+	data->ray.draw_end = data->ray.line_height / 2 + WIN_HEIGHT / 2;
+	if (data->ray.draw_end >= WIN_HEIGHT)
+		data->ray.draw_end = WIN_HEIGHT - 1;
 	data->ray.pts.x1 = data->ray.draw_start;
 	data->ray.pts.x2 = data->ray.draw_end;
 	data->ray.pts.y1 = i;
@@ -130,7 +130,7 @@ void	init_ray(void)
 
 	i = 0;
 	data = _data();
-	while (i < data->map.max_x)
+	while (i < WIN_WIDTH)
 	{
 		init_ray_direction(i);
 		init_distance_ray_player();
