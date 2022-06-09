@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 13:02:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/09 10:01:26 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/09 10:02:01 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ void	init_player(void)
 	data = _data();
 	init_player_position();
 	init_player_direction();
-	//data->player.dir_x = -1;
-	//data->player.dir_y = 0;
 	data->player.plane_x = 0;
 	data->player.plane_y = 0.66;
 }
