@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
+#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/08 02:01:23 by oryzon           ###   ########.fr        #
+#    Updated: 2022/06/10 17:13:41 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS	=	srcs/main.c\
 			srcs/parsing/parse_color.c\
 			srcs/parsing/parsing.c\
 			srcs/parsing/parse_map.c\
+			srcs/parsing/init_player.c \
 			srcs/parsing/check_map/check_map.c \
 			srcs/parsing/check_map/check_map2.c \
 			srcs/utils/singleton.c\
@@ -24,7 +25,9 @@ SRCS	=	srcs/main.c\
 			srcs/utils/utils_parsing/utils_max_x_y.c \
 			srcs/hook/hook.c \
 			srcs/video/video_loop.c \
-			srcs/video/video_utils.c 
+			srcs/video/video_utils.c \
+			srcs/raycasting/raycasting.c \
+			srcs/raycasting/rc_utils.c 
 
 INC		=	includes/cub3d.h
 

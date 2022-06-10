@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/08 18:32:48 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/10 19:33:40 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <math.h>
 # include "../mlx/mlx.h"
 # include "../libft/libft.h"
 
@@ -53,6 +54,11 @@
 # define WALL '1'
 # define VOID ' '
 
+# define NORTH 0
+# define SOUTH -1
+# define WEST 1
+# define EAST 2
+
 typedef struct s_trgb
 {
 	unsigned char	b;
@@ -76,12 +82,6 @@ typedef struct s_texture
 	t_color	floor;
 	t_color	ceiling;
 }	t_texture;
-
-typedef struct s_player
-{
-	int	x;
-	int	y;
-}	t_player;
 
 typedef struct s_map
 {
@@ -113,20 +113,78 @@ typedef struct s_mlx
 	t_image	image;
 }	t_mlx;
 
-typedef struct s_data
+typedef struct s_vector
+{
+	double	x;
+	double	y;
+}	t_vector;
+
+typedef	struct s_pos
+{
+	int	x;
+	int	y;
+}	t_pos;
+
+
+typedef	struct s_player
+{
+	t_vector	pos;
+	t_pos		map_pos;
+	t_vector	dir;
+	double		ms;
+
+}	t_player;
+
+typedef	struct s_ray
+{
+	t_vector	dir;
+	t_vector	deltaSideDist;
+	t_vector	nextSideDist;
+	t_pos		step;
+	double		cam_X;
+	double		wallDist;
+	int			hit;
+	int			side_hit;
+}	t_ray;
+
+typedef struct s_wall
+{
+	int	lineHeight;
+	int	pixelStart;
+	int	pixelEnd;
+}	t_wall;
+
+typedef	struct s_rc
 {
 	t_player	player;
+	t_vector	plan;
+	t_ray		ray;
+	t_wall		wall;
+}	t_rc;
+
+typedef struct s_data
+{
+	t_rc		rc;
 	t_texture	texture;
 	t_map		map;
 	t_mlx		mlx;
 }	t_data;
 
 //SINGLETON
-t_data	*_data(void);
-t_mlx	*_mlx(void);
+t_data		*_data(void);
+t_mlx		*_mlx(void);
+t_rc		*_rc(void);
+t_player	*_player(void);
+t_ray		*_ray(void);
+
+//RAYCASTING
+void	raycasting(void);
 
 //HAST_LA_VISTA
 void	hasta_la_vista_baby(char *str);
+
+//DRAW_LINE
+void	draw_2_point(int x, int start_pts, int end_pts);
 
 //VIDEO
 void	video_loop(void);
@@ -159,6 +217,7 @@ int		parse_data_map(char *line);
 int		parse_select(char *line);
 void	parse_map(char **argv);
 int		parse_insert_color(char *line, t_color *color);
+void	init_player(void);
 
 //CHECK MAP
 void	check_map(void);
