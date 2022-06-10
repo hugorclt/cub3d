@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:40:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/10 11:27:53 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/10 15:58:24 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	calculate_ray_points(int i)
 	data->ray.pts.x2 = i;
 	data->ray.pts.y1 = data->ray.draw_start;
 	data->ray.pts.y2 = data->ray.draw_end;
-	print_pts(&data->ray.pts);
+	//print_pts(&data->ray.pts);
 }
 
 void	init_ray(void)
