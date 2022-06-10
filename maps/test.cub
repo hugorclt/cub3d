@@ -10,7 +10,7 @@ F  92,            92       ,115
 
 
                    SO             ./path_to_the_south_texture
-C 51 ,              156      ,            255 
+C 51 ,              156      ,            55 
 
 EA ./path_to_the_east_texture
 

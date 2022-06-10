@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/10 15:57:16 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:47:06 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_E 101
+# define KEY_Q 113
 
 # define MOUSE_LEFT 1
 # define MOUSE_RIGHT 3
@@ -54,7 +56,8 @@
 # define WALL '1'
 # define VOID ' '
 
-# define MOVE_SPEED 0.2
+# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.05
 
 typedef struct s_trgb
 {
@@ -162,6 +165,8 @@ typedef struct s_player
 	float	dir_y;
 	float	plane_x;
 	float	plane_y;
+	float	old_dir_x;
+	float	old_plane_x;
 }	t_player;
 
 typedef struct s_data

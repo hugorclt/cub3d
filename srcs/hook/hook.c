@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/10 16:18:43 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/10 16:46:56 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,40 @@ int	key_hook(int keycode)
 	data = _data();
 	if (keycode == KEY_ESC)
 		hasta_la_vista_baby(NULL);
+	printf("%d\n", keycode);
 	if (keycode == KEY_W)
 	{
 		if (data->map.map[(int)(data->player.y + data->player.dir_y * MOVE_SPEED)][(int)data->player.x] != '1')
-			data->player.y += data->player.dir_y * 0.1;
-		else
-			printf("je rentre la \n");
+			data->player.y += data->player.dir_y * MOVE_SPEED;
 		if (data->map.map[(int)data->player.y][(int)(data->player.x + data->player.dir_x * MOVE_SPEED)] != '1')
-			data->player.x += data->player.dir_x * 0.1;
-		else
-			printf("je rentre ici \n");
+			data->player.x += data->player.dir_x * MOVE_SPEED;
 	}
 	else if (keycode == KEY_S)
 	{
-		if (data->map.map[(int)(data->player.y + data->player.dir_y - MOVE_SPEED)][(int)data->player.x] != '1')
-			data->player.y -= data->player.dir_y * 0.1;
+		if (data->map.map[(int)(data->player.y - data->player.dir_y * MOVE_SPEED)][(int)data->player.x] != '1')
+			data->player.y -= data->player.dir_y * MOVE_SPEED;
 		if (data->map.map[(int)data->player.y][(int)(data->player.x - data->player.dir_x * MOVE_SPEED)] != '1')
-			data->player.x -= data->player.dir_x * 0.1;
+			data->player.x -= data->player.dir_x * MOVE_SPEED;
 	}
-	//else if (keycode == KEY_A)
+	else if (keycode == KEY_A)
+	{
+		if (data->map.map[(int)(data->player.y - data->player.dir_x * MOVE_SPEED)][(int)data->player.x] != '1')
+			data->player.y -= data->player.dir_x * MOVE_SPEED;
+	}
+	else if (keycode == KEY_D)
+	{
+		if (data->map.map[(int)(data->player.y + data->player.dir_x * MOVE_SPEED)][(int)data->player.x] != '1')
+			data->player.y += data->player.dir_x * MOVE_SPEED;
+	}
+	else if (keycode == KEY_E)
+	{
+		data->player.old_dir_x = data->player.dir_x;
+		data->player.dir_x = data->player.dir_x * cos(-ROT_SPEED) - data->player.dir_y * sin(-ROT_SPEED);
+		data->player.dir_y = data->player.old_dir_x * sin(-ROT_SPEED) + data->player.dir_y * cos(-ROT_SPEED);
+		data->player.old_plane_x = data->player.plane_x;
+		data->player.plane_x = data->player.plane_x * cos(-ROT_SPEED) - data->player.plane_y * sin(-ROT_SPEED);
+		data->player.plane_y = data->player.old_plane_x * sin(-ROT_SPEED) + data->player.plane_y * cos(-ROT_SPEED);
+	}
 	return (SUCCESS);
 }
 
