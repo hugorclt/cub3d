@@ -20,7 +20,6 @@ gcc -Wall -Wextra -Werror -g3 -I includes/    -c -o srcs/video/video_utils.o src
 gcc -Wall -Wextra -Werror -g3 -I includes/    -c -o srcs/init_player.o srcs/init_player.c
 gcc -Wall -Wextra -Werror -g3 -I includes/    -c -o srcs/video/draw_line.o srcs/video/draw_line.c
 /Library/Developer/CommandLineTools/usr/bin/make -C libft
- 
 make[1]: Entering directory `/Users/hugorecolet/Desktop/42/studs/Cercle4/cub3d/libft'
 gcc -Wall -Wextra -Werror -c ft_atoi.c -o ft_atoi.o
 gcc -Wall -Wextra -Werror -c ft_isprint.c -o ft_isprint.o

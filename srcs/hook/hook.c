@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/08 18:35:54 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:33:26 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,22 @@ int	mouse_hook(int keycode, int x, int y)
 
 int	key_hook(int keycode)
 {
+	t_data	*data;
+
+	data = _data();
+	printf("%d\n", keycode);
 	if (keycode == KEY_ESC)
 		hasta_la_vista_baby(NULL);
+	if (keycode == 13)
+	{
+		data->player.x += 0.1;
+		reload_image();
+	}
+	else if (keycode == 1)
+	{
+		data->player.x -= 0.1;
+		reload_image();
+	}
 	return (SUCCESS);
 }
 

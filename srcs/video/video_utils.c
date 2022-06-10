@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 19:04:03 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/08 17:47:59 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/10 11:32:15 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ void	reload_image(void)
 	mlx->image.addr = mlx_get_data_addr(mlx->image.img_ptr,
 			&mlx->image.bits_per_pixel, &mlx->image.line_len,
 			&mlx->image.endian);
-	//fct fill img
+	init_ray();
+	mlx_put_image_to_window(mlx->var.mlx, mlx->var.win, mlx->image.img_ptr, 0, 0);
 	//put image to window
 }
 
