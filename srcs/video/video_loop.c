@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 18:40:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/10 15:58:24 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:06:31 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,18 @@ void	init_ray_direction(int i)
 	data->ray.dir_y = data->player.dir_y + data->player.plane_y * data->ray.camera_x;
 	data->ray.map_x = (int)data->player.x;
 	data->ray.map_y = (int)data->player.y;
+	if (i == 0 || i == WIN_WIDTH / 2 || i == WIN_WIDTH - 1)
+	{
+		dprintf(2, "ray_dir_x: %f ", data->ray.dir_x);
+		dprintf(2, "player dir_x : %f ", data->player.dir_x);
+		dprintf(2, "plane_x : %f ", data->player.plane_x);
+		dprintf(2, "camera_x : %f \n", data->ray.camera_x);
+		dprintf(2, "ray_dir_y: %f ", data->ray.dir_y);
+		dprintf(2, "player dir y : %f", data->player.dir_y);
+		dprintf(2, "plane_y : %f ", data->player.plane_y);
+		dprintf(2, "camera x : %f \n", data->ray.camera_x);
+	}
+
 }
 
 void	init_distance_ray_player(void)
