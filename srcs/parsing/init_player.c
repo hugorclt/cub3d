@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/13 08:31:48 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/13 08:36:35 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,7 @@ void	init_player_direction(void)
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'W')
 		init_direction(-1, 0, 0, 0.66);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'E')
-	{
-		printf("test\n");
 		init_direction(1, 0, 0, 0.66);
-	}
 }
 
 void	init_player(void)
