@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/13 07:55:31 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/13 08:15:46 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ void	init_ray(int pixel)
 	rc->ray.dir.x = player->dir.x + rc->plan.x * rc->ray.cam_X;
 	rc->ray.dir.y = player->dir.y + rc->plan.y * rc->ray.cam_X;
 
-	if (pixel == 0 || pixel == WIN_WIDTH / 2 || pixel == WIN_WIDTH - 1)
-	{
-		dprintf(2, "ray dir x = %f // ray dir y = %f\n", rc->ray.dir.x, rc->ray.dir.y);
-		dprintf(2, "camera x = %f\n", rc->ray.cam_X);
-		dprintf(2, "plan x = %f // plan y = %f\n", rc->plan.x, rc->plan.y);
-		dprintf(2, "player dir x = %f // player dir y = %f\n\n", player->dir.x, player->dir.y);
-	}
+	//if (pixel == 0 || pixel == WIN_WIDTH / 2 || pixel == WIN_WIDTH - 1)
+	//{
+	//	dprintf(2, "ray dir x = %f // ray dir y = %f\n", rc->ray.dir.x, rc->ray.dir.y);
+	//	dprintf(2, "camera x = %f\n", rc->ray.cam_X);
+	//	dprintf(2, "plan x = %f // plan y = %f\n", rc->plan.x, rc->plan.y);
+	//	dprintf(2, "player dir x = %f // player dir y = %f\n\n", player->dir.x, player->dir.y);
+	//}
 }
 
 void	init_ray_step(void)
@@ -125,7 +125,7 @@ void	find_hit_wall(void)
 	}
 }
 
-void	calculate_wall_height(int pixel)
+void	calculate_wall_height()
 {
 	t_ray	*ray;
 	t_rc	*rc;
@@ -149,8 +149,8 @@ void	calculate_wall_height(int pixel)
 	wall->pixelEnd = wall->lineHeight / 2 + WIN_HEIGHT / 2;
 	if (wall->pixelEnd >= WIN_HEIGHT)
 		wall->pixelEnd = WIN_HEIGHT - 1;
-	if (pixel == 0 || pixel == WIN_WIDTH / 2 || pixel == WIN_WIDTH - 1)
-		printf("start : %d, end : %d\n", wall->pixelStart, wall->pixelEnd);
+	//if (pixel == 0 || pixel == WIN_WIDTH / 2 || pixel == WIN_WIDTH - 1)
+		//printf("start : %d, end : %d\n", wall->pixelStart, wall->pixelEnd);
 }
 
 void	raycasting(void)
@@ -167,7 +167,7 @@ void	raycasting(void)
 		init_ray_step();
 		init_next_side_dist();
 		find_hit_wall();
-		calculate_wall_height(pixel);
+		calculate_wall_height();
 		draw_2_point(pixel, rc->wall.pixelStart, rc->wall.pixelEnd);
 		pixel ++;
 	}

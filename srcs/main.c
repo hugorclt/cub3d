@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:58:55 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/08 13:08:01 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/13 08:25:29 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	main(int argc, char **argv)
 	(void) argc;
 	parsing(argv);
 	check_map();
-	print_struct();
-	init_player();
+	//print_struct();
 	video_loop();
 	hasta_la_vista_baby(NULL);
 	return (SUCCESS);

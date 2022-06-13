@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/10 20:17:32 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/13 08:31:48 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,47 +46,41 @@ static void	init_player_position(void)
 	}
 }
 
-static void	init_player_direction(void)
+void	init_direction(float dir_x, float dir_y, float plane_x, float plane_y)
+{
+	t_player	*player;
+	t_rc		*rc;
+
+	player = _player();
+	rc = _rc();
+	player->dir.x = dir_x;
+	player->dir.y = dir_y;
+	rc->plan.x = plane_x;
+	rc->plan.y = plane_y;
+}
+
+void	init_player_direction(void)
 {
 	t_data		*data;
 	t_player	*player;
 
+	player = _player();
 	data = _data();
-	player =_player();
 	if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'N')
-	{
-		player->dir.x = 0;
-		player->dir.y = -1; 
-	}
+		init_direction(0, -1, 0.66, 0);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'S')
-	{
-		player->dir.x = 0;
-		player->dir.y = 1;
-	}
+		init_direction(0, 1, 0.66, 0);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'W')
-	{
-		player->dir.x = -1;
-		player->dir.y = 0;
-	}
+		init_direction(-1, 0, 0, 0.66);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'E')
 	{
-		player->dir.x = 1;
-		player->dir.y = 0;
+		printf("test\n");
+		init_direction(1, 0, 0, 0.66);
 	}
-}
-
-static void	init_plan(void)
-{
-	t_rc	*rc;
-
-	rc = _rc();
-	rc->plan.x = 0;
-	rc->plan.y = 0.66;
 }
 
 void	init_player(void)
 {
 	init_player_position();
 	init_player_direction();
-	init_plan();
 }
