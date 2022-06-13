@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/10 16:47:06 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/13 07:44:32 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@
 # define WALL '1'
 # define VOID ' '
 
-# define MOVE_SPEED 0.1
-# define ROT_SPEED 0.05
+# define NORTH 0
+# define SOUTH -1
+# define WEST 1
+# define EAST 2
 
 typedef struct s_trgb
 {
@@ -113,65 +115,57 @@ typedef struct s_mlx
 	t_image	image;
 }	t_mlx;
 
-typedef struct s_float
+typedef struct s_vector
 {
-	float	x1;
-	float	y1;
-	float	x2;
-	float	y2;
-}	t_float;
+	double	x;
+	double	y;
+}	t_vector;
 
-typedef struct s_draw
+typedef	struct s_pos
 {
-	float	dx;
-	float	dy;
-	float	dx1;
-	float	dy1;
-	float	px;
-	float	py;
-	float	xe;
-	float	ye;
-	float	x;
-	float	y;
-}	t_draw;
+	int	x;
+	int	y;
+}	t_pos;
 
-typedef struct s_ray
+typedef	struct s_player
 {
-	float	camera_x;
-	float	dir_x;
-	float	dir_y;
-	int		map_x;
-	int		map_y;
-	float	side_dist_x;
-	float	side_dist_y;
-	float	delta_dist_x;
-	float	delta_dist_y;
-	float	wall_dist;
-	int		step_x;
-	int		step_y;
-	int		hit;
-	int		side;
-	int		line_height;
-	int		draw_start;
-	int		draw_end;
-	t_float	pts;
+	t_vector	pos;
+	t_pos		map_pos;
+	t_vector	dir;
+	double		ms;
+
+}	t_player;
+
+typedef	struct s_ray
+{
+	t_vector	dir;
+	t_vector	deltaSideDist;
+	t_vector	nextSideDist;
+	t_pos		step;
+	double		cam_X;
+	double		wallDist;
+	int			hit;
+	int			side_hit;
 }	t_ray;
 
-typedef struct s_player
+typedef struct s_wall
 {
-	float	x;
-	float	y;
-	float	dir_x;
-	float	dir_y;
-	float	plane_x;
-	float	plane_y;
-	float	old_dir_x;
-	float	old_plane_x;
-}	t_player;
+	int	lineHeight;
+	int	pixelStart;
+	int	pixelEnd;
+}	t_wall;
+
+typedef	struct s_rc
+{
+	t_player	player;
+	t_vector	plan;
+	t_ray		ray;
+	t_wall		wall;
+}	t_rc;
 
 typedef struct s_data
 {
-	t_player	player;
+	t_rc		rc;
 	t_texture	texture;
 	t_map		map;
 	t_mlx		mlx;
@@ -179,11 +173,20 @@ typedef struct s_data
 }	t_data;
 
 //SINGLETON
-t_data	*_data(void);
-t_mlx	*_mlx(void);
+t_data		*_data(void);
+t_mlx		*_mlx(void);
+t_rc		*_rc(void);
+t_player	*_player(void);
+t_ray		*_ray(void);
+
+//RAYCASTING
+void	raycasting(void);
 
 //HAST_LA_VISTA
 void	hasta_la_vista_baby(char *str);
+
+//DRAW_LINE
+void	draw_2_point(int x, int start_pts, int end_pts);
 
 //VIDEO
 void	video_loop(void);
@@ -216,6 +219,7 @@ int		parse_data_map(char *line);
 int		parse_select(char *line);
 void	parse_map(char **argv);
 int		parse_insert_color(char *line, t_color *color);
+void	init_player(void);
 
 //CHECK MAP
 void	check_map(void);
@@ -233,12 +237,7 @@ int		parse_texture_south(char *line);
 int		parse_color_floor(char *line);
 int		parse_color_ceiling(char *line);
 
-//DRAWLINE
-void	draw_2_point(t_float pts);
-
 //PLAYER
 void	init_player(void);
 
-//RAYCASTING
-void	init_ray(void);
 #endif

@@ -6,7 +6,7 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/08 23:05:10 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/13 07:40:14 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS	=	srcs/main.c\
 			srcs/parsing/parse_color.c\
 			srcs/parsing/parsing.c\
 			srcs/parsing/parse_map.c\
+			srcs/parsing/init_player.c \
 			srcs/parsing/check_map/check_map.c \
 			srcs/parsing/check_map/check_map2.c \
 			srcs/utils/singleton.c\
@@ -25,8 +26,8 @@ SRCS	=	srcs/main.c\
 			srcs/hook/hook.c \
 			srcs/video/video_loop.c \
 			srcs/video/video_utils.c \
-			srcs/init_player.c \
-			srcs/video/draw_line.c 
+			srcs/raycasting/raycasting.c \
+			srcs/raycasting/rc_utils.c 
 
 INC		=	includes/cub3d.h
 

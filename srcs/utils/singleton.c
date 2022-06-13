@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:44 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 19:06:45 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/10 18:19:07 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,36 @@ t_data	*_data(void)
 		check = 1;
 	}
 	return (&data);
+}
+
+t_rc	*_rc(void)
+{
+	t_data	*data;
+	t_rc	*rc;
+
+	data = _data();
+	rc = &(data->rc);
+	return (rc);
+}
+
+t_ray	*_ray(void)
+{
+	t_data	*data;
+	t_ray	*ray;
+
+	data = _data();
+	ray = &(data->rc.ray);
+	return (ray);
+}
+
+t_player	*_player(void)
+{
+	t_data		*data;
+	t_player	*player;
+
+	data = _data();
+	player = &(data->rc.player);
+	return (player);
 }
 
 t_mlx	*_mlx(void)
