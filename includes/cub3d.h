@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/10 19:33:40 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/15 00:08:48 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,13 +125,13 @@ typedef	struct s_pos
 	int	y;
 }	t_pos;
 
-
 typedef	struct s_player
 {
 	t_vector	pos;
 	t_pos		map_pos;
 	t_vector	dir;
 	double		ms;
+	double		rot_speed;
 
 }	t_player;
 
@@ -196,6 +196,12 @@ void	create_window(void);
 
 //HOOK
 int		hook(void);
+void	rotate_left(void);
+void	rotate_right(void);
+void	go_forward(void);
+void	go_back(void);
+void	go_left(void);
+void	go_right(void);
 
 //UTILS PARSING
 int		ft_strcmp(char *s1, char *s2);

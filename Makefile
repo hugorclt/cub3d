@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
+#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/10 17:13:41 by ajung            ###   ########.fr        #
+#    Updated: 2022/06/14 23:12:30 by oryzon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCS	=	srcs/main.c\
 			srcs/utils/utils_parsing/utils_parsing2.c\
 			srcs/utils/utils_parsing/utils_max_x_y.c \
 			srcs/hook/hook.c \
+			srcs/hook/hook_movement.c \
+			srcs/hook/hook_rotate.c \
 			srcs/video/video_loop.c \
 			srcs/video/video_utils.c \
 			srcs/raycasting/raycasting.c \

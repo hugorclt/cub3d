@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/10 16:18:38 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/14 23:15:21 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ int	key_hook(int keycode)
 {
 	if (keycode == KEY_ESC)
 		hasta_la_vista_baby(NULL);
+	else if (keycode == KEY_W)
+		go_forward();
+	else if (keycode == KEY_S)
+		go_back();
+	else if (keycode == KEY_A)
+		go_left();
+	else if (keycode == KEY_D)
+		go_right();
+	else if (keycode == KEY_LEFT)
+		rotate_left();
+	else if (keycode == KEY_RIGHT)
+		rotate_right();
 	return (SUCCESS);
 }
 

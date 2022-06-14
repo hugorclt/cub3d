@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/10 20:10:20 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/15 00:34:47 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,6 @@ void	init_ray(int pixel)
 	rc->ray.cam_X = 2 * pixel / (double)WIN_WIDTH - 1;
 	rc->ray.dir.x = player->dir.x + rc->plan.x * rc->ray.cam_X;
 	rc->ray.dir.y = player->dir.y + rc->plan.y * rc->ray.cam_X;
-
-	if (pixel == 0 || pixel == WIN_WIDTH / 2 || pixel == WIN_WIDTH - 1)
-	{
-		dprintf(2, "ray dir x = %f // ray dir y = %f\n", rc->ray.dir.x, rc->ray.dir.y);
-		dprintf(2, "camera x = %f\n", rc->ray.cam_X);
-		dprintf(2, "plan x = %f // plan y = %f\n", rc->plan.x, rc->plan.y);
-		dprintf(2, "player dir x = %f // player dir y = %f\n\n", player->dir.x, player->dir.y);
-	}
 }
 
 void	init_ray_step(void)
@@ -42,7 +34,6 @@ void	init_ray_step(void)
 	rc = _rc();
 	player->map_pos.x = (int)player->pos.x;
 	player->map_pos.y = (int)player->pos.y;
-	// dprintf(2, "ray dir x = %f\n", rc->ray.dir.x);
 	/////////
 	if (rc->ray.dir.x == 0)
 		rc->ray.deltaSideDist.x = 1e30;
@@ -63,7 +54,6 @@ void	init_next_side_dist(void)
 
 	ray = _ray();
 	player = _player();
-	//dprintf(2, "delta x = %f // delta y = %f\n", ray->deltaSideDist.x, ray->deltaSideDist.y);
 	if (ray->dir.x < 0)
 	{
 		ray->step.x = -1;
@@ -88,7 +78,6 @@ void	init_next_side_dist(void)
 		ray->nextSideDist.y = (player->map_pos.y + 1.0 - player->pos.y)
 			* ray->deltaSideDist.y;
 	}
-	
 }
 
 void	find_hit_wall(void)
@@ -140,15 +129,12 @@ void	calculate_wall_height(void)
 		ray->wallDist = (ray->nextSideDist.y - ray->deltaSideDist.y);
 	///////////////////////////////////////////////////////////////////////////
 	wall->lineHeight = (int)(WIN_HEIGHT / ray->wallDist);
-	// dprintf(2, "wall distance = %f\n", ray->wallDist);
-	// printf("lineheight = %d\n", wall->lineHeight);
 	wall->pixelStart = -wall->lineHeight / 2 + WIN_HEIGHT / 2;
 	if (wall->pixelStart)
 		wall->pixelStart = 0;
 	wall->pixelEnd = wall->lineHeight / 2 + WIN_HEIGHT / 2;
 	if (wall->pixelEnd >= WIN_HEIGHT)
 		wall->pixelEnd = WIN_HEIGHT - 1;
-	// printf("start : %d, end : %d\n", wall->pixelStart, wall->pixelEnd);
 }
 
 void	raycasting(void)
@@ -157,7 +143,6 @@ void	raycasting(void)
 	t_rc	*rc;
 	
 	rc = _rc();
-	init_player();
 	pixel = 0;
 	while (pixel < WIN_WIDTH)
 	{
