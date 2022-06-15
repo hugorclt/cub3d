@@ -6,7 +6,7 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/15 22:28:41 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/15 22:35:38 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	is_player(char c)
 
 static void	init_player_position(void)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 	t_data		*data;
 	t_player	*player;
 
@@ -36,8 +36,8 @@ static void	init_player_position(void)
 		{
 			if (is_player(data->map.map[i][j]) == SUCCESS)
 			{
-				player->pos.x = j;
-				player->pos.y = i;
+				player->pos.x = j + 0.5;
+				player->pos.y = i + 0.5;
 				return ;
 			}
 			j++;
