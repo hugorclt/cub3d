@@ -6,7 +6,7 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:06:00 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/14 23:55:01 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/15 22:17:35 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	wall_check(double x, double y)
 	t_data	*data;
 
 	data = _data();
-	if (data->map.map[(int) x][(int) y] == WALL)
+	if (data->map.map[(int) y][(int) x] == WALL)
 		return (FAILURE);
 	else
 		return (SUCCESS);
