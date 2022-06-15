@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 10:02:12 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 10:42:43 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/15 17:21:11 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,5 @@ int	ft_atoi(char *nbr)
 		else if (output * nega < -2147483648)
 			return (0);
 	}
-	free(nbr);
 	return (output * nega);
 }

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/15 00:34:47 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/15 20:37:27 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
 
 void	init_ray(int pixel)
 {
@@ -80,6 +79,29 @@ void	init_next_side_dist(void)
 	}
 }
 
+void	what_side_was_hit(void)
+{
+	t_ray		*ray;
+	t_player	*player;
+
+	ray = _ray();
+	player = _player();
+	if (ray->nextSideDist.x < ray->nextSideDist.y)
+		{
+			if (player->pos.y < ray->nextSideDist.y)
+				ray->side_hit = NORTH;
+			else
+				ray->side_hit = SOUTH;
+		}
+		else
+		{
+			if (player->pos.x < ray->nextSideDist.x)
+				ray->side_hit = WEST;
+			else
+				ray->side_hit = EAST;	
+		}
+}
+
 void	find_hit_wall(void)
 {
 	t_ray		*ray;
@@ -93,24 +115,22 @@ void	find_hit_wall(void)
 	{
 		if (ray->nextSideDist.x < ray->nextSideDist.y)
 		{
-			if (player->pos.y < ray->nextSideDist.y)
-				ray->side_hit = NORTH;
-			else
-				ray->side_hit = SOUTH;
+			ray->side = 0;
 			player->map_pos.x += ray->step.x;
 			ray->nextSideDist.x += ray->deltaSideDist.x;
 		}
 		else
 		{
-			if (player->pos.x < ray->nextSideDist.x)
-				ray->side_hit = WEST;
-			else
-				ray->side_hit = EAST;
+			ray->side = 1;
 			player->map_pos.y += ray->step.y;
 			ray->nextSideDist.y += ray->deltaSideDist.y;		
 		}
+		//dprintf(2, "max x = %d\n max y = %d\n\n", data->map.max_x, data->map.max_y);
+		//dprintf(2, "map pos x = %d\nmap pos y = %d\n\n", player->map_pos.x, player->map_pos.y);
 		if (data->map.map[player->map_pos.y][player->map_pos.x] == WALL)
 			ray->hit = TRUE;
+		if (ray->hit == TRUE)
+			what_side_was_hit();
 	}
 }
 
@@ -123,18 +143,21 @@ void	calculate_wall_height(void)
 	ray = _ray();
 	rc = _rc();
 	wall = &(rc->wall);
-	if (ray->side_hit == NORTH || ray->side_hit == SOUTH)
+	if (ray->side == 0)
 		ray->wallDist = (ray->nextSideDist.x - ray->deltaSideDist.x);
-	else if (ray->side_hit == EAST || ray->side_hit == WEST)
+	else
 		ray->wallDist = (ray->nextSideDist.y - ray->deltaSideDist.y);
 	///////////////////////////////////////////////////////////////////////////
 	wall->lineHeight = (int)(WIN_HEIGHT / ray->wallDist);
 	wall->pixelStart = -wall->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (wall->pixelStart)
+	if (wall->pixelStart < 0)
 		wall->pixelStart = 0;
 	wall->pixelEnd = wall->lineHeight / 2 + WIN_HEIGHT / 2;
 	if (wall->pixelEnd >= WIN_HEIGHT)
 		wall->pixelEnd = WIN_HEIGHT - 1;
+	dprintf(2, "wallDist = %f\n", ray->wallDist);
+	dprintf(2, "lineheight = %d\n\n", wall->lineHeight);
+	dprintf(2, "pixel start = %d\n pixel end = %d\n\n", wall->pixelStart, wall->pixelEnd);
 }
 
 void	raycasting(void)
