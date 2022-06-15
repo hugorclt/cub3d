@@ -6,7 +6,7 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:06:00 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/15 22:17:35 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/15 22:54:09 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	go_back(void)
 	player->pos.y = futur_pos_y;
 }
 
-void	go_left(void) //peut etre inverser le + et -
+void	go_left(void) //tester la formule en comms
 {
 	t_player	*player;
 	double		futur_pos_x;
@@ -62,13 +62,15 @@ void	go_left(void) //peut etre inverser le + et -
 	player = _player();
 	futur_pos_x = player->pos.x + player->dir.x * player->ms;
 	futur_pos_y = player->pos.y - player->dir.y * player->ms;
+	//futur_pos_x = player->pos.x - player->dir.y * player->ms;
+	//futur_pos_y = player->pos.y - player->dir.x * player->ms;
 	if (wall_check(futur_pos_x, futur_pos_y) == FAILURE)
 		return ;
 	player->pos.x = futur_pos_x;
 	player->pos.y = futur_pos_y;
 }
 
-void	go_right(void) //peut etre inverser le + et -
+void	go_right(void) //tester la formule en comms
 {
 	t_player	*player;
 	double		futur_pos_x;
@@ -77,6 +79,8 @@ void	go_right(void) //peut etre inverser le + et -
 	player = _player();
 	futur_pos_x = player->pos.x - player->dir.x * player->ms;
 	futur_pos_y = player->pos.y + player->dir.y * player->ms;
+	//futur_pos_x = player->pos.x + player->dir.y * player->ms;
+	//futur_pos_y = player->pos.y + player->dir.x * player->ms;
 	if (wall_check(futur_pos_x, futur_pos_y) == FAILURE)
 		return ;
 	player->pos.x = futur_pos_x;
