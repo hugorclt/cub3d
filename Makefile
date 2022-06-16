@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
+#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/16 15:34:03 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/16 20:02:20 by ajung            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,19 +16,20 @@ SRCS	=	srcs/main.c\
 			srcs/parsing/parsing.c\
 			srcs/parsing/parse_map.c\
 			srcs/parsing/init_player.c \
+			srcs/parsing/utils_parsing/utils_parsing1.c\
+			srcs/parsing/utils_parsing/utils_parsing2.c\
+			srcs/parsing/utils_parsing/utils_max_x_y.c \
 			srcs/parsing/check_map/check_map.c \
 			srcs/parsing/check_map/check_map2.c \
-			srcs/utils/singleton.c\
-			srcs/utils/hasta_la_vista.c \
-			srcs/utils/utils_parsing/utils_parsing1.c\
-			srcs/utils/utils_parsing/utils_parsing2.c\
-			srcs/utils/utils_parsing/utils_max_x_y.c \
+			srcs/tools/singleton.c\
+			srcs/tools/hasta_la_vista.c \
 			srcs/hook/hook.c \
 			srcs/hook/hook_movement.c \
 			srcs/hook/hook_rotate.c \
 			srcs/video/video_loop.c \
 			srcs/video/video_utils.c \
 			srcs/raycasting/raycasting.c \
+			srcs/raycasting/raycasting_2.c \
 			srcs/raycasting/rc_utils.c 
 
 INC		=	includes/cub3d.h

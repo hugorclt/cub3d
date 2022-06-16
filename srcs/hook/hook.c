@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/16 16:01:48 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:32:20 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	loop_function(void)
 	mlx = _mlx();
 	mlx_put_image_to_window(mlx->var.mlx, mlx->var.win,
 		mlx->image.img_ptr, 0, 0);
-    return (SUCCESS);
+	return (SUCCESS);
 }
 
 int	hook(void)

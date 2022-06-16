@@ -6,18 +6,11 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 17:11:46 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 19:43:20 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-static int	is_player(char c)
-{
-	if (c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		return (SUCCESS);
-	return (FAILURE);
-}
 
 static void	init_player_position(void)
 {
@@ -76,13 +69,13 @@ void	init_player_direction(void)
 		init_direction(1, 0, 0, 0.66);
 }
 
-static void	init_speed(void) 
+static void	init_speed(void)
 {
 	t_player	*player;
 
 	player = _player();
 	player->ms = 0.07;
-	player->rot_speed = -M_PI /80;
+	player->rot_speed = -M_PI / 80;
 }
 
 void	init_player(void)

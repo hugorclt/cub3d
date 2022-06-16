@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 18:32:07 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 19:55:26 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ typedef struct s_var
 	void	*mlx;
 	void	*win;
 }	t_var;
-	
+
 typedef struct s_mlx
 {
 	t_var	var;
@@ -130,13 +130,13 @@ typedef struct s_vector
 	double	y;
 }	t_vector;
 
-typedef	struct s_pos
+typedef struct s_pos
 {
 	int	x;
 	int	y;
 }	t_pos;
 
-typedef	struct s_player
+typedef struct s_player
 {
 	t_vector	pos;
 	t_pos		map_pos;
@@ -146,7 +146,7 @@ typedef	struct s_player
 
 }	t_player;
 
-typedef	struct s_ray
+typedef struct s_ray
 {
 	t_vector	dir;
 	t_vector	deltaSideDist;
@@ -166,7 +166,7 @@ typedef struct s_wall
 	int	pixelEnd;
 }	t_wall;
 
-typedef	struct s_rc
+typedef struct s_rc
 {
 	t_player	player;
 	t_vector	plan;
@@ -191,70 +191,77 @@ t_player	*_player(void);
 t_ray		*_ray(void);
 
 //RAYCASTING
-void	raycasting(void);
+void		raycasting(void);
+void		init_ray(int pixel);
+void		init_ray_step(void);
+void		init_next_side_dist(void);
+void		calculate_wall_height(void);
+void		find_hit_wall(void);
+void		what_side_was_hit(void);
 
 //HAST_LA_VISTA
-void	hasta_la_vista_baby(char *str);
+void		hasta_la_vista_baby(char *str);
 
 //DRAW_LINE
-void	draw_2_point(int x, int start_pts, int end_pts);
+void		draw_2_point(int x, int start_pts, int end_pts);
 
 //VIDEO
-void	video_loop(void);
+void		video_loop(void);
 
 //VIDEO UTILS
-void	my_mlx_pixel_put(int x, int y, int color);
-void	reload_image(void);
-void	create_window(void);
+void		my_mlx_pixel_put(int x, int y, int color);
+void		reload_image(void);
+void		create_window(void);
 
 //HOOK
-int		hook(void);
-void	rotate_left(void);
-void	rotate_right(void);
-void	go_forward(void);
-void	go_back(void);
-void	go_left(void);
-void	go_right(void);
+int			hook(void);
+void		rotate_left(void);
+void		rotate_right(void);
+void		go_forward(void);
+void		go_back(void);
+void		go_left(void);
+void		go_right(void);
 
 //UTILS PARSING
-int		ft_strcmp(char *s1, char *s2);
-void	free_tab(char **tab);
-char	*skip_space(char *line);
-void	skip_space_new(char *str, int *i);
-int		is_num(char *line);
-int		len_number(char *line);
-void	print_struct(void);
-void	ft_print_map(void);
-void	parse_get_max_y(void);
-void	parse_get_max_x(char *line);
-void	skip_newline(void);
+int			ft_strcmp(char *s1, char *s2);
+void		free_tab(char **tab);
+char		*skip_space(char *line);
+void		skip_space_new(char *str, int *i);
+int			is_num(char *line);
+int			len_number(char *line);
+void		print_struct(void);
+void		ft_print_map(void);
+void		parse_get_max_y(void);
+void		parse_get_max_x(char *line);
+void		skip_newline(void);
+int			is_player(char c);
 
 //PARSING
-void	parsing(char **argv);
-void	open_map(char **argv);
-int		parse_data_map(char *line);
-int		parse_select(char *line);
-void	parse_map(char **argv);
-int		parse_insert_color(char *line, t_color *color);
-void	init_player(void);
+void		parsing(char **argv);
+void		open_map(char **argv);
+int			parse_data_map(char *line);
+int			parse_select(char *line);
+void		parse_map(char **argv);
+int			parse_insert_color(char *line, t_color *color);
+void		init_player(void);
 
 //CHECK MAP
-void	check_map(void);
-void	check_line_size(void);
-void	check_player_in_map(void);
-void	check_char_in_map(void);
+void		check_map(void);
+void		check_line_size(void);
+void		check_player_in_map(void);
+void		check_char_in_map(void);
 
 //PARSING TEXTURE
-int		parse_texture_north(char *line);
-int		parse_texture_west(char *line);
-int		parse_texture_east(char *line);
-int		parse_texture_south(char *line);
+int			parse_texture_north(char *line);
+int			parse_texture_west(char *line);
+int			parse_texture_east(char *line);
+int			parse_texture_south(char *line);
 
 //PARSING COLOR
-int		parse_color_floor(char *line);
-int		parse_color_ceiling(char *line);
+int			parse_color_floor(char *line);
+int			parse_color_ceiling(char *line);
 
 //PLAYER
-void	init_player(void);
+void		init_player(void);
 
 #endif

@@ -6,17 +6,24 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 17:12:15 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 19:50:36 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-unsigned long createRGB(int r, int g, int b)
-{   
-    return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+unsigned long	createRGB(int r, int g, int b)
+{
+	return (((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff));
 }
+
+/*
+NORTH = Orange
+South = Green
+WEST = purple
+EAST = yellow
+BUG= white
+*/
 
 int	get_wall_color(void)
 {
@@ -24,15 +31,15 @@ int	get_wall_color(void)
 
 	rc = _rc();
 	if (rc->ray.side_hit == NORTH)
-		return (0xFF5733); //orange
+		return (0xFF5733);
 	else if (rc->ray.side_hit == SOUTH)
-		return (0xB0F2B6); //vert
+		return (0xB0F2B6);
 	else if (rc->ray.side_hit == WEST)
-		return (0x7F00FF); //violet
+		return (0x7F00FF);
 	else if (rc->ray.side_hit == EAST)
-		return (0xFAFD0F); //jaune
+		return (0xFAFD0F);
 	else
-		return (0xFFFFFF); //white
+		return (0xFFFFFF);
 }
 
 void	draw_2_point(int x, int start_pts, int end_pts)
@@ -40,12 +47,12 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	int		i;
 	t_data	*data;
 
-	data= _data();
+	data = _data();
 	i = 0;
 	while (i < start_pts)
 	{
 		my_mlx_pixel_put(x, i, createRGB(data->texture.ceiling.trgb.r,
-			data->texture.ceiling.trgb.g, data->texture.ceiling.trgb.b));
+				data->texture.ceiling.trgb.g, data->texture.ceiling.trgb.b));
 		i++;
 	}
 	while (i < end_pts)
@@ -56,7 +63,7 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	while (i < WIN_HEIGHT)
 	{
 		my_mlx_pixel_put(x, i, createRGB(data->texture.floor.trgb.r,
-			data->texture.floor.trgb.g, data->texture.floor.trgb.b));
+				data->texture.floor.trgb.g, data->texture.floor.trgb.b));
 		i++;
 	}
 }
