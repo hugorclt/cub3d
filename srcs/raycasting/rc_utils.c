@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/15 19:27:54 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 16:14:25 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int	get_wall_color(void)
 	else if (rc->ray.side_hit == EAST)
 		return (0xFAFD0F); //jaune
 	else
-	{
-		//dprintf(2, "No wall hit\n");
 		return (0xFFFFFF); //white
-	}
 }
 
 void	draw_2_point(int x, int start_pts, int end_pts)

@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/15 19:39:48 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 16:48:59 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,12 @@
 # define TRUE 0
 # define FALSE 1
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# ifndef M_PI
+#  define M_PI 3.141592653
+# endif
+
+# define WIN_WIDTH 1080
+# define WIN_HEIGHT 720
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -58,6 +62,9 @@
 # define SOUTH -1
 # define WEST 1
 # define EAST 2
+
+# define NORTH_SOUTH 0
+# define WEST_EAST 1
 
 typedef struct s_trgb
 {

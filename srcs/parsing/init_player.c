@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/15 22:35:38 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/16 17:06:54 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ static void	init_speed(void) //tester les valeurs de rotation
 	t_player	*player;
 
 	player = _player();
-	player->ms = 0.03;
-	player->rot_speed = 0.02;
+	player->ms = 0.07;
+	player->rot_speed = -M_PI /80;
 }
 
 void	init_player(void)
