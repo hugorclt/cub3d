@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/13 07:44:09 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:01:48 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,18 @@ int	key_hook(int keycode)
 	(void)data;
 	if (keycode == KEY_ESC)
 		hasta_la_vista_baby(NULL);
+	else if (keycode == KEY_W)
+		go_forward();
+	else if (keycode == KEY_S)
+		go_back();
+	else if (keycode == KEY_A)
+		go_left();
+	else if (keycode == KEY_D)
+		go_right();
+	else if (keycode == KEY_LEFT)
+		rotate_left();
+	else if (keycode == KEY_RIGHT)
+		rotate_right();
 	return (SUCCESS);
 }
 
@@ -41,27 +53,19 @@ static int	close_window(void)
 	hasta_la_vista_baby(NULL);
 	return (SUCCESS);
 }
-/* 
-int    loop_function(void)
+
+int	loop_function(void)
 {
-	t_data	*data;
+	t_mlx	*mlx;
 
-	data = _data();
-	
-    //update de tous les parametres necessaires aux calculs du raycasting
-    if (data->player->is_jumping == 0)
-        update_movements(data);
-    update_stamina(data);
-    if (data->player->is_jumping)
-        update_jump(data);
-    data->player->ms = calcul_movespeed(data);
-    update_player(data);
-
-
-    create_big(data);  //render de frame
+	reload_image();
+	raycasting();
+	mlx = _mlx();
+	mlx_put_image_to_window(mlx->var.mlx, mlx->var.win,
+		mlx->image.img_ptr, 0, 0);
     return (SUCCESS);
 }
- */
+
 int	hook(void)
 {
 	t_mlx	*mlx;
@@ -70,6 +74,6 @@ int	hook(void)
 	mlx_hook(mlx->var.win, ON_DESTROY, 0, close_window, NULL);
 	mlx_hook(mlx->var.win, ON_KEYDOWN, 1L << 0, key_hook, NULL);
 	mlx_mouse_hook(mlx->var.win, mouse_hook, NULL);
-	//mlx_loop_hook(mlx->var.mlx, &loop_function, NULL);
+	mlx_loop_hook(mlx->var.mlx, &loop_function, NULL);
 	return (SUCCESS);
 }

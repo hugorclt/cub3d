@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/13 07:44:32 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:22:04 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define TRUE 0
 # define FALSE 1
 
-# define WIN_WIDTH 1080
-# define WIN_HEIGHT 720
+# define WIN_WIDTH 1920
+# define WIN_HEIGHT 1080
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -133,6 +133,7 @@ typedef	struct s_player
 	t_pos		map_pos;
 	t_vector	dir;
 	double		ms;
+	double		rot_speed;
 
 }	t_player;
 
@@ -146,6 +147,7 @@ typedef	struct s_ray
 	double		wallDist;
 	int			hit;
 	int			side_hit;
+	int			side;
 }	t_ray;
 
 typedef struct s_wall
@@ -198,6 +200,12 @@ void	create_window(void);
 
 //HOOK
 int		hook(void);
+void	rotate_left(void);
+void	rotate_right(void);
+void	go_forward(void);
+void	go_back(void);
+void	go_left(void);
+void	go_right(void);
 
 //UTILS PARSING
 int		ft_strcmp(char *s1, char *s2);

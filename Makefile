@@ -6,7 +6,7 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/13 07:40:14 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/16 15:34:03 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,8 @@ SRCS	=	srcs/main.c\
 			srcs/utils/utils_parsing/utils_parsing2.c\
 			srcs/utils/utils_parsing/utils_max_x_y.c \
 			srcs/hook/hook.c \
+			srcs/hook/hook_movement.c \
+			srcs/hook/hook_rotate.c \
 			srcs/video/video_loop.c \
 			srcs/video/video_utils.c \
 			srcs/raycasting/raycasting.c \

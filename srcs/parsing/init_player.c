@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/13 08:37:02 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 16:28:52 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static int	is_player(char c)
 
 static void	init_player_position(void)
 {
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 	t_data		*data;
 	t_player	*player;
 
@@ -36,8 +36,8 @@ static void	init_player_position(void)
 		{
 			if (is_player(data->map.map[i][j]) == SUCCESS)
 			{
-				player->pos.x = j;
-				player->pos.y = i;
+				player->pos.x = j + 0.5;
+				player->pos.y = i + 0.5;
 				return ;
 			}
 			j++;
@@ -46,7 +46,7 @@ static void	init_player_position(void)
 	}
 }
 
-static void	init_direction(float dir_x, float dir_y, float plane_x, float plane_y)
+static void	init_direction(float dir_x, float dir_y, float plan_x, float plan_y)
 {
 	t_player	*player;
 	t_rc		*rc;
@@ -55,11 +55,11 @@ static void	init_direction(float dir_x, float dir_y, float plane_x, float plane_
 	rc = _rc();
 	player->dir.x = dir_x;
 	player->dir.y = dir_y;
-	rc->plan.x = plane_x;
-	rc->plan.y = plane_y;
+	rc->plan.x = plan_x;
+	rc->plan.y = plan_y;
 }
 
-static void	init_player_direction(void)
+void	init_player_direction(void)
 {
 	t_data		*data;
 	t_player	*player;
@@ -76,8 +76,18 @@ static void	init_player_direction(void)
 		init_direction(1, 0, 0, 0.66);
 }
 
+static void	init_speed(void) //tester les valeurs de rotation
+{
+	t_player	*player;
+
+	player = _player();
+	player->ms = 0.07;
+	player->rot_speed = 0.03;
+}
+
 void	init_player(void)
 {
 	init_player_position();
 	init_player_direction();
+	init_speed();
 }

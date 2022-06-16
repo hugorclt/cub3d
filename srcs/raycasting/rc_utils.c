@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/13 07:50:09 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 15:34:20 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@
 unsigned long createRGB(int r, int g, int b)
 {   
     return ((r & 0xff) << 16) + ((g & 0xff) << 8) + (b & 0xff);
+}
+
+int	get_wall_color(void)
+{
+	t_rc	*rc;
+
+	rc = _rc();
+	if (rc->ray.side_hit == NORTH)
+		return (0xFF5733); //orange
+	else if (rc->ray.side_hit == SOUTH)
+		return (0xB0F2B6); //vert
+	else if (rc->ray.side_hit == WEST)
+		return (0x7F00FF); //violet
+	else if (rc->ray.side_hit == EAST)
+		return (0xFAFD0F); //jaune
+	else
+	{
+		//dprintf(2, "No wall hit\n");
+		return (0xFFFFFF); //white
+	}
 }
 
 void	draw_2_point(int x, int start_pts, int end_pts)
@@ -33,7 +53,7 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	}
 	while (i < end_pts)
 	{
-		my_mlx_pixel_put(x, i, 0xFF5733);
+		my_mlx_pixel_put(x, i, get_wall_color());
 		i++;
 	}
 	while (i < WIN_HEIGHT)
