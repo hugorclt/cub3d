@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 17:10:44 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 18:32:07 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ typedef struct s_texture
 	char	*east;
 	t_color	floor;
 	t_color	ceiling;
+	int		floor_filled;
+	int		ceiling_filled;
 }	t_texture;
 
 typedef struct s_map
