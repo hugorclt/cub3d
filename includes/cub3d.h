@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 16:22:04 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 18:10:47 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@
 # define TRUE 0
 # define FALSE 1
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 1080
+# define WIN_WIDTH 800
+# define WIN_HEIGHT 600
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -83,6 +83,8 @@ typedef struct s_texture
 	char	*east;
 	t_color	floor;
 	t_color	ceiling;
+	int		floor_filled;
+	int		ceiling_filled;
 }	t_texture;
 
 typedef struct s_map

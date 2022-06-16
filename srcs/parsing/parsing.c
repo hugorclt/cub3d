@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 18:15:00 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 18:21:52 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,16 @@ int	parse_select(char *line)
 		parse_texture_west(line + 2);
 	else if (*line && ft_strnstr(line, "EA", 2))
 		parse_texture_east(line + 2);
-	else if (*line && ft_strnstr(line, "F", 2))
+	else if (*line && ft_strnstr(line, "F", 1))
+	{
 		parse_insert_color(line + 1, &data->texture.floor);
-	else if (*line && ft_strnstr(line, "C", 2))
+		data->texture.floor_filled = TRUE;
+	}
+	else if (*line && ft_strnstr(line, "C", 1))
+	{
 		parse_insert_color(line + 1, &data->texture.ceiling);
+		data->texture.ceiling_filled = TRUE;
+	}
 	else
 		hasta_la_vista_baby("bad format");
 	return (SUCCESS);
@@ -62,7 +68,7 @@ int	check_struct_filled(void)
 	if (!data->texture.north || !data->texture.south
 		|| !data->texture.west || !data->texture.east)
 		return (FAILURE);
-	if (!data->texture.floor.trgb.r || !data->texture.ceiling.trgb.r)
+	if (data->texture.ceiling_filled == FALSE || data->texture.floor_filled == FALSE)
 		return (FAILURE);
 	return (SUCCESS);
 }
@@ -73,6 +79,8 @@ void	parsing(char **argv)
 
 	open_map(argv);
 	data = _data();
+	data->texture.ceiling_filled = FALSE;
+	data->texture.floor_filled = FALSE;
 	data->map.line = get_next_line(data->map.fd);
 	if (!data->map.line)
 		hasta_la_vista_baby("Memory alloc fail");
