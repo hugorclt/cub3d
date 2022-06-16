@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 17:00:29 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 17:12:10 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void	find_hit_wall(void)
 	}
 }
 
-void	calculate_wall_height(void)
+void	calculate_wall_height()
 {
 	t_ray	*ray;
 	t_rc	*rc;
@@ -151,7 +151,6 @@ void	calculate_wall_height(void)
 	wall->pixelEnd = wall->lineHeight / 2 + WIN_HEIGHT / 2;
 	if (wall->pixelEnd >= WIN_HEIGHT)
 		wall->pixelEnd = WIN_HEIGHT - 1;
-
 }
 
 void	raycasting(void)

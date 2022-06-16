@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hasta_la_vista.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:59:14 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/08 02:03:01 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/08 23:11:12 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static void	hasta_la_vista_2(void)
 		mlx_destroy_window(mlx->var.mlx, mlx->var.win);
 	if (mlx->var.mlx && mlx->image.img_ptr)
 		mlx_destroy_image(mlx->var.mlx, mlx->image.img_ptr);
-	if (mlx->var.mlx)
-		mlx_destroy_display(mlx->var.mlx);
+	//if (mlx->var.mlx)
+		//mlx_destroy_display(mlx->var.mlx);
 	free(mlx->var.mlx);
 }
 

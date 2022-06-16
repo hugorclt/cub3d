@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
+#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/14 23:12:30 by oryzon           ###   ########.fr        #
+#    Updated: 2022/06/16 15:34:03 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,8 +45,10 @@ RM		=	rm -f
 
 NAME	=	cub3d
 
-.c.o:
-	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
+MLX_MACOS =  -Lmlx -framework OpenGL -framework AppKit
+
+#.c.o:
+#	${CC} ${CFLAGS} -c $< -o ${<:.c=.o}
 
 
 all: $(NAME)
@@ -54,12 +56,22 @@ all: $(NAME)
 $(NAME): $(MLX) $(OBJS) $(INC) 
 		 @$(MAKE) -C libft
 		 @echo "cub3d : libft compiled"
-		 @$(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) $(INC) libft/libft.a -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
+		 $(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) $(INC) libft/libft.a -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
 		 @echo "cub3d : compiled"
 
 $(MLX):
 		cd mlx && ./configure
 		@echo "cub3d : minilibx compiled" 
+
+macos:  $(OBJS)
+		$(MAKE) -C libft
+		@echo "cub3d : libft compiled"
+		@$(CC) $(MLX_MACOS) $(CFLAGS) $^ minilibx_macos/libmlx.a libft/libft.a -o $(NAME)
+		@echo "cub3d : compiled"
+	
+libft: 
+		
+
 clean:
 		@$(MAKE) -C libft clean
 		@$(RM) $(OBJS)

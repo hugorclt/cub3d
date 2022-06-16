@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/15 17:54:27 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 16:01:48 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int	mouse_hook(int keycode, int x, int y)
 	t_mlx	*mlx;
 
 	mlx = _mlx();
+	(void)keycode;
 	(void) mlx;
 	(void) x;
 	(void) y;
@@ -26,6 +27,10 @@ int	mouse_hook(int keycode, int x, int y)
 
 int	key_hook(int keycode)
 {
+	t_data	*data;
+
+	data = _data();
+	(void)data;
 	if (keycode == KEY_ESC)
 		hasta_la_vista_baby(NULL);
 	else if (keycode == KEY_W)

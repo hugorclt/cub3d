@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 17:06:54 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 17:11:46 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	init_player_direction(void)
 		init_direction(1, 0, 0, 0.66);
 }
 
-static void	init_speed(void) //tester les valeurs de rotation
+static void	init_speed(void) 
 {
 	t_player	*player;
 

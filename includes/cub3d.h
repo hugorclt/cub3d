@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 16:48:59 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/16 17:10:44 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define KEY_DOWN 65364
 # define KEY_LEFT 65361
 # define KEY_RIGHT 65363
+# define KEY_E 101
+# define KEY_Q 113
 
 # define MOUSE_LEFT 1
 # define MOUSE_RIGHT 3
@@ -176,6 +178,7 @@ typedef struct s_data
 	t_texture	texture;
 	t_map		map;
 	t_mlx		mlx;
+	t_ray		ray;
 }	t_data;
 
 //SINGLETON
@@ -248,5 +251,8 @@ int		parse_texture_south(char *line);
 //PARSING COLOR
 int		parse_color_floor(char *line);
 int		parse_color_ceiling(char *line);
+
+//PLAYER
+void	init_player(void);
 
 #endif
