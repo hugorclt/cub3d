@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/13 08:36:35 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/13 08:37:02 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	init_player_position(void)
 	}
 }
 
-void	init_direction(float dir_x, float dir_y, float plane_x, float plane_y)
+static void	init_direction(float dir_x, float dir_y, float plane_x, float plane_y)
 {
 	t_player	*player;
 	t_rc		*rc;
@@ -59,7 +59,7 @@ void	init_direction(float dir_x, float dir_y, float plane_x, float plane_y)
 	rc->plan.y = plane_y;
 }
 
-void	init_player_direction(void)
+static void	init_player_direction(void)
 {
 	t_data		*data;
 	t_player	*player;
