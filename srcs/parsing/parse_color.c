@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 20:02:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 18:23:23 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:33:16 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ static void	nike_la_naurme(char	*str, t_color *color, int len_color, int tour)
 	color_str = ft_substr(str, 0, len_color);
 	if (!color)
 		hasta_la_vista_baby("Malloc error");
-	if (ft_strlen(color_str) > 11 || (ft_atoi(color_str) > 255 || ft_atoi(color_str) < 0))
+	if (ft_strlen(color_str) > 11
+		|| (ft_atoi(color_str) > 255 || ft_atoi(color_str) < 0))
 		hasta_la_vista_baby("error: color format");
 	if (tour == 0)
 		color->trgb.r = ft_atoi(color_str);

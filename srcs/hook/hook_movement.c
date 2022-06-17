@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook_movement.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 23:06:00 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/16 16:21:11 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/16 19:32:03 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	go_back(void)
 	player->pos.y = futur_pos_y;
 }
 
-void	go_left(void) //tester la formule en comms
+void	go_left(void)
 {
 	t_player	*player;
 	t_rc		*rc;
@@ -62,8 +62,6 @@ void	go_left(void) //tester la formule en comms
 
 	player = _player();
 	rc = _rc();
-	// futur_pos_x = player->pos.x + player->dir.x * player->ms;
-	// futur_pos_y = player->pos.y - player->dir.y * player->ms;
 	futur_pos_x = player->pos.x - rc->plan.x * player->ms;
 	futur_pos_y = player->pos.y - rc->plan.y * player->ms;
 	if (wall_check(futur_pos_x, futur_pos_y) == FAILURE)
@@ -72,7 +70,7 @@ void	go_left(void) //tester la formule en comms
 	player->pos.y = futur_pos_y;
 }
 
-void	go_right(void) //tester la formule en comms
+void	go_right(void)
 {
 	t_player	*player;
 	t_rc		*rc;
@@ -81,8 +79,6 @@ void	go_right(void) //tester la formule en comms
 
 	rc = _rc();
 	player = _player();
-	// futur_pos_x = player->pos.x - player->dir.x * player->ms;
-	// futur_pos_y = player->pos.y + player->dir.y * player->ms;
 	futur_pos_x = player->pos.x + rc->plan.x * player->ms;
 	futur_pos_y = player->pos.y + rc->plan.y * player->ms;
 	if (wall_check(futur_pos_x, futur_pos_y) == FAILURE)
