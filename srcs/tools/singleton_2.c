@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   video_loop.c                                       :+:      :+:    :+:   */
+/*   singleton_2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/07 18:40:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 21:34:39 by ajung            ###   ########.fr       */
+/*   Created: 2022/06/17 18:08:07 by ajung             #+#    #+#             */
+/*   Updated: 2022/06/17 20:23:40 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	video_loop(void)
+t_texture	*_tex(void)
 {
-	t_mlx	*mlx;
+	t_texture	*tex;
+	t_data		*data;
 
-	mlx = _mlx();
-	create_window();
-	init_player();
-	init_texture();
-	hook();
-	mlx_loop(mlx->var.mlx);
+	data = _data();
+	tex = &(data->tex);
+	return (tex);
 }

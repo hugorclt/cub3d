@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 16:33:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 18:54:59 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ void	print_struct(void)
 	t_data	*data;
 
 	data = _data();
-	printf("no : %s\n", data->texture.north);
-	printf("so : %s\n", data->texture.south);
-	printf("we : %s\n", data->texture.west);
-	printf("ea : %s\n", data->texture.east);
-	printf("rgb floor : %d,", data->texture.floor.trgb.r);
-	printf("%d,", data->texture.floor.trgb.g);
-	printf("%d\n", data->texture.floor.trgb.b);
-	printf("rgb ceilling : %d,", data->texture.ceiling.trgb.r);
-	printf("%d,", data->texture.ceiling.trgb.g);
-	printf("%d\n", data->texture.ceiling.trgb.b);
+	printf("no : %s\n", data->tex.path.north);
+	printf("so : %s\n", data->tex.path.south);
+	printf("we : %s\n", data->tex.path.west);
+	printf("ea : %s\n", data->tex.path.east);
+	printf("rgb floor : %d,", data->tex.floor.trgb.r);
+	printf("%d,", data->tex.floor.trgb.g);
+	printf("%d\n", data->tex.floor.trgb.b);
+	printf("rgb ceilling : %d,", data->tex.ceiling.trgb.r);
+	printf("%d,", data->tex.ceiling.trgb.g);
+	printf("%d\n", data->tex.ceiling.trgb.b);
 	ft_print_map();
 }
 

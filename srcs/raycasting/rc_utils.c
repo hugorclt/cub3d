@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 16:34:38 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 18:54:59 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	i = 0;
 	while (i < start_pts)
 	{
-		my_mlx_pixel_put(x, i, create_rgb(data->texture.ceiling.trgb.r,
-				data->texture.ceiling.trgb.g, data->texture.ceiling.trgb.b));
+		my_mlx_pixel_put(x, i, create_rgb(data->tex.ceiling.trgb.r,
+				data->tex.ceiling.trgb.g, data->tex.ceiling.trgb.b));
 		i++;
 	}
 	while (i < end_pts)
@@ -62,8 +62,8 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	}
 	while (i < WIN_HEIGHT)
 	{
-		my_mlx_pixel_put(x, i, create_rgb(data->texture.floor.trgb.r,
-				data->texture.floor.trgb.g, data->texture.floor.trgb.b));
+		my_mlx_pixel_put(x, i, create_rgb(data->tex.floor.trgb.r,
+				data->tex.floor.trgb.g, data->tex.floor.trgb.b));
 		i++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/17 16:38:17 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 21:34:26 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,9 @@
 # define VOID ' '
 
 # define NORTH 0
-# define SOUTH -1
-# define WEST 1
-# define EAST 2
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
 
 # define NORTH_SOUTH 0
 # define WEST_EAST 1
@@ -82,18 +82,6 @@ typedef union u_color
 	t_trgb	trgb;
 }	t_color;
 
-typedef struct s_texture
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	t_color	floor;
-	t_color	ceiling;
-	int		floor_filled;
-	int		ceiling_filled;
-}	t_texture;
-
 typedef struct s_map
 {
 	int			max_x;
@@ -108,7 +96,8 @@ typedef struct s_image
 	void	*img_ptr;
 	char	*addr;
 	int		bits_per_pixel;
-	int		line_len;
+	int		width;
+	int		height;
 	int		endian;
 }	t_image;
 
@@ -154,6 +143,7 @@ typedef struct s_ray
 	t_pos		step;
 	double		cam_x;
 	double		wall_dist;
+	double		wall_x;
 	int			hit;
 	int			side_hit;
 	int			side;
@@ -174,10 +164,33 @@ typedef struct s_rc
 	t_wall		wall;
 }	t_rc;
 
+typedef struct s_path
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+}	t_path;
+
+typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
+{
+	int		tex_x;
+	int		tex_y;
+	t_path	path;
+	t_color	floor;
+	t_color	ceiling;
+	int		floor_filled;
+	int		ceiling_filled;
+	t_image	*img;
+	int		side_hit;
+	double	step;
+	double	coor;
+}	t_texture;
+
 typedef struct s_data
 {
 	t_rc		rc;
-	t_texture	texture;
+	t_texture	tex;
 	t_map		map;
 	t_mlx		mlx;
 	t_ray		ray;
@@ -189,7 +202,7 @@ t_mlx		*_mlx(void);
 t_rc		*_rc(void);
 t_player	*_player(void);
 t_ray		*_ray(void);
-
+t_texture	*_tex(void);
 //RAYCASTING
 void		raycasting(void);
 void		init_ray(int pixel);
@@ -198,6 +211,10 @@ void		init_next_side_dist(void);
 void		calculate_wall_height(void);
 void		find_hit_wall(void);
 void		what_side_was_hit(void);
+
+
+//TEXTURE 
+void	init_texture(void);
 
 //HAST_LA_VISTA
 void		hasta_la_vista_baby(char *str);
