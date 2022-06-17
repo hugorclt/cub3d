@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 18:10:47 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/17 09:33:34 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,10 +167,16 @@ typedef	struct s_rc
 	t_wall		wall;
 }	t_rc;
 
+typedef struct s_teximg
+{
+	void	*img;
+}	t_teximg;
+
 typedef struct s_data
 {
 	t_rc		rc;
 	t_texture	texture;
+	t_teximg	teximg;
 	t_map		map;
 	t_mlx		mlx;
 	t_ray		ray;
