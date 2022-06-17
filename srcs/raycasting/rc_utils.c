@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 11:15:56 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:07:30 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ EAST = yellow
 BUG= white
 */
 
+//X position * 4 + 4 * Line size * Y position
 
 void	get_wall_texture(int x, int y, double texpos, int texX)
 {
@@ -57,11 +58,13 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	double	step;
 	double	wallX;
 	int			texX;
+	t_mlx		*mlx;
 	t_player	*player;
 
 	rc = _rc();
 	player = _player();
 	data = _data();
+	mlx = _mlx();
 	if (rc->ray.side == 0)
 		wallX = player->pos.x + rc->ray.wallDist * rc->ray.dir.y;
 	else
@@ -77,21 +80,20 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	texpos = (rc->wall.pixelStart - WIN_HEIGHT / 2 + rc->wall.lineHeight / 2) * step;
 	while (i < start_pts)
 	{
-		my_mlx_pixel_put(x, i, createRGB(data->texture.ceiling.trgb.r,
-				data->texture.ceiling.trgb.g, data->texture.ceiling.trgb.b));
+		mlx->image.addr[i * mlx->image.line_len / 4 + x] = createRGB(data->texture.ceiling.trgb.r,
+				data->texture.ceiling.trgb.g, data->texture.ceiling.trgb.b);
 		i++;
 	}
 	while (i < end_pts)
 	{
 		get_wall_texture(x, i, texpos, texX);
 		texpos += step;
-		//my_mlx_pixel_put(x, i, get_wall_color());
 		i++;
 	}
 	while (i < WIN_HEIGHT)
 	{
-		my_mlx_pixel_put(x, i, createRGB(data->texture.floor.trgb.r,
-				data->texture.floor.trgb.g, data->texture.floor.trgb.b));
+		mlx->image.addr[i * mlx->image.line_len / 4 + x] = createRGB(data->texture.floor.trgb.r,
+				data->texture.floor.trgb.g, data->texture.floor.trgb.b);
 		i++;
 	}
 }

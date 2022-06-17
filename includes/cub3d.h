@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/17 10:45:59 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/17 15:21:22 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*img_ptr;
-	char	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		line_len;
 	int		endian;
