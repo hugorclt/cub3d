@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rc_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 19:50:36 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 11:15:56 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,56 @@ EAST = yellow
 BUG= white
 */
 
-int	get_wall_color(void)
+
+void	get_wall_texture(int x, int y, double texpos, int texX)
 {
 	t_rc	*rc;
+	t_data	*data;
+	t_mlx	*mlx;
+	int		texY;
 
 	rc = _rc();
+	data = _data();
+	mlx = _mlx();
+	texY = (int)texpos & (data->teximg[0].height - 1);
 	if (rc->ray.side_hit == NORTH)
-		return (0xFF5733);
+		mlx->image.addr[y * mlx->image.line_len / 4 + x] = data->teximg[0].addr[texY * data->teximg[0].line_len / 4 + texX];
 	else if (rc->ray.side_hit == SOUTH)
-		return (0xB0F2B6);
+		mlx->image.addr[y * mlx->image.line_len / 4 + x] = data->teximg[3].addr[texY * data->teximg[3].line_len / 4 + texX];
 	else if (rc->ray.side_hit == WEST)
-		return (0x7F00FF);
+		mlx->image.addr[y * mlx->image.line_len / 4 + x] = data->teximg[1].addr[texY * data->teximg[1].line_len / 4 + texX];
 	else if (rc->ray.side_hit == EAST)
-		return (0xFAFD0F);
-	else
-		return (0xFFFFFF);
+		mlx->image.addr[y * mlx->image.line_len / 4 + x] = data->teximg[2].addr[texY * data->teximg[2].line_len / 4 + texX];
 }
 
+//data.addr[y * recup->data.line_length / 4 + x] = texture[0].addr[texy * texture[0].line_length / 4 + texx];
 void	draw_2_point(int x, int start_pts, int end_pts)
 {
 	int		i;
 	t_data	*data;
+	double	texpos;
+	t_rc	*rc;
+	double	step;
+	double	wallX;
+	int			texX;
+	t_player	*player;
 
+	rc = _rc();
+	player = _player();
 	data = _data();
+	if (rc->ray.side == 0)
+		wallX = player->pos.x + rc->ray.wallDist * rc->ray.dir.y;
+	else
+		wallX = player->pos.y + rc->ray.wallDist * rc->ray.dir.x;
+	wallX -= floor(wallX);
+	texX = (int)(wallX * (double)data->teximg[0].width);
+	if (rc->ray.side == 0 && rc->ray.dir.x > 0)
+		texX = data->teximg[0].width - texX - 1;
+	if (rc->ray.side == 1 && rc->ray.dir.y < 0)
+		texX = data->teximg[0].width - texX - 1;
 	i = 0;
+	step = 1.0 * (data->teximg[0].height / rc->wall.lineHeight);
+	texpos = (rc->wall.pixelStart - WIN_HEIGHT / 2 + rc->wall.lineHeight / 2) * step;
 	while (i < start_pts)
 	{
 		my_mlx_pixel_put(x, i, createRGB(data->texture.ceiling.trgb.r,
@@ -57,7 +83,9 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	}
 	while (i < end_pts)
 	{
-		my_mlx_pixel_put(x, i, get_wall_color());
+		get_wall_texture(x, i, texpos, texX);
+		texpos += step;
+		//my_mlx_pixel_put(x, i, get_wall_color());
 		i++;
 	}
 	while (i < WIN_HEIGHT)

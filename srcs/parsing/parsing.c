@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 20:00:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 10:01:49 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ void	parsing(char **argv)
 	data = _data();
 	data->texture.ceiling_filled = FALSE;
 	data->texture.floor_filled = FALSE;
+	data->teximg = malloc(sizeof(t_teximg) * 4);
+	if (!data->teximg)
+		hasta_la_vista_baby("malloc fail");
 	data->map.line = get_next_line(data->map.fd);
 	if (!data->map.line)
 		hasta_la_vista_baby("Memory alloc fail");

@@ -1,7 +1,7 @@
-NO ../texture_xpm/north.xpm                        
-WE ../texture_xpm/west.xpm
-EA ../texture_xpm/east.xpm
-SO ../texture_xpm/south.xpm
+NO ./texture_xpm/north.xpm                        
+WE ./texture_xpm/west.xpm
+EA ./texture_xpm/east.xpm
+SO ./texture_xpm/south.xpm
 
 C  1, 96, 255
 F 93, 93, 93
