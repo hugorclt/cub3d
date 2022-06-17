@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 19:55:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 16:38:17 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,11 +149,11 @@ typedef struct s_player
 typedef struct s_ray
 {
 	t_vector	dir;
-	t_vector	deltaSideDist;
-	t_vector	nextSideDist;
+	t_vector	delta_side_dist;
+	t_vector	next_side_dist;
 	t_pos		step;
-	double		cam_X;
-	double		wallDist;
+	double		cam_x;
+	double		wall_dist;
 	int			hit;
 	int			side_hit;
 	int			side;
@@ -161,9 +161,9 @@ typedef struct s_ray
 
 typedef struct s_wall
 {
-	int	lineHeight;
-	int	pixelStart;
-	int	pixelEnd;
+	int	line_height;
+	int	pixel_start;
+	int	pixel_end;
 }	t_wall;
 
 typedef struct s_rc

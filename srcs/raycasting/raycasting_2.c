@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/16 19:52:12 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 20:00:01 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 16:38:17 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void	init_ray(int pixel)
 
 	rc = _rc();
 	player = _player();
-	rc->ray.cam_X = 2 * pixel / (double)WIN_WIDTH - 1;
-	rc->ray.dir.x = player->dir.x + rc->plan.x * rc->ray.cam_X;
-	rc->ray.dir.y = player->dir.y + rc->plan.y * rc->ray.cam_X;
+	rc->ray.cam_x = 2 * pixel / (double)WIN_WIDTH - 1;
+	rc->ray.dir.x = player->dir.x + rc->plan.x * rc->ray.cam_x;
+	rc->ray.dir.y = player->dir.y + rc->plan.y * rc->ray.cam_x;
 }
 
 void	init_ray_step(void)
@@ -34,13 +34,13 @@ void	init_ray_step(void)
 	player->map_pos.x = (int)player->pos.x;
 	player->map_pos.y = (int)player->pos.y;
 	if (rc->ray.dir.x == 0)
-		rc->ray.deltaSideDist.x = 1e30;
+		rc->ray.delta_side_dist.x = 1e30;
 	else
-		rc->ray.deltaSideDist.x = fabs(1 / rc->ray.dir.x);
+		rc->ray.delta_side_dist.x = fabs(1 / rc->ray.dir.x);
 	if (rc->ray.dir.y == 0)
-		rc->ray.deltaSideDist.y = 1e30;
+		rc->ray.delta_side_dist.y = 1e30;
 	else
-		rc->ray.deltaSideDist.y = fabs(1 / rc->ray.dir.y);
+		rc->ray.delta_side_dist.y = fabs(1 / rc->ray.dir.y);
 	rc->ray.hit = FALSE;
 }
 
@@ -78,17 +78,17 @@ void	find_hit_wall(void)
 	data = _data();
 	while (ray->hit == FALSE)
 	{
-		if (ray->nextSideDist.x < ray->nextSideDist.y)
+		if (ray->next_side_dist.x < ray->next_side_dist.y)
 		{
 			ray->side = NORTH_SOUTH;
 			player->map_pos.x += ray->step.x;
-			ray->nextSideDist.x += ray->deltaSideDist.x;
+			ray->next_side_dist.x += ray->delta_side_dist.x;
 		}
 		else
 		{
 			ray->side = WEST_EAST;
 			player->map_pos.y += ray->step.y;
-			ray->nextSideDist.y += ray->deltaSideDist.y;
+			ray->next_side_dist.y += ray->delta_side_dist.y;
 		}
 		if (data->map.map[player->map_pos.y][player->map_pos.x] == WALL)
 			ray->hit = TRUE;
@@ -105,14 +105,14 @@ void	calculate_wall_height(void)
 	rc = _rc();
 	wall = &(rc->wall);
 	if (ray->side == NORTH_SOUTH)
-		ray->wallDist = (ray->nextSideDist.x - ray->deltaSideDist.x);
+		ray->wall_dist = (ray->next_side_dist.x - ray->delta_side_dist.x);
 	else
-		ray->wallDist = (ray->nextSideDist.y - ray->deltaSideDist.y);
-	wall->lineHeight = (int)(WIN_HEIGHT / ray->wallDist);
-	wall->pixelStart = -wall->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (wall->pixelStart < 0)
-		wall->pixelStart = 0;
-	wall->pixelEnd = wall->lineHeight / 2 + WIN_HEIGHT / 2;
-	if (wall->pixelEnd >= WIN_HEIGHT)
-		wall->pixelEnd = WIN_HEIGHT - 1;
+		ray->wall_dist = (ray->next_side_dist.y - ray->delta_side_dist.y);
+	wall->line_height = (int)(WIN_HEIGHT / ray->wall_dist);
+	wall->pixel_start = -wall->line_height / 2 + WIN_HEIGHT / 2;
+	if (wall->pixel_start < 0)
+		wall->pixel_start = 0;
+	wall->pixel_end = wall->line_height / 2 + WIN_HEIGHT / 2;
+	if (wall->pixel_end >= WIN_HEIGHT)
+		wall->pixel_end = WIN_HEIGHT - 1;
 }

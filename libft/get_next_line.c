@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 12:57:38 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 10:24:28 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/17 16:41:21 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ char	*fill_stock(char *stock, char *buffer, int fd)
 		return (free(stock), NULL);
 	return (stock);
 }
-
 
 char	*get_next_line(int fd)
 {

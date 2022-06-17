@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 20:00:07 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/17 16:38:17 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ static void	init_next_side_dist_x(void)
 	if (ray->dir.x < 0)
 	{
 		ray->step.x = -1;
-		ray->nextSideDist.x = (player->pos.x - player->map_pos.x)
-			* ray->deltaSideDist.x;
+		ray->next_side_dist.x = (player->pos.x - player->map_pos.x)
+			* ray->delta_side_dist.x;
 	}
 	else
 	{
 		ray->step.x = 1;
-		ray->nextSideDist.x = (player->map_pos.x + 1.0 - player->pos.x)
-			* ray->deltaSideDist.x;
+		ray->next_side_dist.x = (player->map_pos.x + 1.0 - player->pos.x)
+			* ray->delta_side_dist.x;
 	}
 }
 
@@ -43,14 +43,14 @@ static void	init_next_side_dist_y(void)
 	if (ray->dir.y < 0)
 	{
 		ray->step.y = -1;
-		ray->nextSideDist.y = (player->pos.y - player->map_pos.y)
-			* ray->deltaSideDist.y;
+		ray->next_side_dist.y = (player->pos.y - player->map_pos.y)
+			* ray->delta_side_dist.y;
 	}
 	else
 	{
 		ray->step.y = 1;
-		ray->nextSideDist.y = (player->map_pos.y + 1.0 - player->pos.y)
-			* ray->deltaSideDist.y;
+		ray->next_side_dist.y = (player->map_pos.y + 1.0 - player->pos.y)
+			* ray->delta_side_dist.y;
 	}
 }
 
@@ -75,7 +75,7 @@ void	raycasting(void)
 		find_hit_wall();
 		what_side_was_hit();
 		calculate_wall_height();
-		draw_2_point(pixel, rc->wall.pixelStart, rc->wall.pixelEnd);
+		draw_2_point(pixel, rc->wall.pixel_start, rc->wall.pixel_end);
 		pixel ++;
 	}
 }
