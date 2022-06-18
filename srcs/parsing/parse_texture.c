@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:57:59 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 16:13:03 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/18 19:49:28 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	parse_texture_north(char *line)
 	if (data->tex.path[0])
 		hasta_la_vista_baby("Doublon detected");
 	data->tex.path[0] = ft_strdup(&line[i]);
-	data->tex.path[0] = ft_strtrim(data->tex.path[0], "\n ");
+	data->tex.path[0] = ft_strtrim(data->tex.path[0], "\n \t");
 	if (!data->tex.path[0])
 		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);
@@ -44,7 +44,7 @@ int	parse_texture_west(char *line)
 	if (data->tex.path[1])
 		hasta_la_vista_baby("Doublon detected");
 	data->tex.path[1] = ft_strdup(&line[i]);
-	data->tex.path[1] = ft_strtrim(data->tex.path[1], "\n ");
+	data->tex.path[1] = ft_strtrim(data->tex.path[1], "\n \t");
 	if (!data->tex.path[1])
 		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);
@@ -63,7 +63,7 @@ int	parse_texture_east(char *line)
 	if (data->tex.path[2])
 		hasta_la_vista_baby("Doublon detected");
 	data->tex.path[2] = ft_strdup(&line[i]);
-	data->tex.path[2] = ft_strtrim(data->tex.path[2], "\n ");
+	data->tex.path[2] = ft_strtrim(data->tex.path[2], "\n \t");
 	if (!data->tex.path[2])
 		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);
@@ -82,7 +82,7 @@ int	parse_texture_south(char *line)
 	if (data->tex.path[3])
 		hasta_la_vista_baby("Doublon detected");
 	data->tex.path[3] = ft_strdup(&line[i]);
-	data->tex.path[3] = ft_strtrim(data->tex.path[3], "\n ");
+	data->tex.path[3] = ft_strtrim(data->tex.path[3], "\n \t");
 	if (!data->tex.path[3])
 		hasta_la_vista_baby("Memory alloc fail");
 	return (SUCCESS);

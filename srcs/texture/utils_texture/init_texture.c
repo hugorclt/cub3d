@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:23:05 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 19:07:49 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/18 19:48:38 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ void	init_texture(void)
 	i = 0;
 	while (i < 4)
 	{
+		printf("%s\n", tex->path[i]);
 		tex->img[i].img_ptr = mlx_xpm_file_to_image(mlx->var.mlx,
 			tex->path[i], &tex->img[i].width, &tex->img[i].height);
 		if (!tex->img[i].img_ptr)

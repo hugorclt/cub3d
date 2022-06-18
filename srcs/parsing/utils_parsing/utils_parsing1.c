@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 19:22:09 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/18 19:47:44 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_strcmp(char *s1, char *s2)
 
 char	*skip_space(char *line)
 {
-	while (*line && *line == ' ')
+	while (*line && (*line == ' ' || *line == '\t'))
 		line++;
 	return (line);
 }
