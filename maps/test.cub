@@ -4,7 +4,7 @@ EA ./texture_XPM/east1.xpm
 SO ./texture_XPM/south1.xpm 
 
 C  1, 96, 255
-F 93, 93, 93
+F 19,93, 93
 
 
 111111111111111111111111111111111

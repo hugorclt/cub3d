@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 18:15:07 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 19:22:09 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ int	is_num(char *line)
 	int	i;
 
 	i = 0;
+	if (line[i] == ',')
+		return (FAILURE);
 	while (line[i] && (line[i] != ',' && line[i] != ' ' && line[i] != '\n'))
 	{
 		if (line[i] < '0' || line[i] > '9')

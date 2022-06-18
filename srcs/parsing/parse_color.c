@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 20:02:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 19:33:16 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 19:20:21 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	parse_insert_color(char *line, t_color *color)
 	while (tour < 3)
 	{
 		skip_space_new(line, &i);
+		printf("%c\n", line[i]);
 		if (is_num(&line[i]) == FAILURE)
 			hasta_la_vista_baby("non digit character");
 		len_color = len_number(&line[i]);
