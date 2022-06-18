@@ -8,37 +8,41 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Thu Jun  9 12:19:48 2022
+# Make data base, printed on Sat Jun 18 16:05:47 2022
 
 # Variables
 
+# environment
+VSCODE_GIT_ASKPASS_MAIN = /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass-main.js
 # automatic
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
 # environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
 VSCODE_LOG_NATIVE = false
+ 
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
- 
 @F = $(notdir $@)
 # makefile
 CURDIR := /Users/hugorecolet/Desktop/42/studs/Cercle4/cub3d
 # makefile
 SHELL = /bin/sh
-# makefile (from `Makefile', line 41)
+# makefile (from `Makefile', line 48)
 RM = rm -f
 # environment
-VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{"*":"fr"},"_languagePackId":"25fe6a3290ec415596628d4afc87a88c.fr","_translationsConfigFile":"/Users/hugorecolet/Library/Application Support/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/tcf.json","_cacheRoot":"/Users/hugorecolet/Library/Application Support/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr","_resolvedLanguagePackCoreLocation":"/Users/hugorecolet/Library/Application Support/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5","_corruptedFile":"/Users/hugorecolet/Library/Application Support/Code/clp/25fe6a3290ec415596628d4afc87a88c.fr/corrupted.info","_languagePackSupport":true}
-# makefile (from `Makefile', line 37)
+VSCODE_NLS_CONFIG = {"locale":"fr","availableLanguages":{},"_languagePackSupport":true}
+# makefile (from `Makefile', line 44)
 MLX = mlx_Linux
 # environment
 _ = /usr/bin/make
-# makefile (from `Makefile', line 35)
-CFLAGS = -Wall -Wextra -Werror -g3 -I includes/ 
+# makefile (from `Makefile', line 42)
+CFLAGS = -Wall -Wextra -Werror -g3 -I includes/ -fsanitize=address
 # makefile (from `Makefile', line 1)
 MAKEFILE_LIST :=  Makefile
 # environment
@@ -46,11 +50,11 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-INFOPATH = /opt/homebrew/share/info:
+INFOPATH = /opt/homebrew/share/info:/opt/homebrew/share/info:
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/np/3n81l2wd7gv0vjgd1vccsr8w0000gn/T/vscode-ipc-5d4b08ae-580a-41fb-ab3a-19dcdbc4621e.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/np/3n81l2wd7gv0vjgd1vccsr8w0000gn/T/vscode-ipc-0aba5fe0-4da0-4919-b97c-e770b56df3a9.sock
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/hugorecolet/Desktop/42/studs/Cercle4/cub3d
 # environment
 PATH = /Library/Frameworks/Python.framework/Versions/3.8/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/Users/hugorecolet/.spicetify:/opt/homebrew/bin:/opt/homebrew/sbin:/Library/Frameworks/Python.framework/Versions/3.9/bin
 # environment
@@ -63,7 +67,7 @@ VSCODE_LOG_STACK = false
 ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
-# makefile (from `Makefile', line 45)
+# makefile (from `Makefile', line 52)
 MLX_MACOS = -Lmlx -framework OpenGL -framework AppKit
 # environment
 SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0fHpMr0heK/Listeners
@@ -73,7 +77,7 @@ SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.0fHpMr0heK/Listeners
 DISPLAY = /private/tmp/com.apple.launchd.IoJLrutAMq/org.xquartz:0
 # environment
 VSCODE_PIPE_LOGGING = true
-# makefile (from `Makefile', line 39)
+# makefile (from `Makefile', line 46)
 OBJS = $(SRCS:.c=.o)
 # environment
 PWD = /Users/hugorecolet/Desktop/42/studs/Cercle4/cub3d
@@ -82,13 +86,15 @@ HOMEBREW_CELLAR = /opt/homebrew/Cellar
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-MANPATH = /opt/homebrew/share/man::
+MANPATH = /opt/homebrew/share/man:/usr/share/man:/usr/local/share/man:/opt/X11/share/man:/opt/homebrew/share/man:
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 HOME = /Users/hugorecolet
 # default
 MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = /Users/hugorecolet/Library/Application Support/Code/CachedData/c3511e6c69bb39013c4a4b7b9566ec1ca73fc4d5
 # environment
@@ -102,16 +108,20 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 ^D = $(patsubst %/,%,$(dir $^))
 # environment
+MAKELEVEL := 0
+# environment
 XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # makefile (from `Makefile', line 13)
-SRCS = srcs/main.c srcs/parsing/parse_texture.c srcs/parsing/parse_color.c srcs/parsing/parsing.c srcs/parsing/parse_map.c srcs/parsing/check_map/check_map.c srcs/parsing/check_map/check_map2.c srcs/utils/singleton.c srcs/utils/hasta_la_vista.c srcs/utils/utils_parsing/utils_parsing1.c srcs/utils/utils_parsing/utils_parsing2.c srcs/utils/utils_parsing/utils_max_x_y.c srcs/hook/hook.c srcs/video/video_loop.c srcs/video/video_utils.c srcs/init_player.c srcs/video/draw_line.c 
+SRCS = srcs/main.c srcs/parsing/parse_texture.c srcs/parsing/parse_color.c srcs/parsing/parsing.c srcs/parsing/parse_map.c srcs/parsing/init_player.c srcs/parsing/utils_parsing/utils_parsing1.c srcs/parsing/utils_parsing/utils_parsing2.c srcs/parsing/utils_parsing/utils_max_x_y.c srcs/parsing/check_map/check_map.c srcs/parsing/check_map/check_map2.c srcs/tools/singleton.c srcs/tools/singleton_2.c srcs/tools/hasta_la_vista.c srcs/hook/hook.c srcs/hook/hook_movement.c srcs/hook/hook_rotate.c srcs/video/video_loop.c srcs/video/video_utils.c srcs/raycasting/raycasting.c srcs/raycasting/raycasting_2.c srcs/raycasting/rc_utils.c srcs/texture/utils_texture/init_texture.c srcs/texture/texture.c 
 # environment
-SHLVL = 1
-# makefile (from `Makefile', line 33)
+SHLVL = 3
+# makefile (from `Makefile', line 40)
 CC = gcc
 # default
 MAKE_VERSION := 3.81
@@ -119,7 +129,7 @@ MAKE_VERSION := 3.81
 USER = hugorecolet
 # makefile
 .DEFAULT_GOAL := all
-# makefile (from `Makefile', line 43)
+# makefile (from `Makefile', line 50)
 NAME = cub3d
 # environment
 LESS = -R
@@ -127,8 +137,12 @@ LESS = -R
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
-# makefile (from `Makefile', line 31)
+# makefile (from `Makefile', line 38)
 INC = includes/cub3d.h
+# environment
+VSCODE_GIT_ASKPASS_EXTRA_ARGS = --ms-enable-electron-run-as-node
+# environment
+TERM_PROGRAM = vscode
 # default
 .VARIABLES := 
 # environment
@@ -137,14 +151,19 @@ TMPDIR = /var/folders/np/3n81l2wd7gv0vjgd1vccsr8w0000gn/T/
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /Users/hugorecolet/Library/Application Support/Code/1.67.2-main.sock
+# environment
+VSCODE_GIT_ASKPASS_NODE = /Applications/Visual Studio Code.app/Contents/MacOS/Electron
 # makefile
 MAKEFLAGS = Rrqp
 # environment
 MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
+ 
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.32999609.32999615
+TERM_PROGRAM_VERSION = 1.67.2
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.32999609.32999615.B1696079-0079-4CF4-89FC-468DAEE89BCE
 # environment
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
@@ -157,6 +176,8 @@ HOMEBREW_REPOSITORY = /opt/homebrew
 __CF_USER_TEXT_ENCODING = 0x1F5:0x0:0x1
 # environment
 COMMAND_MODE = unix2003
+# environment
+GIT_ASKPASS = /Applications/Visual Studio Code.app/Contents/Resources/app/extensions/git/dist/askpass.sh
 # default
 MAKEFILES := 
 # automatic
@@ -174,13 +195,15 @@ SUFFIXES :=
 # default
 .INCLUDE_DIRS = /usr/local/include
 # environment
-MAKELEVEL := 0
+VSCODE_GIT_IPC_HANDLE = /var/folders/np/3n81l2wd7gv0vjgd1vccsr8w0000gn/T/vscode-git-a6b9eb9377.sock
 # environment
 LANG = C
 # environment
+TERM = xterm-256color
+# environment
 VSCODE_PID = 609
 # variable set hash-table stats:
-# Load=83/1024=8%, Rehash=0, Collisions=7/118=6%
+# Load=94/1024=9%, Rehash=0, Collisions=9/129=7%
 
 # Pattern-specific Variable Values
 
@@ -188,9 +211,9 @@ VSCODE_PID = 609
 
 # Directories
 
-# . (device 16777232, inode 33588759): 14 files, no impossibilities.
+# . (device 16777232, inode 33588759): 16 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 16 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -210,12 +233,6 @@ includes/cub3d.h:
 #  Modification time never checked.
 #  File has not been updated.
 
-# Not a target:
-srcs/utils/hasta_la_vista.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-
 all: cub3d
 #  Phony target (prerequisite of .PHONY).
 #  Command-line target.
@@ -226,25 +243,37 @@ all: cub3d
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/2=0%
 
+# Not a target:
+srcs/parsing/init_player.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 .PHONY: bonus all clean fclean re test_leaks
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/utils/utils_parsing/utils_max_x_y.o:
+srcs/parsing/utils_parsing/utils_parsing1.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
-cub3d: mlx_Linux srcs/main.o srcs/parsing/parse_texture.o srcs/parsing/parse_color.o srcs/parsing/parsing.o srcs/parsing/parse_map.o srcs/parsing/check_map/check_map.o srcs/parsing/check_map/check_map2.o srcs/utils/singleton.o srcs/utils/hasta_la_vista.o srcs/utils/utils_parsing/utils_parsing1.o srcs/utils/utils_parsing/utils_parsing2.o srcs/utils/utils_parsing/utils_max_x_y.o srcs/hook/hook.o srcs/video/video_loop.o srcs/video/video_utils.o srcs/init_player.o srcs/video/draw_line.o includes/cub3d.h
+# Not a target:
+srcs/hook/hook_rotate.o:
 #  Implicit rule search has not been done.
-#  Last modified 2022-06-09 10:36:20
+#  Modification time never checked.
+#  File has not been updated.
+
+cub3d: mlx_Linux srcs/main.o srcs/parsing/parse_texture.o srcs/parsing/parse_color.o srcs/parsing/parsing.o srcs/parsing/parse_map.o srcs/parsing/init_player.o srcs/parsing/utils_parsing/utils_parsing1.o srcs/parsing/utils_parsing/utils_parsing2.o srcs/parsing/utils_parsing/utils_max_x_y.o srcs/parsing/check_map/check_map.o srcs/parsing/check_map/check_map2.o srcs/tools/singleton.o srcs/tools/singleton_2.o srcs/tools/hasta_la_vista.o srcs/hook/hook.o srcs/hook/hook_movement.o srcs/hook/hook_rotate.o srcs/video/video_loop.o srcs/video/video_utils.o srcs/raycasting/raycasting.o srcs/raycasting/raycasting_2.o srcs/raycasting/rc_utils.o srcs/texture/utils_texture/init_texture.o srcs/texture/texture.o includes/cub3d.h
+#  Implicit rule search has not been done.
+#  Last modified 2022-06-18 16:05:26
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/2=0%
-#  commands to execute (from `Makefile', line 54):
+#  commands to execute (from `Makefile', line 61):
 	@$(MAKE) -C libft
 	@echo "cub3d : libft compiled"
 	$(CC) -g $(CFLAGS) -o $(NAME) $(OBJS) $(INC) libft/libft.a -Lmlx -lmlx_Linux -lXext -lX11 -lm -lz
@@ -255,7 +284,7 @@ libft:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 70):
+#  commands to execute (from `Makefile', line 77):
 	
 
 # Not a target:
@@ -268,17 +297,28 @@ libft:
 srcs/video/video_utils.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
- 
 #  File has not been updated.
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-08 23:05:10
+#  Last modified 2022-06-18 16:05:17
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
 # Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+srcs/raycasting/rc_utils.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/raycasting/raycasting_2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 # Not a target:
 srcs/parsing/parse_color.o:
@@ -287,13 +327,26 @@ srcs/parsing/parse_color.o:
 #  File has not been updated.
 
 # Not a target:
-srcs/init_player.o:
+srcs/parsing/utils_parsing/utils_parsing2.o:
+#  Implicit rule search has not been done.
+ 
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/tools/singleton.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
 srcs/parsing/check_map/check_map2.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/texture/utils_texture/init_texture.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -310,19 +363,31 @@ bonus:
 #  File does not exist.
 #  File has not been updated.
 
+# Not a target:
+srcs/hook/hook_movement.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
 fclean: clean
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 79):
+#  commands to execute (from `Makefile', line 86):
 	@$(MAKE) -C libft fclean
 	@$(RM) $(NAME)
 	@echo "cub3d : objects and name has been erased"
 	
 
 # Not a target:
-srcs/utils/utils_parsing/utils_parsing1.o:
+srcs/texture/texture.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/tools/hasta_la_vista.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -344,18 +409,12 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 73):
+#  commands to execute (from `Makefile', line 80):
 	@$(MAKE) -C libft clean
 	@$(RM) $(OBJS)
 	cd mlx && ./configure clean
 	@echo "cub3d : objects has been erased"
 	
-
-# Not a target:
-srcs/utils/utils_parsing/utils_parsing2.o:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
 
 # Not a target:
 srcs/hook/hook.o:
@@ -368,12 +427,18 @@ test_leaks:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 86):
+#  commands to execute (from `Makefile', line 93):
 	valgrind $(NAME)
 	
 
 # Not a target:
 srcs/video/video_loop.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+srcs/tools/singleton_2.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -408,19 +473,19 @@ mlx_Linux:
 # ? := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/10=10%
-#  commands to execute (from `Makefile', line 60):
+#  commands to execute (from `Makefile', line 67):
 	cd mlx && ./configure
 	@echo "cub3d : minilibx compiled" 
 	
 
 # Not a target:
-srcs/video/draw_line.o:
+srcs/parsing/utils_parsing/utils_max_x_y.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
-srcs/utils/singleton.o:
+srcs/raycasting/raycasting.o:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -437,11 +502,11 @@ srcs/main.o:
 #  Modification time never checked.
 #  File has not been updated.
 
-macos: srcs/main.o srcs/parsing/parse_texture.o srcs/parsing/parse_color.o srcs/parsing/parsing.o srcs/parsing/parse_map.o srcs/parsing/check_map/check_map.o srcs/parsing/check_map/check_map2.o srcs/utils/singleton.o srcs/utils/hasta_la_vista.o srcs/utils/utils_parsing/utils_parsing1.o srcs/utils/utils_parsing/utils_parsing2.o srcs/utils/utils_parsing/utils_max_x_y.o srcs/hook/hook.o srcs/video/video_loop.o srcs/video/video_utils.o srcs/init_player.o srcs/video/draw_line.o
+macos: srcs/main.o srcs/parsing/parse_texture.o srcs/parsing/parse_color.o srcs/parsing/parsing.o srcs/parsing/parse_map.o srcs/parsing/init_player.o srcs/parsing/utils_parsing/utils_parsing1.o srcs/parsing/utils_parsing/utils_parsing2.o srcs/parsing/utils_parsing/utils_max_x_y.o srcs/parsing/check_map/check_map.o srcs/parsing/check_map/check_map2.o srcs/tools/singleton.o srcs/tools/singleton_2.o srcs/tools/hasta_la_vista.o srcs/hook/hook.o srcs/hook/hook_movement.o srcs/hook/hook_rotate.o srcs/video/video_loop.o srcs/video/video_utils.o srcs/raycasting/raycasting.o srcs/raycasting/raycasting_2.o srcs/raycasting/rc_utils.o srcs/texture/utils_texture/init_texture.o srcs/texture/texture.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 64):
+#  commands to execute (from `Makefile', line 71):
 	$(MAKE) -C libft
 	@echo "cub3d : libft compiled"
 	@$(CC) $(MLX_MACOS) $(CFLAGS) $^ minilibx_macos/libmlx.a libft/libft.a -o $(NAME)
@@ -449,7 +514,7 @@ macos: srcs/main.o srcs/parsing/parse_texture.o srcs/parsing/parse_color.o srcs/
 	
 
 # files hash-table stats:
-# Load=32/1024=3%, Rehash=0, Collisions=0/92=0%
+# Load=39/1024=4%, Rehash=0, Collisions=0/113=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -461,6 +526,6 @@ macos: srcs/main.o srcs/parsing/parse_texture.o srcs/parsing/parse_color.o srcs/
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Thu Jun  9 12:19:48 2022
+# Finished Make data base on Sat Jun 18 16:05:47 2022
 
  

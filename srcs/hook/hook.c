@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hook.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 23:03:47 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/16 19:32:20 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:34:00 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,19 +31,20 @@ int	key_hook(int keycode)
 
 	data = _data();
 	(void)data;
+	printf("%d\n", keycode);
 	if (keycode == KEY_ESC)
 		hasta_la_vista_baby(NULL);
-	else if (keycode == KEY_W)
+	else if (keycode == KEY_W_MAC)
 		go_forward();
-	else if (keycode == KEY_S)
+	else if (keycode == KEY_S_MAC)
 		go_back();
-	else if (keycode == KEY_A)
+	else if (keycode == KEY_A_MAC)
 		go_left();
-	else if (keycode == KEY_D)
+	else if (keycode == KEY_D_MAC)
 		go_right();
-	else if (keycode == KEY_LEFT)
+	else if (keycode == KEY_LEFT_MAC)
 		rotate_left();
-	else if (keycode == KEY_RIGHT)
+	else if (keycode == KEY_RIGHT_MAC)
 		rotate_right();
 	return (SUCCESS);
 }

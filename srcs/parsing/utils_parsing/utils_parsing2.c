@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 18:54:59 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:20:39 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	print_struct(void)
 	t_data	*data;
 
 	data = _data();
-	printf("no : %s\n", data->tex.path.north);
-	printf("so : %s\n", data->tex.path.south);
-	printf("we : %s\n", data->tex.path.west);
-	printf("ea : %s\n", data->tex.path.east);
+	printf("no : %s\n", data->tex.path[0]);
+	printf("so : %s\n", data->tex.path[1]);
+	printf("we : %s\n", data->tex.path[2]);
+	printf("ea : %s\n", data->tex.path[3]);
 	printf("rgb floor : %d,", data->tex.floor.trgb.r);
 	printf("%d,", data->tex.floor.trgb.g);
 	printf("%d\n", data->tex.floor.trgb.b);

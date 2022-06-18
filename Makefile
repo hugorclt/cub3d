@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
+#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/17 18:12:22 by ajung            ###   ########.fr        #
+#    Updated: 2022/06/18 16:05:17 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ INC		=	includes/cub3d.h
 
 CC		=	gcc
 
-CFLAGS	=	-Wall -Wextra -Werror -g3 -I includes/ 
+CFLAGS	=	-Wall -Wextra -Werror -g3 -I includes/ -fsanitize=address
 
 MLX		=	mlx_Linux
 

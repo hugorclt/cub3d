@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:15:45 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/17 18:54:59 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:20:10 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	check_struct_filled(void)
 	t_data	*data;
 
 	data = _data();
-	if (!data->tex.path.north || !data->tex.path.south
-		|| !data->tex.path.west || !data->tex.path.east)
+	if (!data->tex.path[0] || !data->tex.path[1]
+		|| !data->tex.path[2] || !data->tex.path[3])
 		return (FAILURE);
 	if (data->tex.ceiling_filled == FALSE
 		|| data->tex.floor_filled == FALSE)

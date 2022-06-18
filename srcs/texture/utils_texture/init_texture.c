@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:23:05 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 21:43:27 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:17:50 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,20 +96,15 @@ void	init_texture(void)
 
 	mlx = _mlx();
 	tex = _tex();
-	tex->img = malloc(sizeof(t_image) * 4);
-	if (!tex->img)
-		hasta_la_vista_baby("Memorry alloc");
-	ft_bzero(tex->img, sizeof(t_image) * 4);
 	i = 0;
 	while (i < 4)
 	{
-		printf("path north = %s\n", tex->path.north);
 		tex->img[i].img_ptr = mlx_xpm_file_to_image(mlx->var.mlx,
-			tex->path.north, &tex->img[i].width, &tex->img[i].height);
+			tex->path[i], &tex->img[i].width, &tex->img[i].height);
 		if (!tex->img[i].img_ptr) // on casse ici
 			hasta_la_vista_baby("mlx fail test1");
 		tex->img[i].addr = mlx_get_data_addr(tex->img[i].img_ptr,
-			&tex->img[i].bits_per_pixel, NULL, &tex->img[i].endian);
+			&tex->img[i].bits_per_pixel, &tex->img[i].width, &tex->img[i].endian);
 		if (!tex->img[i].img_ptr)
 			hasta_la_vista_baby("mlx fail test2");
 		i++;

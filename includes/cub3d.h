@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/17 21:34:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:32:53 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@
 
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 720
+
+# define KEY_W_MAC 13
+# define KEY_A_MAC 0
+# define KEY_S_MAC 1
+# define KEY_D_MAC 2
+# define KEY_RIGHT_MAC 124
+# define KEY_LEFT_MAC 123
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -176,12 +183,12 @@ typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
 {
 	int		tex_x;
 	int		tex_y;
-	t_path	path;
+	char	*path[4];
 	t_color	floor;
 	t_color	ceiling;
 	int		floor_filled;
 	int		ceiling_filled;
-	t_image	*img;
+	t_image	img[4];
 	int		side_hit;
 	double	step;
 	double	coor;
