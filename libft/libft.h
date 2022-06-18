@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:40:53 by yobougre          #+#    #+#             */
-/*   Updated: 2022/06/07 12:14:08 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/17 16:39:46 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_list
 }	t_list;
 
 char		*ft_strdup_pimp(char *s);
-char	*ft_strndup_gnl(const char *s, int n);
-char	*ft_strjoin_free_s1(char *s1, char *s2);
+char		*ft_strndup_gnl(const char *s, int n);
+char		*ft_strjoin_free_s1(char *s1, char *s2);
 char		*get_next_line(int fd);
 char		*ft_strjoin_pimp(char *s1, char *s2);
 char		*ft_next_line(char *line);

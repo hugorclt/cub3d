@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 19:43:17 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:20:39 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,16 +38,16 @@ void	print_struct(void)
 	t_data	*data;
 
 	data = _data();
-	printf("no : %s\n", data->texture.north);
-	printf("so : %s\n", data->texture.south);
-	printf("we : %s\n", data->texture.west);
-	printf("ea : %s\n", data->texture.east);
-	printf("rgb floor : %d,", data->texture.floor.trgb.r);
-	printf("%d,", data->texture.floor.trgb.g);
-	printf("%d\n", data->texture.floor.trgb.b);
-	printf("rgb ceilling : %d,", data->texture.ceiling.trgb.r);
-	printf("%d,", data->texture.ceiling.trgb.g);
-	printf("%d\n", data->texture.ceiling.trgb.b);
+	printf("no : %s\n", data->tex.path[0]);
+	printf("so : %s\n", data->tex.path[1]);
+	printf("we : %s\n", data->tex.path[2]);
+	printf("ea : %s\n", data->tex.path[3]);
+	printf("rgb floor : %d,", data->tex.floor.trgb.r);
+	printf("%d,", data->tex.floor.trgb.g);
+	printf("%d\n", data->tex.floor.trgb.b);
+	printf("rgb ceilling : %d,", data->tex.ceiling.trgb.r);
+	printf("%d,", data->tex.ceiling.trgb.g);
+	printf("%d\n", data->tex.ceiling.trgb.b);
 	ft_print_map();
 }
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
+#    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/16 20:02:20 by ajung            ###   ########.fr        #
+#    Updated: 2022/06/18 17:57:33 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCS	=	srcs/main.c\
 			srcs/parsing/check_map/check_map.c \
 			srcs/parsing/check_map/check_map2.c \
 			srcs/tools/singleton.c\
+			srcs/tools/singleton_2.c \
 			srcs/tools/hasta_la_vista.c \
 			srcs/hook/hook.c \
 			srcs/hook/hook_movement.c \
@@ -30,13 +31,14 @@ SRCS	=	srcs/main.c\
 			srcs/video/video_utils.c \
 			srcs/raycasting/raycasting.c \
 			srcs/raycasting/raycasting_2.c \
-			srcs/raycasting/rc_utils.c 
+			srcs/raycasting/rc_utils.c \
+			srcs/texture/utils_texture/init_texture.c \
 
 INC		=	includes/cub3d.h
 
 CC		=	gcc
 
-CFLAGS	=	-Wall -Wextra -Werror -g3 -I includes/ 
+CFLAGS	=	-Wall -Wextra -Werror -g3 -I includes/
 
 MLX		=	mlx_Linux
 

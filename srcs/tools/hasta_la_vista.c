@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:59:14 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/08 23:11:12 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/18 17:56:08 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,29 @@ static void	hasta_la_vista_2(void)
 		mlx_destroy_window(mlx->var.mlx, mlx->var.win);
 	if (mlx->var.mlx && mlx->image.img_ptr)
 		mlx_destroy_image(mlx->var.mlx, mlx->image.img_ptr);
-	//if (mlx->var.mlx)
-		//mlx_destroy_display(mlx->var.mlx);
-	free(mlx->var.mlx);
+	if (mlx->var.mlx)
+		mlx_destroy_display(mlx->var.mlx);
 }
 
 void	hasta_la_vista_baby(char *str)
 {
 	t_data	*data;
+	t_mlx	*mlx;
 
 	data = _data();
+	mlx = _mlx();
 	if (str)
 		printf("Error: %s\n", str);
-	free(data->texture.north);
-	free(data->texture.south);
-	free(data->texture.east);
-	free(data->texture.west);
+	free(data->tex.path[0]);
+	free(data->tex.path[1]);
+	free(data->tex.path[2]);
+	free(data->tex.path[3]);
 	free(data->map.line);
 	if (data->map.map)
 		free_tab(data->map.map);
 	if (data->map.fd > 0)
 		close(data->map.fd);
 	hasta_la_vista_2();
+	free(mlx->var.mlx);
 	exit(FAILURE);
 }

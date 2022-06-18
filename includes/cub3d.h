@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 19:55:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:50:18 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@
 
 # define WIN_WIDTH 1080
 # define WIN_HEIGHT 720
+
+# define KEY_W_MAC 13
+# define KEY_A_MAC 0
+# define KEY_S_MAC 1
+# define KEY_D_MAC 2
+# define KEY_RIGHT_MAC 124
+# define KEY_LEFT_MAC 123
 
 # define KEY_ESC 65307
 # define KEY_W 119
@@ -61,9 +68,9 @@
 # define VOID ' '
 
 # define NORTH 0
-# define SOUTH -1
-# define WEST 1
-# define EAST 2
+# define SOUTH 1
+# define WEST 2
+# define EAST 3
 
 # define NORTH_SOUTH 0
 # define WEST_EAST 1
@@ -82,18 +89,6 @@ typedef union u_color
 	t_trgb	trgb;
 }	t_color;
 
-typedef struct s_texture
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-	t_color	floor;
-	t_color	ceiling;
-	int		floor_filled;
-	int		ceiling_filled;
-}	t_texture;
-
 typedef struct s_map
 {
 	int			max_x;
@@ -106,9 +101,10 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*img_ptr;
-	char	*addr;
+	int		*addr;
 	int		bits_per_pixel;
-	int		line_len;
+	int		width;
+	int		height;
 	int		endian;
 }	t_image;
 
@@ -149,11 +145,12 @@ typedef struct s_player
 typedef struct s_ray
 {
 	t_vector	dir;
-	t_vector	deltaSideDist;
-	t_vector	nextSideDist;
+	t_vector	delta_side_dist;
+	t_vector	next_side_dist;
 	t_pos		step;
-	double		cam_X;
-	double		wallDist;
+	double		cam_x;
+	double		wall_dist;
+	double		wall_x;
 	int			hit;
 	int			side_hit;
 	int			side;
@@ -161,9 +158,9 @@ typedef struct s_ray
 
 typedef struct s_wall
 {
-	int	lineHeight;
-	int	pixelStart;
-	int	pixelEnd;
+	int	line_height;
+	int	pixel_start;
+	int	pixel_end;
 }	t_wall;
 
 typedef struct s_rc
@@ -174,10 +171,35 @@ typedef struct s_rc
 	t_wall		wall;
 }	t_rc;
 
+typedef struct s_path
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+}	t_path;
+
+typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
+{
+	int		tex_x;
+	int		tex_y;
+	int		color;
+	double	tex_pos;
+	char	*path[4];
+	t_color	floor;
+	t_color	ceiling;
+	int		floor_filled;
+	int		ceiling_filled;
+	t_image	img[4];
+	int		side_hit;
+	double	step;
+	double	coor;
+}	t_texture;
+
 typedef struct s_data
 {
 	t_rc		rc;
-	t_texture	texture;
+	t_texture	tex;
 	t_map		map;
 	t_mlx		mlx;
 	t_ray		ray;
@@ -189,6 +211,7 @@ t_mlx		*_mlx(void);
 t_rc		*_rc(void);
 t_player	*_player(void);
 t_ray		*_ray(void);
+t_texture	*_tex(void);
 
 //RAYCASTING
 void		raycasting(void);
@@ -198,6 +221,13 @@ void		init_next_side_dist(void);
 void		calculate_wall_height(void);
 void		find_hit_wall(void);
 void		what_side_was_hit(void);
+
+
+//TEXTURE 
+void	init_texture(void);
+void	prepare_tex_coord(void);
+void	pick_color(void);
+void	calculate_tex_y(void);
 
 //HAST_LA_VISTA
 void		hasta_la_vista_baby(char *str);
