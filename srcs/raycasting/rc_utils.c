@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rc_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:21:23 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 18:54:59 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 16:58:42 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,14 @@ int	get_wall_color(void)
 
 void	draw_2_point(int x, int start_pts, int end_pts)
 {
-	int		i;
-	t_data	*data;
+	int			i;
+	t_data		*data;
+	t_mlx		*mlx;
+	t_texture	*tex;
 
 	data = _data();
+	mlx	= _mlx();
+	tex = _tex();
 	i = 0;
 	while (i < start_pts)
 	{
@@ -57,7 +61,9 @@ void	draw_2_point(int x, int start_pts, int end_pts)
 	}
 	while (i < end_pts)
 	{
-		my_mlx_pixel_put(x, i, get_wall_color());
+		calculate_tex_y();
+		pick_color();
+		mlx->image.addr[i * mlx->image.width / 4 + x] = tex->color;
 		i++;
 	}
 	while (i < WIN_HEIGHT)

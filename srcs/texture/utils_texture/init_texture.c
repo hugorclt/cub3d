@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:23:05 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 16:17:50 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/18 17:01:02 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,31 +55,55 @@ void	init_side_hit_in_texture(void)
 void	calculate_step_texture(void)
 {
 	t_texture	*tex;
+	t_rc		*rc;
 
+	rc = _rc();
 	tex = _tex();
 	tex->step = 1.0 *
-		tex->img[tex->side_hit].width / tex->img[tex->side_hit].height;
+		tex->img[tex->side_hit].width / rc->wall.line_height;
 }
 
 void	calculate_texture_coor(void)
 {
-	
+	t_texture	*tex;
+	t_rc		*rc;
+
+	rc = _rc();
+	tex = _tex();
+	tex->tex_pos = (rc->wall.pixel_start - WIN_HEIGHT / 2
+		+ rc->wall.line_height / 2) * tex->step;
 }
 
-/* 
-            // How much to increase the texture coordinate per screen pixel
-      double step = 1.0 * texHeight / lineHeight;
-      // Starting texture coordinate
-      double texPos = (drawStart - h / 2 + lineHeight / 2) * step; */
+void	prepare_tex_coord(void)
+{
+	calculate_wall_x();
+	calculate_texture_x();
+	init_side_hit_in_texture();
+	calculate_step_texture();
+	calculate_texture_coor();
+}
 
+void	calculate_tex_y(void)
+{
+	t_texture	*tex;
 
+	tex = _tex();
+	tex->tex_y = (int)(tex->tex_pos) & (tex->img[tex->side_hit].height - 1);
+	tex->tex_pos += tex->step;
+}
+
+void	pick_color(void)
+{
+	t_texture	*tex;
+
+	tex = _tex();
+	printf("%d, %d\n", tex->tex_x, tex->tex_y);
+	tex->color = tex->img[tex->side_hit].addr[tex->tex_y * tex->img[tex->side_hit].width / 4 + tex->tex_x];
+}
 
 /* 	  
       for(int y = drawStart; y<drawEnd; y++)
       {
-        // Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
-        int texY = (int)texPos & (texHeight - 1);
-        texPos += step;
         Uint32 color = texture[texNum][texHeight * texY + texX];
         //make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
         if(side == 1) color = (color >> 1) & 8355711;
@@ -103,7 +127,7 @@ void	init_texture(void)
 			tex->path[i], &tex->img[i].width, &tex->img[i].height);
 		if (!tex->img[i].img_ptr) // on casse ici
 			hasta_la_vista_baby("mlx fail test1");
-		tex->img[i].addr = mlx_get_data_addr(tex->img[i].img_ptr,
+		tex->img[i].addr = (int *)mlx_get_data_addr(tex->img[i].img_ptr,
 			&tex->img[i].bits_per_pixel, &tex->img[i].width, &tex->img[i].endian);
 		if (!tex->img[i].img_ptr)
 			hasta_la_vista_baby("mlx fail test2");

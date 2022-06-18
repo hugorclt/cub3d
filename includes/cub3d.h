@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/18 16:32:53 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/18 16:50:18 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*img_ptr;
-	char	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		width;
 	int		height;
@@ -183,6 +183,8 @@ typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
 {
 	int		tex_x;
 	int		tex_y;
+	int		color;
+	double	tex_pos;
 	char	*path[4];
 	t_color	floor;
 	t_color	ceiling;
@@ -210,6 +212,7 @@ t_rc		*_rc(void);
 t_player	*_player(void);
 t_ray		*_ray(void);
 t_texture	*_tex(void);
+
 //RAYCASTING
 void		raycasting(void);
 void		init_ray(int pixel);
@@ -222,6 +225,9 @@ void		what_side_was_hit(void);
 
 //TEXTURE 
 void	init_texture(void);
+void	prepare_tex_coord(void);
+void	pick_color(void);
+void	calculate_tex_y(void);
 
 //HAST_LA_VISTA
 void		hasta_la_vista_baby(char *str);

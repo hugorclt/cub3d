@@ -6,7 +6,7 @@
 #    By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/18 16:05:17 by hrecolet         ###   ########.fr        #
+#    Updated: 2022/06/18 16:37:21 by hrecolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,6 @@ SRCS	=	srcs/main.c\
 			srcs/raycasting/raycasting_2.c \
 			srcs/raycasting/rc_utils.c \
 			srcs/texture/utils_texture/init_texture.c \
-			srcs/texture/texture.c \
 
 INC		=	includes/cub3d.h
 
