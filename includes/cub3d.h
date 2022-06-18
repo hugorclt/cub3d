@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/17 21:34:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 20:10:58 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_map
 typedef struct s_image
 {
 	void	*img_ptr;
-	char	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		width;
 	int		height;
@@ -164,33 +164,26 @@ typedef struct s_rc
 	t_wall		wall;
 }	t_rc;
 
-typedef struct s_path
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-}	t_path;
-
 typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
 {
 	int		tex_x;
 	int		tex_y;
-	t_path	path;
+	char	*path[4];
 	t_color	floor;
 	t_color	ceiling;
 	int		floor_filled;
 	int		ceiling_filled;
-	t_image	*img;
+	t_image	img[4];
 	int		side_hit;
 	double	step;
 	double	coor;
-}	t_texture;
+	int		color;
+}	t_tex;
 
 typedef struct s_data
 {
 	t_rc		rc;
-	t_texture	tex;
+	t_tex	tex;
 	t_map		map;
 	t_mlx		mlx;
 	t_ray		ray;
@@ -202,7 +195,7 @@ t_mlx		*_mlx(void);
 t_rc		*_rc(void);
 t_player	*_player(void);
 t_ray		*_ray(void);
-t_texture	*_tex(void);
+t_tex		*_tex(void);
 //RAYCASTING
 void		raycasting(void);
 void		init_ray(int pixel);
@@ -215,6 +208,7 @@ void		what_side_was_hit(void);
 
 //TEXTURE 
 void	init_texture(void);
+void	translate_texture_coor(void);
 
 //HAST_LA_VISTA
 void		hasta_la_vista_baby(char *str);

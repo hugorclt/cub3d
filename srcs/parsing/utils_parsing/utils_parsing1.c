@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/07 18:15:07 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 20:22:00 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*skip_space(char *line)
 
 void	skip_space_new(char *str, int *i)
 {
-	while (str[*i] && (str[*i] == ' ' && str[*i] != '\n'))
+	while (str[*i] && ((str[*i] == ' ' || str[*i] == '\t') && str[*i] != '\n'))
 		(*i)++;
 }
 
@@ -55,6 +55,8 @@ int	is_num(char *line)
 	int	i;
 
 	i = 0;
+	if (line[i] == ',')
+		return (FAILURE);
 	while (line[i] && (line[i] != ',' && line[i] != ' ' && line[i] != '\n'))
 	{
 		if (line[i] < '0' || line[i] > '9')

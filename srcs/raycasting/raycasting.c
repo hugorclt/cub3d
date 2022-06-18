@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 16:38:17 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 19:19:22 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ void	raycasting(void)
 		find_hit_wall();
 		what_side_was_hit();
 		calculate_wall_height();
+		translate_texture_coor();
 		draw_2_point(pixel, rc->wall.pixel_start, rc->wall.pixel_end);
 		pixel ++;
 	}
