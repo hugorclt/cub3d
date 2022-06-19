@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 19:57:59 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 20:22:40 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/19 15:59:48 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	parse_texture_north(char *line)
 	skip_space_new(line, &i);
 	if (data->tex.path[NORTH])
 		hasta_la_vista_baby("Doublon detected");
-	data->tex.path[NORTH]= ft_strdup(&line[i]);
+	data->tex.path[NORTH] = ft_strdup(&line[i]);
 	data->tex.path[NORTH] = ft_strtrim(data->tex.path[NORTH], "\n \t");
 	if (!data->tex.path[NORTH])
 		hasta_la_vista_baby("Memory alloc fail");

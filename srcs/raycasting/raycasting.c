@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:20:38 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 19:19:22 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/19 16:17:01 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	raycasting(void)
 		what_side_was_hit();
 		calculate_wall_height();
 		translate_texture_coor();
-		draw_2_point(pixel, rc->wall.pixel_start, rc->wall.pixel_end);
+		draw_ceiling_wall_floor(pixel,
+			rc->wall.pixel_start, rc->wall.pixel_end);
 		pixel ++;
 	}
 }

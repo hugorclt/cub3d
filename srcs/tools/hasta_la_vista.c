@@ -6,7 +6,7 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:59:14 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/19 15:04:27 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/19 16:15:26 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	hasta_la_vista_2(void)
 {
 	t_mlx		*mlx;
-	t_tex	*tex;
+	t_tex		*tex;
 	int			i;
 
 	tex = _tex();

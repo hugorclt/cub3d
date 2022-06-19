@@ -6,7 +6,7 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/19 15:04:41 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/19 16:15:54 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,7 +164,7 @@ typedef struct s_rc
 	t_wall		wall;
 }	t_rc;
 
-typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
+typedef struct s_texture
 {
 	int		tex_x;
 	int		tex_y;
@@ -183,7 +183,7 @@ typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
 typedef struct s_data
 {
 	t_rc		rc;
-	t_tex	tex;
+	t_tex		tex;
 	t_map		map;
 	t_mlx		mlx;
 	t_ray		ray;
@@ -205,16 +205,19 @@ void		calculate_wall_height(void);
 void		find_hit_wall(void);
 void		what_side_was_hit(void);
 
-
 //TEXTURE 
-void	init_texture(void);
-void	translate_texture_coor(void);
+void		init_texture(void);
+void		translate_texture_coor(void);
+void		calculate_texture_y(void);
+void		increase_texture_step(void);
+int			pick_color_img_tex(void);
+void		init_side_hit_in_texture(void);
 
 //HAST_LA_VISTA
 void		hasta_la_vista_baby(char *str);
 
 //DRAW_LINE
-void		draw_2_point(int x, int start_pts, int end_pts);
+void		draw_ceiling_wall_floor(int x, int start_pts, int end_pts);
 
 //VIDEO
 void		video_loop(void);

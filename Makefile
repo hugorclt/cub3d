@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ajung <ajung@student.42.fr>                +#+  +:+       +#+         #
+#    By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/06 11:07:05 by yobougre          #+#    #+#              #
-#    Updated: 2022/06/17 18:12:22 by ajung            ###   ########.fr        #
+#    Updated: 2022/06/19 15:47:48 by oryzon           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,8 +32,9 @@ SRCS	=	srcs/main.c\
 			srcs/raycasting/raycasting.c \
 			srcs/raycasting/raycasting_2.c \
 			srcs/raycasting/rc_utils.c \
-			srcs/texture/utils_texture/init_texture.c \
-			srcs/texture/texture.c \
+			srcs/texture/init_texture.c \
+			srcs/texture/utils_texture.c \
+			srcs/texture/tranlate_tex_coor.c \
 
 INC		=	includes/cub3d.h
 

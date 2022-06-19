@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_texture.c                                     :+:      :+:    :+:   */
+/*   tranlate_tex_coor.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/17 17:23:05 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/19 15:04:08 by oryzon           ###   ########.fr       */
+/*   Created: 2022/06/19 15:47:36 by oryzon            #+#    #+#             */
+/*   Updated: 2022/06/19 15:55:06 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,13 @@ void	calculate_texture_x(void)
 
 	tex = _tex();
 	ray = _ray();
-	tex->tex_x = (int)(ray->wall_x *
-		(double)tex->img[ray->side_hit].width);
+	tex->tex_x = (int)(ray->wall_x
+			* (double)tex->img[ray->side_hit].width);
 	if (ray->side == NORTH_SOUTH && ray->dir.x > 0)
 		tex->tex_x = tex->img[tex->side_hit].width - tex->tex_x - 1;
 	if (ray->side == WEST_EAST && ray->dir.y < 0)
 		tex->tex_x = tex->img[tex->side_hit].width - tex->tex_x - 1;
 	tex->tex_x /= 4;
-}
-
-void	init_side_hit_in_texture(void)
-{
-	t_ray		*ray;
-	t_tex	*texture;
-
-	ray = _ray();
-	texture = _tex();
-
-	texture->side_hit = ray->side_hit;
 }
 
 void	calculate_step_texture(void)
@@ -60,8 +49,8 @@ void	calculate_step_texture(void)
 
 	tex = _tex();
 	rc = _rc();
-	tex->step = 1.0 *
-		tex->img[tex->side_hit].width / rc->wall.line_height;
+	tex->step = 1.0
+		* tex->img[tex->side_hit].width / rc->wall.line_height;
 	tex->step /= 4;
 }
 
@@ -83,28 +72,4 @@ void	translate_texture_coor(void)
 	calculate_texture_x();
 	calculate_step_texture();
 	calculate_texture_coor();
-}
-
-void	init_texture(void)
-{
-	t_mlx	*mlx;
-	t_tex	*tex;
-	int		i;
-
-	mlx = _mlx();
-	tex = _tex();
-	i = 0;
-	while (i < 4)
-	{
-		tex->img[i].img_ptr = mlx_xpm_file_to_image(mlx->var.mlx,
-			tex->path[i], &tex->img[i].width, &tex->img[i].height);
-		if (!tex->img[i].img_ptr)
-			hasta_la_vista_baby("mlx fail");
-		tex->img[i].addr = (int *)mlx_get_data_addr(tex->img[i].img_ptr,
-			&tex->img[i].bits_per_pixel, &tex->img[i].width,
-			&tex->img[i].endian);
-		if (!tex->img[i].addr)
-			hasta_la_vista_baby("mlx fail");
-		i++;
-	}
 }
