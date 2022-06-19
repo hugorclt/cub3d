@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hasta_la_vista.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:59:14 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/17 21:30:35 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 01:19:13 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static void	hasta_la_vista_3(void)
 			mlx_destroy_image(mlx->var.mlx, tex->img[i].img_ptr);
 		i++;
 	}
-	free(tex->img);
 }
 
 static void	hasta_la_vista_2(void)

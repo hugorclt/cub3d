@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:23:05 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 21:43:27 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 01:28:36 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,6 @@ void	init_texture(void)
 
 	mlx = _mlx();
 	tex = _tex();
-	tex->img = malloc(sizeof(t_image) * 4);
-	if (!tex->img)
-		hasta_la_vista_baby("Memorry alloc");
-	ft_bzero(tex->img, sizeof(t_image) * 4);
 	i = 0;
 	while (i < 4)
 	{
@@ -115,3 +111,4 @@ void	init_texture(void)
 		i++;
 	}
 }
+

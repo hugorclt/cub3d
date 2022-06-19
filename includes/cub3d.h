@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:57:30 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/17 21:34:26 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 01:18:14 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,7 @@ typedef struct s_texture //faire une struct floor et ceiling si j'ai la deter
 	t_color	ceiling;
 	int		floor_filled;
 	int		ceiling_filled;
-	t_image	*img;
+	t_image	img[4];
 	int		side_hit;
 	double	step;
 	double	coor;
