@@ -6,15 +6,15 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 18:08:07 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 20:23:40 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 18:47:25 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-t_texture	*_tex(void)
+t_tex	*_tex(void)
 {
-	t_texture	*tex;
+	t_tex	*tex;
 	t_data		*data;
 
 	data = _data();

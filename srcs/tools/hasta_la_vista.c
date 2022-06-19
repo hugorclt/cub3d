@@ -6,16 +6,16 @@
 /*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:59:14 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/18 01:19:13 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/19 15:04:27 by oryzon           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-static void	hasta_la_vista_3(void)
+static void	hasta_la_vista_2(void)
 {
 	t_mlx		*mlx;
-	t_texture	*tex;
+	t_tex	*tex;
 	int			i;
 
 	tex = _tex();
@@ -29,7 +29,7 @@ static void	hasta_la_vista_3(void)
 	}
 }
 
-static void	hasta_la_vista_2(void)
+static void	hasta_la_vista_3(void)
 {
 	t_mlx	*mlx;
 
@@ -51,10 +51,10 @@ void	hasta_la_vista_baby(char *str)
 	mlx = _mlx();
 	if (str)
 		printf("Error: %s\n", str);
-	free(data->tex.path.north);
-	free(data->tex.path.south);
-	free(data->tex.path.east);
-	free(data->tex.path.west);
+	free(data->tex.path[NORTH]);
+	free(data->tex.path[SOUTH]);
+	free(data->tex.path[EAST]);
+	free(data->tex.path[WEST]);
 	free(data->map.line);
 	if (data->map.map)
 		free_tab(data->map.map);

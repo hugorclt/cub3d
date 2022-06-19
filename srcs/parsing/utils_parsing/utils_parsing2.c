@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:43:09 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/17 18:54:59 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/18 20:15:00 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@ void	print_struct(void)
 	t_data	*data;
 
 	data = _data();
-	printf("no : %s\n", data->tex.path.north);
-	printf("so : %s\n", data->tex.path.south);
-	printf("we : %s\n", data->tex.path.west);
-	printf("ea : %s\n", data->tex.path.east);
+	printf("no : %s\n", data->tex.path[NORTH]);
+	printf("so : %s\n", data->tex.path[SOUTH]);
+	printf("we : %s\n", data->tex.path[WEST]);
+	printf("ea : %s\n", data->tex.path[EAST]);
 	printf("rgb floor : %d,", data->tex.floor.trgb.r);
 	printf("%d,", data->tex.floor.trgb.g);
 	printf("%d\n", data->tex.floor.trgb.b);
