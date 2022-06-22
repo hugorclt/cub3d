@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 18:13:31 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:19:33 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	parse_get_map(void)
 	skip_to_map();
 	while (data->map.line)
 	{
-		if (i == 0)
-			parse_get_max_x(data->map.line);
 		data->map.map[i] = ft_strdup(data->map.line);
 		data->map.map[i] = ft_strtrim(data->map.map[i], "\n");
 		if (!data->map.map[i])
