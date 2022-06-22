@@ -6,7 +6,7 @@
 /*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/22 15:19:33 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/22 15:44:05 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	parse_get_map(void)
 		free(data->map.line);
 		data->map.line = get_next_line(data->map.fd);
 		if (!data->map.line && i != data->map.max_y - 1)
-			hasta_la_vista_baby("malloc error");
+			hasta_la_vista_baby("invalid map");
 		i++;
 	}
 	data->map.map[i] = NULL;
