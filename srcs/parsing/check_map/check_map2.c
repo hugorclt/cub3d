@@ -3,29 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:56:19 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/07 18:15:03 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/22 15:19:05 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	check_line_size(void)
-{
-	int		i;
-	t_data	*data;
-
-	data = _data();
-	i = 0;
-	while (data->map.map[i])
-	{
-		if ((int)ft_strlen(data->map.map[i]) != data->map.max_x)
-			hasta_la_vista_baby("Wrong map size");
-		i++;
-	}
-}
 
 void	check_char_in_map(void)
 {

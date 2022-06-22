@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/21 17:00:34 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/22 17:34:46 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	parse_get_map(void)
 	skip_to_map();
 	while (data->map.line)
 	{
-		if (i == 0)
-			parse_get_max_x(data->map.line);
 		data->map.map[i] = ft_strdup(data->map.line);
 		data->map.map[i] = ft_strtrim(data->map.map[i], "\n");
 		if (!data->map.map[i])
@@ -67,7 +65,7 @@ void	parse_get_map(void)
 		free(data->map.line);
 		data->map.line = get_next_line(data->map.fd);
 		if (!data->map.line && i != data->map.max_y - 1)
-			hasta_la_vista_baby("size of map invalid");
+			hasta_la_vista_baby("invalid map");
 		i++;
 	}
 	data->map.map[i] = NULL;
