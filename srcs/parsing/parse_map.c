@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 15:29:37 by hrecolet          #+#    #+#             */
-/*   Updated: 2022/06/16 18:13:31 by hrecolet         ###   ########.fr       */
+/*   Updated: 2022/06/21 17:00:34 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	parse_get_map(void)
 		free(data->map.line);
 		data->map.line = get_next_line(data->map.fd);
 		if (!data->map.line && i != data->map.max_y - 1)
-			hasta_la_vista_baby("malloc error");
+			hasta_la_vista_baby("size of map invalid");
 		i++;
 	}
 	data->map.map[i] = NULL;

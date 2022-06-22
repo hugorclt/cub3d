@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hasta_la_vista.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 01:59:14 by oryzon            #+#    #+#             */
-/*   Updated: 2022/06/19 16:15:26 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/21 15:59:57 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	hasta_la_vista_baby(char *str)
 	data = _data();
 	mlx = _mlx();
 	if (str)
-		printf("Error: %s\n", str);
+		printf("Error\n%s\n", str);
 	free(data->tex.path[NORTH]);
 	free(data->tex.path[SOUTH]);
 	free(data->tex.path[EAST]);
