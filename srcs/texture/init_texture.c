@@ -3,14 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   init_texture.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oryzon <oryzon@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/17 17:23:05 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/19 15:54:11 by oryzon           ###   ########.fr       */
+/*   Updated: 2022/06/24 18:56:32 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+static int	is_power_of_two(int nb)
+{
+	if (nb <= 0)
+		return (FAILURE);
+	while (nb != 1)
+	{
+		if (nb % 2 != 0)
+			return (FAILURE);
+		nb = nb / 2;
+	}
+	return (SUCCESS);
+}
+
+static void	check_texture(int width, int height)
+{
+	if (width != height)
+		hasta_la_vista_baby("Invalid texture");
+	if (is_power_of_two(width) == FAILURE)
+		hasta_la_vista_baby("Invalid texture");
+}
 
 void	init_texture(void)
 {
@@ -27,6 +48,7 @@ void	init_texture(void)
 				tex->path[i], &tex->img[i].width, &tex->img[i].height);
 		if (!tex->img[i].img_ptr)
 			hasta_la_vista_baby("mlx fail");
+		check_texture(tex->img[i].width, tex->img[i].height);
 		tex->img[i].addr = (int *)mlx_get_data_addr(tex->img[i].img_ptr,
 				&tex->img[i].bits_per_pixel, &tex->img[i].width,
 				&tex->img[i].endian);
