@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
+/*   By: hrecolet <hrecolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 18:34:18 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/18 20:22:00 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/25 16:42:08 by hrecolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*skip_space(char *line)
 
 void	skip_space_new(char *str, int *i)
 {
-	while (str[*i] && ((str[*i] == ' ' || str[*i] == '\t') && str[*i] != '\n'))
+	while (str[*i] && (str[*i] == ' ' && str[*i] != '\n'))
 		(*i)++;
 }
 
