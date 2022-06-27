@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 16:49:56 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/16 19:43:20 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/27 16:03:01 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	init_player_direction(void)
 	if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'N')
 		init_direction(0, -1, 0.66, 0);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'S')
-		init_direction(0, 1, 0.66, 0);
+		init_direction(0, 1, -0.66, 0);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'W')
-		init_direction(-1, 0, 0, 0.66);
+		init_direction(-1, 0, 0, -0.66);
 	else if (data->map.map[(int)player->pos.y][(int)player->pos.x] == 'E')
 		init_direction(1, 0, 0, 0.66);
 }

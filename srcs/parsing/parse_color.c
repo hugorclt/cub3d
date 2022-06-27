@@ -6,7 +6,7 @@
 /*   By: ajung <ajung@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 20:02:49 by ajung             #+#    #+#             */
-/*   Updated: 2022/06/21 16:58:54 by ajung            ###   ########.fr       */
+/*   Updated: 2022/06/27 15:51:13 by ajung            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@ static void	nike_la_naurme(char	*str, t_color *color, int len_color, int tour)
 
 	color_str = ft_substr(str, 0, len_color);
 	if (!color)
+	{
+		free(color_str);
 		hasta_la_vista_baby("Malloc error");
+	}
 	if (ft_strlen(color_str) > 11
 		|| (ft_atoi(color_str) > 255 || ft_atoi(color_str) < 0))
+	{
+		free(color_str);
 		hasta_la_vista_baby("error: color format");
+	}
 	if (tour == 0)
 		color->trgb.r = ft_atoi(color_str);
 	else if (tour == 1)
